@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The brand mark from plan.html: red, blue and a shorter green plate. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="@color/brand_push"
+        android:pathData="M38,38h9v32h-9z" />
+    <path
+        android:fillColor="@color/brand_pull"
+        android:pathData="M50,38h9v32h-9z" />
+    <path
+        android:fillColor="@color/brand_legs"
+        android:pathData="M62,43h9v22h-9z" />
+    <path
+        android:fillColor="@color/brand_gold"
+        android:pathData="M30,52h6v4h-6zM73,52h6v4h-6z" />
+</vector>

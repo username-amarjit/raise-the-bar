@@ -1,0 +1,20 @@
+# Gradle / Android
+.gradle/
+.kotlin/
+build/
+local.properties
+captures/
+*.apk
+*.aab
+*.keystore
+*.jks
+
+# IDE
+.idea/
+*.iml
+.DS_Store
+
+# Python (build-time scripts)
+__pycache__/
+*.pyc
+scripts/.cache/

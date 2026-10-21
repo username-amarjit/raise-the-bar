@@ -1,0 +1,1730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Raise the Bar: an adaptive strength, muscle and app plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=Barlow:wght@400;500;600;700&amp;display=swap">
+<style>
+:root{
+  --bg:#E6E8EB;--surface:#FBFBFA;--surface-2:#EEF0F2;--ink:#1C1F24;--ink-2:#3C424B;--muted:#5C636E;--line:#CDD2D8;
+  --push:#C42F27;--pull:#1E4FB5;--legs:#1C7745;--gold:#946600;--plate-gold:#E3A500;--rest:#7D848E;
+  --push-soft:#F5DDDA;--pull-soft:#DCE4F5;--legs-soft:#D5EADD;--gold-soft:#F6EBCB;--rest-soft:#E3E6EA;
+  --on-accent:#FFFFFF;--bezel:#23272D;--code-bg:#1F2328;--code-ink:#E8EAED;
+  --font-display:"Barlow Condensed","Arial Narrow","Roboto Condensed",Arial,sans-serif;
+  --font-body:"Barlow",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  color-scheme:light;box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#1A1D21;--surface:#23272D;--surface-2:#2C3138;--ink:#EEF0F2;--ink-2:#C8CDD4;--muted:#9AA2AD;--line:#363C44;
+  --push:#FF6D5E;--pull:#7EA0FF;--legs:#45C487;--gold:#F0C04A;--plate-gold:#F0C04A;--rest:#8A929C;
+  --push-soft:#3B2220;--pull-soft:#1E2944;--legs-soft:#173123;--gold-soft:#3A3117;--rest-soft:#2C3138;
+  --on-accent:#14171A;--bezel:#454B54;--code-bg:#14171A;--code-ink:#E8EAED;color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#1A1D21;--surface:#23272D;--surface-2:#2C3138;--ink:#EEF0F2;--ink-2:#C8CDD4;--muted:#9AA2AD;--line:#363C44;
+  --push:#FF6D5E;--pull:#7EA0FF;--legs:#45C487;--gold:#F0C04A;--plate-gold:#F0C04A;--rest:#8A929C;
+  --push-soft:#3B2220;--pull-soft:#1E2944;--legs-soft:#173123;--gold-soft:#3A3117;--rest-soft:#2C3138;
+  --on-accent:#14171A;--bezel:#454B54;--code-bg:#14171A;--code-ink:#E8EAED;color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+svg{max-width:100%}
+p{margin:0 0 12px}
+a{color:var(--pull);text-underline-offset:2px}
+:focus-visible{outline:2px solid var(--pull);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(16px,4vw,32px)}
+.t-push{--c:var(--push);--c-soft:var(--push-soft)}
+.t-pull{--c:var(--pull);--c-soft:var(--pull-soft)}
+.t-legs{--c:var(--legs);--c-soft:var(--legs-soft)}
+.t-gold{--c:var(--gold);--c-soft:var(--gold-soft)}
+.t-rest{--c:var(--rest);--c-soft:var(--rest-soft)}
+
+/* top bar */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:14px;height:54px}
+.brand{display:flex;align-items:center;gap:9px;color:var(--ink);text-decoration:none;font-family:var(--font-display);font-weight:800;font-size:20px;white-space:nowrap;flex:0 0 auto}
+.brand-mark{display:inline-flex;align-items:center;gap:2px}
+.brand-mark i{display:block;width:5px;height:18px;border-radius:1px}
+.brand-mark i:nth-child(1){background:var(--push)}
+.brand-mark i:nth-child(2){background:var(--pull)}
+.brand-mark i:nth-child(3){background:var(--legs);height:14px}
+.nav{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;margin-left:auto}
+.nav::-webkit-scrollbar{display:none}
+.nav a{font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--ink-2);text-decoration:none;padding:6px 10px;border-radius:6px;white-space:nowrap}
+.nav a:hover{background:var(--surface-2);color:var(--ink)}
+@media (max-width:640px){.brand-name{display:none}}
+
+/* hero: the week loaded onto a bar */
+.hero{padding:clamp(36px,6vw,72px) 0 clamp(28px,5vw,48px);border-bottom:1px solid var(--line)}
+h1{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(64px,13vw,150px);line-height:.84;letter-spacing:-.01em;margin:0 0 18px}
+.lede{font-size:clamp(18px,2.2vw,22px);line-height:1.45;color:var(--ink-2);max-width:640px;margin:0}
+.bar-wrap{margin:34px 0 8px;overflow-x:auto}
+.barbell{display:block;width:100%;min-width:560px;height:auto}
+.s-steel{fill:var(--rest)}.s-steel2{fill:var(--ink-2)}
+.s-push{fill:var(--push)}.s-pull{fill:var(--pull)}.s-legs{fill:var(--legs)}.s-gold{fill:var(--plate-gold)}
+.s-day{fill:var(--on-accent);font-family:var(--font-display);font-weight:800;font-size:15px;letter-spacing:.06em}
+.s-cap{fill:var(--muted);font-family:var(--font-display);font-weight:700;font-size:14px}
+.s-note{fill:var(--gold);font-family:var(--font-display);font-weight:800;font-size:17px}
+.bar-cap{font-size:15px;color:var(--muted);margin:6px 0 0}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:30px;border-top:2px solid var(--ink)}
+.fact{padding:14px 18px 4px 0}
+.fact b{display:block;font-family:var(--font-display);font-weight:800;font-size:30px;line-height:1.05}
+.fact span{display:block;font-size:15px;line-height:1.35;color:var(--ink-2)}
+@media (max-width:760px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.assume{margin-top:22px;padding:14px 16px;border:1.5px dashed var(--rest);border-radius:8px;font-size:15.5px;color:var(--ink-2);max-width:820px}
+.assume b{color:var(--ink)}
+
+/* sections */
+.sec{padding:clamp(48px,7vw,84px) 0;border-bottom:1px solid var(--line)}
+h2{font-family:var(--font-display);font-weight:800;font-size:clamp(36px,5.4vw,58px);line-height:.95;margin:0;letter-spacing:-.005em}
+.sec-lede{font-size:clamp(17px,2vw,20px);line-height:1.5;color:var(--ink-2);max-width:720px;margin:14px 0 28px}
+h3{font-family:var(--font-display);font-weight:800;font-size:clamp(24px,2.8vw,30px);line-height:1.05;margin:46px 0 14px}
+h4{font-size:17px;line-height:1.3;margin:0 0 6px;font-weight:700}
+.small{font-size:15px;color:var(--muted);max-width:780px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:20px}
+.card p:last-child{margin-bottom:0}
+.kind{font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--muted);margin:0 0 4px}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:900px){.grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.grid-3{grid-template-columns:1fr}}
+@media (max-width:640px){.grid-2,.grid-4{grid-template-columns:1fr}}
+
+/* split comparison */
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 18px}
+.chip{font-family:var(--font-display);font-weight:700;font-size:16px;padding:4px 11px;border-radius:999px;background:var(--surface-2);color:var(--ink-2);line-height:1.25}
+.chip.missing{background:transparent;border:1.5px dashed var(--push);color:var(--push)}
+.chip.fill{background:var(--c);color:var(--on-accent)}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.checks li{display:grid;grid-template-columns:20px 1fr;gap:10px;font-size:16px;line-height:1.45}
+.checks li::before{font-weight:800}
+.checks.x li::before{content:"✕";color:var(--push)}
+.checks.ok li::before{content:"✓";color:var(--legs)}
+.card.chosen{border:2px solid var(--ink)}
+
+/* week */
+.week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+@media (max-width:980px){.week{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:560px){.week{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.dayc{display:flex;flex-direction:column;gap:4px;min-height:168px;padding:12px;background:var(--surface);border:1px solid var(--line);border-top:7px solid var(--c);border-radius:6px}
+.dayc.t-rest{background:transparent;border-style:dashed;border-top-style:solid}
+.dow{font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--muted)}
+.dname{font-family:var(--font-display);font-weight:800;font-size:28px;line-height:.95;color:var(--c)}
+.dfocus{font-weight:600;font-size:15px;line-height:1.3}
+.dmus{margin-top:auto;font-size:13.5px;line-height:1.4;color:var(--muted)}
+.callout{margin-top:18px;padding:14px 18px;border-left:5px solid var(--c);background:var(--c-soft);border-radius:0 8px 8px 0;font-size:16px;line-height:1.5;max-width:860px}
+.callout .lbl{display:block;font-family:var(--font-display);font-weight:800;font-size:19px;margin-bottom:2px}
+
+/* volume chart */
+.vol{display:grid;gap:9px;max-width:800px}
+.vrow,.vscale{display:grid;grid-template-columns:170px minmax(0,1fr) 36px;align-items:center;gap:12px;font-size:15.5px}
+.vtrack{position:relative;height:16px;border-radius:3px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.vtrack::before{content:"";position:absolute;top:0;bottom:0;left:calc(10 / 22 * 100%);width:calc(10 / 22 * 100%);background:repeating-linear-gradient(135deg,transparent 0 5px,var(--line) 5px 7px)}
+.vbar{position:absolute;left:0;top:0;bottom:0;width:calc(var(--v) / 22 * 100%);background:var(--c)}
+.vval{font-family:var(--font-display);font-weight:800;font-size:19px;text-align:right}
+.v6{--v:6}.v9{--v:9}.v12{--v:12}.v13{--v:13}.v15{--v:15}.v18{--v:18}
+.vscale{font-family:var(--font-display);font-size:14px;color:var(--muted)}
+.vscale div{position:relative;height:18px}
+.vscale i{position:absolute;font-style:normal;transform:translateX(-50%)}
+.at0{left:0;transform:none!important}.at10{left:calc(10 / 22 * 100%)}.at20{left:calc(20 / 22 * 100%)}
+@media (max-width:560px){.vrow,.vscale{grid-template-columns:112px minmax(0,1fr) 28px;gap:8px;font-size:14px}}
+
+/* workouts */
+.how{counter-reset:how}
+.how .card{padding:18px}
+.how h4::before{counter-increment:how;content:counter(how) ". ";color:var(--muted)}
+.how p{font-size:15.5px;color:var(--ink-2)}
+details.day{margin-top:10px;background:var(--surface);border:1px solid var(--line);border-left:7px solid var(--c);border-radius:6px}
+details.day>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:48px minmax(0,1fr) auto;align-items:center;gap:12px;padding:15px 18px}
+details.day>summary::-webkit-details-marker{display:none}
+.sum-day{font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--muted)}
+.sum-title{font-family:var(--font-display);font-weight:800;font-size:clamp(25px,3vw,30px);line-height:1;color:var(--c)}
+.sum-sub{display:block;margin-top:4px;font-family:var(--font-body);font-weight:500;font-size:15px;color:var(--ink-2)}
+.chev{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;transition:transform .2s ease}
+.chev::before{content:"";width:8px;height:8px;border-right:2px solid var(--ink-2);border-bottom:2px solid var(--ink-2);transform:translateY(-2px) rotate(45deg)}
+details[open]>summary .chev{transform:rotate(180deg)}
+.ex-list{list-style:none;margin:0;padding:0 18px 8px;counter-reset:ex}
+.ex-list li{counter-increment:ex;display:grid;grid-template-columns:28px minmax(0,1fr) auto 84px;grid-template-areas:"n name dose rest" "n swap swap swap";column-gap:12px;row-gap:3px;align-items:baseline;padding:12px 0;border-top:1px solid var(--line)}
+.ex-list li::before{content:counter(ex);grid-area:n;font-family:var(--font-display);font-weight:800;font-size:17px;color:var(--muted)}
+.ex-name{grid-area:name;font-weight:600;font-size:16.5px;line-height:1.3}
+.ex-dose{grid-area:dose;font-family:var(--font-display);font-weight:800;font-size:20px;white-space:nowrap}
+.ex-rest{grid-area:rest;font-size:14px;color:var(--muted);text-align:right;white-space:nowrap}
+.ex-swap{grid-area:swap;font-size:14.5px;line-height:1.4;color:var(--muted)}
+.ex-swap b{color:var(--ink-2);font-weight:600}
+.core{display:inline-block;margin-left:6px;padding:0 7px;border-radius:4px;background:var(--gold-soft);color:var(--ink);font-family:var(--font-display);font-weight:700;font-size:14px;vertical-align:1px}
+@media (max-width:600px){
+  .ex-list{padding:0 14px 6px}
+  .ex-list li{grid-template-columns:24px minmax(0,1fr) auto;grid-template-areas:"n name name" "n dose rest" "n swap swap"}
+  details.day>summary{grid-template-columns:40px minmax(0,1fr) auto;padding:14px}
+}
+
+/* progression */
+.rule{border-top:6px solid var(--c)}
+.rule .cond{font-weight:700;font-size:17px;line-height:1.3;margin:0 0 4px}
+.rule .eg{font-size:14.5px;color:var(--muted);margin-bottom:12px}
+.rule .then{font-family:var(--font-display);font-weight:800;font-size:25px;line-height:1;color:var(--c);margin-bottom:6px}
+.rule p{font-size:15px;color:var(--ink-2)}
+.tbl{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:6px}
+.tbl table{width:100%;border-collapse:collapse;font-size:15px;line-height:1.4}
+.tbl th{text-align:left;font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--muted);background:var(--surface-2);padding:9px 14px;border-bottom:1px solid var(--line);white-space:nowrap}
+.tbl td{padding:9px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tr:last-child td{border-bottom:0}
+.tbl .n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.tbl .nw{white-space:nowrap}
+.tbl tr.grp td{background:var(--c-soft);font-family:var(--font-display);font-weight:800;font-size:16px;color:var(--ink);padding:7px 14px}
+.tbl tr.win td{background:var(--legs-soft)}
+.tbl tr.total td{background:var(--surface-2);font-weight:700}
+.tbl.wide table{min-width:540px}
+.reps{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:600}
+.scroll-x{overflow-x:auto;padding-bottom:6px}
+.timeline{display:flex;gap:4px;min-width:860px}
+.tl{flex:var(--w) 1 0%;min-width:0;padding:10px 10px 12px;background:var(--c-soft);border-top:5px solid var(--c);border-radius:0 0 6px 6px}
+.tl small{display:block;font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--muted)}
+.tl b{display:block;font-family:var(--font-display);font-weight:800;font-size:21px;line-height:1.05;margin:1px 0 4px}
+.tl span{display:block;font-size:13.5px;line-height:1.35;color:var(--ink-2)}
+.w1{--w:1.6}.w2{--w:2.2}.w6{--w:4}
+
+/* food */
+.goal{border-top:6px solid var(--c)}
+.goal h4{font-family:var(--font-display);font-weight:800;font-size:28px;color:var(--c);margin-bottom:4px}
+.goal .when{font-weight:600}
+.big{display:block;font-family:var(--font-display);font-weight:800;font-size:44px;line-height:1;margin:6px 0 2px}
+.big-sub{display:block;font-size:15px;color:var(--muted);margin-bottom:12px}
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:640px){.duo{grid-template-columns:1fr}}
+.duo .card{display:grid;grid-template-columns:auto 1fr;gap:2px 16px;align-items:start}
+.duo .num{grid-row:span 2;font-family:var(--font-display);font-weight:800;font-size:68px;line-height:.8;color:var(--legs)}
+.duo h4{font-family:var(--font-display);font-weight:800;font-size:25px;margin:0}
+.duo p{margin:0;color:var(--ink-2);font-size:15.5px}
+.tips-list{margin:0;padding-left:20px;display:grid;gap:8px;max-width:800px}
+.thali{display:grid;grid-template-columns:auto auto minmax(0,1fr);gap:8px 28px;align-items:center;margin-top:30px;padding:20px 22px;background:var(--push-soft);border-left:6px solid var(--push);border-radius:0 8px 8px 0}
+.thali .tb b{display:block;font-family:var(--font-display);font-weight:800;font-size:clamp(38px,5vw,54px);line-height:.95}
+.thali .tb span{font-family:var(--font-display);font-weight:700;font-size:17px;color:var(--ink-2)}
+.thali .tb.p b{color:var(--push)}
+.thali p{margin:0;font-size:16px}
+@media (max-width:700px){.thali{grid-template-columns:auto auto}.thali p{grid-column:1/-1}}
+
+/* missing */
+.tips{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:0 28px;border-top:2px solid var(--ink)}
+.tip{padding:16px 0 18px;border-bottom:1px solid var(--line)}
+.tip h4{font-family:var(--font-display);font-weight:800;font-size:23px;line-height:1.05;margin:0 0 6px}
+.tip p{font-size:15.5px;color:var(--ink-2);margin:0}
+
+/* app */
+.promise{font-size:clamp(19px,2.4vw,24px);line-height:1.45;font-weight:500;max-width:820px;border-left:5px solid var(--ink);padding-left:18px;margin:0 0 26px}
+.feat h4{font-family:var(--font-display);font-weight:800;font-size:24px;margin:8px 0 6px}
+.feat p{font-size:15px;color:var(--ink-2)}
+.tags{display:flex;gap:5px;flex-wrap:wrap}
+.tag{font-family:var(--font-display);font-weight:800;font-size:14px;padding:1px 8px;border-radius:4px;color:var(--ink);line-height:1.4}
+.tag.mvp{background:var(--gold-soft);box-shadow:inset 0 0 0 1.5px var(--plate-gold)}
+.tag.v2{background:var(--pull-soft);box-shadow:inset 0 0 0 1.5px var(--pull)}
+.tag.v3{background:var(--rest-soft);box-shadow:inset 0 0 0 1.5px var(--rest)}
+.tag.rec{background:var(--legs-soft);box-shadow:inset 0 0 0 1.5px var(--legs)}
+.features{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px}
+.phones{display:flex;gap:26px;overflow-x:auto;padding:6px 4px 20px;scroll-snap-type:x mandatory}
+@media (min-width:960px){.phones{justify-content:center}}
+.phone-col{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:12px;scroll-snap-align:center}
+.phone{width:262px;height:540px;display:flex;flex-direction:column;background:var(--surface);border:9px solid var(--bezel);border-radius:38px;overflow:hidden;font-size:13px;line-height:1.35}
+.ph-notch{flex:0 0 auto;width:86px;height:20px;margin:0 auto;background:var(--bezel);border-radius:0 0 13px 13px}
+.ph-body{flex:1;display:flex;flex-direction:column;gap:9px;padding:10px 14px 12px;min-height:0}
+.ph-top{display:flex;justify-content:space-between;font-size:11.5px;font-weight:600;color:var(--muted)}
+.ph-tag{align-self:flex-start;padding:1px 8px;border-radius:4px;background:var(--c);color:var(--on-accent);font-family:var(--font-display);font-weight:800;font-size:14px}
+.ph-h{font-family:var(--font-display);font-weight:800;font-size:28px;line-height:.95}
+.ph-sub{font-size:12px;color:var(--muted)}
+.ph-row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--line)}
+.ph-row .nm{display:block;font-weight:600;font-size:12.5px}
+.ph-row .mt{display:block;font-size:11px;color:var(--muted)}
+.ph-row .tg{font-family:var(--font-display);font-weight:800;font-size:16px;white-space:nowrap}
+.up{color:var(--legs)}
+.ph-btn{margin-top:auto;padding:12px;border-radius:12px;background:var(--ink);color:var(--bg);text-align:center;font-family:var(--font-display);font-weight:800;font-size:18px}
+.ph-nav{flex:0 0 auto;display:flex;justify-content:space-around;padding:9px 0 11px;border-top:1px solid var(--line);font-size:11px;font-weight:600;color:var(--muted)}
+.ph-nav .on{color:var(--ink)}
+.ph-earned{padding:8px 10px;border-radius:8px;background:var(--legs-soft);font-size:12px;line-height:1.4}
+.stepper{display:flex;align-items:center;justify-content:space-between;padding:6px;border-radius:14px;background:var(--surface-2)}
+.stepper i{width:40px;height:40px;display:grid;place-items:center;border-radius:10px;background:var(--surface);font-style:normal;font-weight:800;font-size:20px}
+.stepper div{text-align:center}
+.stepper b{display:block;font-family:var(--font-display);font-weight:800;font-size:32px;line-height:1}
+.stepper small{font-size:11px;color:var(--muted)}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.seg span{padding:7px 0;text-align:center;border:1px solid var(--line);border-radius:9px;font-size:12px;font-weight:600}
+.seg .on{background:var(--pull);border-color:var(--pull);color:var(--on-accent)}
+.ph-links{display:flex;justify-content:space-between;font-size:12px;color:var(--pull);font-weight:600}
+.ring{width:128px;height:128px;margin:2px auto;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--legs) 0 52%,var(--surface-2) 52% 100%)}
+.ring>div{width:100px;height:100px;border-radius:50%;background:var(--surface);display:grid;place-content:center;text-align:center}
+.ring b{font-family:var(--font-display);font-weight:800;font-size:30px;line-height:1}
+.ring small{font-size:11px;color:var(--muted)}
+.qchips{display:flex;flex-wrap:wrap;gap:5px}
+.qchips span{padding:3px 8px;border-radius:999px;background:var(--surface-2);font-size:11.5px;font-weight:600}
+.qchips .mine{background:var(--gold-soft);box-shadow:inset 0 0 0 1px var(--plate-gold)}
+.ph-label{font-size:11px;font-weight:700;color:var(--muted)}
+.phone-cap{font-family:var(--font-display);font-weight:800;font-size:18px;color:var(--ink-2)}
+pre.code{margin:0;padding:18px 20px;overflow-x:auto;border-radius:8px;background:var(--code-bg);color:var(--code-ink);font-family:var(--font-mono);font-size:13.5px;line-height:1.65}
+pre.code .c{color:#8C939C}pre.code .k{color:#F0C04A}
+.entities{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.ent{background:var(--surface);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.ent h5{margin:0;padding:7px 12px;font-family:var(--font-mono);font-size:13.5px;background:var(--surface-2);border-bottom:1px solid var(--line)}
+.ent ul{list-style:none;margin:0;padding:8px 12px 10px;font-family:var(--font-mono);font-size:12.5px;line-height:1.7;color:var(--ink-2)}
+.road .card{border-top:6px solid var(--c)}
+.road h4{font-family:var(--font-display);font-weight:800;font-size:24px;margin:2px 0 6px}
+.road p{font-size:15px;color:var(--ink-2)}
+
+/* next steps */
+.next{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:nx;max-width:840px}
+.next li{counter-increment:nx;display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;align-items:start;padding:16px 18px;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+.next li::before{content:counter(nx);width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--bg);font-family:var(--font-display);font-weight:800;font-size:24px}
+.next h4{margin:2px 0 4px;font-size:18px}
+.next p{margin:0;font-size:15.5px;color:var(--ink-2)}
+footer{padding:32px 0 48px;font-size:14.5px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.chev{transition:none}}
+/* ---------- v2 additions ---------- */
+.small{margin-top:12px}
+a.fact{color:inherit;text-decoration:none}
+a.fact:hover b{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
+.callout a{color:inherit;font-weight:700}
+.phones{justify-content:flex-start}
+.phone-col:first-child{margin-left:auto}
+.phone-col:last-child{margin-right:auto}
+.loop{list-style:none;margin:0 0 6px;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;counter-reset:lp}
+.loop li{counter-increment:lp;padding:16px;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+.loop li::before{content:counter(lp);display:grid;place-items:center;width:30px;height:30px;margin-bottom:10px;border-radius:50%;background:var(--plate-gold);color:#1C1F24;font-family:var(--font-display);font-weight:800;font-size:18px}
+.loop h4{font-family:var(--font-display);font-weight:800;font-size:23px;line-height:1;margin:0 0 6px}
+.loop p{margin:0;font-size:15px;color:var(--ink-2)}
+@media (max-width:900px){.loop{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.loop{grid-template-columns:1fr}}
+.formula{max-width:860px;padding:18px 20px;background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--plate-gold);border-radius:0 8px 8px 0}
+.formula .f{margin:0 0 8px;font-family:var(--font-display);font-weight:800;font-size:clamp(22px,3vw,30px);line-height:1.15}
+.formula p:last-child{margin:0;font-size:16px;color:var(--ink-2)}
+.card .verdict{margin:14px 0 0;font-weight:700;font-size:16px}
+.calc{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);max-width:960px;overflow:hidden;background:var(--surface);border:2px solid var(--ink);border-radius:10px}
+.calc-in{display:grid;gap:18px;padding:20px}
+.calc fieldset{margin:0;padding:0;border:0;min-width:0}
+.calc legend{padding:0;margin-bottom:8px;font-family:var(--font-display);font-weight:800;font-size:20px}
+.fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.field label{display:block;margin-bottom:4px;font-size:14px;font-weight:600;color:var(--ink-2)}
+.field input,.field select{width:100%;min-height:44px;padding:8px 10px;font:inherit;font-size:17px;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:8px}
+.field input:focus-visible,.field select:focus-visible{outline:2px solid var(--pull);outline-offset:1px;border-color:var(--pull)}
+.field.wide{grid-column:span 3}
+.calc-out{display:flex;flex-direction:column;gap:4px;padding:20px;background:var(--gold-soft)}
+.calc-label{font-size:14px;font-weight:600;color:var(--ink-2)}
+.calc-e{margin-bottom:10px;font-family:var(--font-display);font-weight:800;font-size:26px;line-height:1.1}
+.calc-big{font-family:var(--font-display);font-weight:800;font-size:clamp(36px,5vw,48px);line-height:1}
+.calc-sub{margin-bottom:8px;font-size:16px;font-weight:600}
+.calc-why{margin:0 0 10px;font-size:15.5px}
+.calc-note{margin:8px 0 0;font-size:14px;color:var(--ink-2)}
+.calc .tbl{background:var(--surface)}
+.calc .tbl tr.out td{color:var(--muted)}
+@media (max-width:760px){.calc{grid-template-columns:1fr}.fields{grid-template-columns:repeat(2,minmax(0,1fr))}.field.wide{grid-column:span 2}}
+.tbl td.strike{color:var(--push);font-weight:700}
+.ladder{display:grid;gap:8px;max-width:960px}
+.rung{display:grid;grid-template-columns:64px minmax(0,190px) minmax(0,1fr);gap:18px;align-items:center;padding:14px 18px;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+.plates{display:flex;gap:3px;align-items:center;height:34px}
+.plates i{display:block;width:10px;height:34px;border-radius:2px;background:var(--push)}
+.rung h4{margin:0;font-family:var(--font-display);font-weight:800;font-size:24px;line-height:1}
+.rung .when{display:block;margin-top:3px;font-size:14px;color:var(--muted)}
+.rung p{margin:0;font-size:15.5px}
+@media (max-width:700px){.rung{grid-template-columns:64px minmax(0,1fr)}.rung p{grid-column:1/-1}}
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px}
+@media (max-width:760px){.pair{grid-template-columns:1fr}}
+.w3{--w:1}
+.phases .tl span{font-size:14px}
+.area table{min-width:820px}
+.area td:first-child{white-space:nowrap}
+.homecard{border-top:6px solid var(--c)}
+.plain{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:8px}
+.plain li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-bottom:8px;border-bottom:1px solid var(--line);font-size:15.5px;line-height:1.35}
+.plain li:last-child{padding-bottom:0;border-bottom:0}
+.plain li b{font-family:var(--font-display);font-weight:800;font-size:17px;white-space:nowrap}
+.msg{max-width:640px;margin-top:18px;padding:16px 18px;background:var(--surface);border:1.5px dashed var(--rest);border-radius:8px}
+.msg p:last-child{margin:0;font-size:16px}
+.status h4{margin:0 0 6px;font-family:var(--font-display);font-weight:800;font-size:23px;line-height:1.05}
+.status p{font-size:15px;color:var(--ink-2)}
+.refs{border-top:2px solid var(--ink)}
+.ref{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:6px 28px;padding:14px 0;border-bottom:1px solid var(--line)}
+.ref p{margin:0;font-size:16px;line-height:1.5}
+.ref .use{font-size:15px;color:var(--ink-2)}
+.ref .use a{display:block;margin-top:4px;font-size:14px;font-weight:600}
+@media (max-width:700px){.ref{grid-template-columns:1fr}}
+.ph-chips{display:flex;flex-wrap:wrap;gap:4px}
+.ph-chips span{padding:2px 8px;border-radius:999px;background:var(--surface-2);font-size:11px;font-weight:600;line-height:1.5}
+.ph-chips .ok{background:var(--legs-soft)}
+.ph-chips .on{background:var(--ink);color:var(--bg)}
+.ph-rows.tight .ph-row{padding:4px 0}
+.ph-rows.tight .mt{font-size:10.5px}
+.mt.sw{color:var(--gold);font-weight:700}
+.rl{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}
+.rl span{padding:7px 0;text-align:center;border:1px solid var(--line);border-radius:9px;font-family:var(--font-display);font-weight:800;font-size:16px}
+.rl .on{background:var(--pull);border-color:var(--pull);color:var(--on-accent)}
+.ph-alert{padding:8px 10px;border-radius:8px;background:var(--gold-soft);font-size:12px;line-height:1.4}
+.ph-alert.red{background:var(--push-soft)}
+.ph-tasks{display:grid;gap:6px}
+.ph-task{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;line-height:1.35}
+.ph-task i{flex:0 0 auto;width:15px;height:15px;margin-top:1px;border:1.5px solid var(--ink-2);border-radius:4px}
+.ph-task i.done{background:var(--legs);border-color:var(--legs)}
+.scale{display:grid;grid-template-columns:repeat(11,1fr);gap:2px}
+.scale span{padding:5px 0;text-align:center;border-radius:4px;font-size:10.5px;font-weight:700}
+.scale .g{background:var(--legs-soft)}.scale .a{background:var(--gold-soft)}.scale .r{background:var(--push-soft)}
+.scale .on{box-shadow:inset 0 0 0 2px var(--ink)}
+.seg.two{grid-template-columns:repeat(2,1fr)}
+.mt16{margin-top:16px}
+.calc-in{align-content:start}
+.phone{height:580px}
+.ph-chips span{padding:2px 7px}
+.plates i.free{background:var(--rest)}
+#food .loop{margin-top:18px}
+.ph-photo{height:64px;display:grid;place-items:center;border-radius:10px;background:repeating-linear-gradient(135deg,var(--surface-2) 0 8px,var(--line) 8px 10px);font-size:11px;font-weight:700;color:var(--muted)}
+.ph-items{display:grid;gap:5px}
+.ph-item{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12.5px;font-weight:600}
+.ph-item .qty{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-display);font-weight:800;font-size:15px}
+.ph-item .qty i{display:grid;place-items:center;width:22px;height:22px;border-radius:6px;background:var(--surface-2);font-style:normal}
+
+.with-phone{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:start}
+.with-phone .phone-col{margin:0}
+@media (max-width:900px){.with-phone{grid-template-columns:1fr}.with-phone .phone-col{justify-self:center}}
+.bubble{align-self:flex-end;max-width:88%;padding:8px 11px;border-radius:14px 14px 4px 14px;background:var(--pull);color:var(--on-accent);font-size:12.5px;line-height:1.4}
+.ph-preview{padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--surface-2)}
+.ph-preview b{display:block;margin-bottom:2px;font-size:12.5px}
+.ph-preview .ph-row{padding:4px 0}
+.ph-preview .ph-row:last-child{border-bottom:0}
+.ph-preview .tg{font-family:var(--font-body);font-weight:600;font-size:11.5px;color:var(--ink-2);text-align:right}
+.ph-photos{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.ph-photos .ph-photo{height:84px}
+.ph-cues{margin:0;padding-left:16px;display:grid;gap:3px;font-size:12px;line-height:1.4}
+:not(pre)>code{font-family:var(--font-mono);font-size:.88em;padding:1px 5px;border-radius:4px;background:var(--surface-2)}
+#hood pre.code{margin-top:4px}
+@media (max-width:900px){.with-phone{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:760px){.grid-3{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:640px){.grid-2,.grid-4{grid-template-columns:minmax(0,1fr)}}
+.ph-preview .tg{white-space:normal}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Raise the Bar, back to top"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span class="brand-name">Raise the Bar</span></a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#split">Split</a><a href="#week">Week</a><a href="#workouts">Workouts</a><a href="#engine">Auto-enhancer</a><a href="#skips">Skips</a><a href="#changes">Plan changes</a><a href="#injuries">Injuries</a><a href="#machines">Machines</a><a href="#food">Food</a><a href="#ideas">More ideas</a><a href="#app">App</a><a href="#hood">Under the hood</a><a href="#research">Research</a><a href="#next">Next steps</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="wrap">
+    <h1>Raise the bar</h1>
+    <p class="lede">A 6-day strength and muscle plan that adapts to you: it learns your strength, sets every weight, makes skips cost you, and works around injuries and broken machines. Plus how to eat for it on Indian food, and the blueprint for the app.</p>
+    <div class="bar-wrap">
+      <svg class="barbell" viewBox="0 0 640 156" role="img" aria-label="Your week as a loaded barbell: Push A, Pull A and Legs A plates on the left for Monday to Wednesday, Push B, Pull B and Legs B on the right for Thursday to Saturday, Sunday rest in the middle, and a small gold plate on each end marked plus 2.5 kilograms.">
+        <rect class="s-steel" x="60" y="68" width="160" height="14" rx="3"/>
+        <rect class="s-steel" x="420" y="68" width="160" height="14" rx="3"/>
+        <rect class="s-steel" x="218" y="71" width="204" height="8" rx="4"/>
+        <rect class="s-steel2" x="212" y="58" width="8" height="34" rx="2"/>
+        <rect class="s-steel2" x="420" y="58" width="8" height="34" rx="2"/>
+        <rect class="s-push" x="120" y="20" width="28" height="110" rx="4"/>
+        <rect class="s-pull" x="150" y="20" width="28" height="110" rx="4"/>
+        <rect class="s-legs" x="180" y="20" width="28" height="110" rx="4"/>
+        <rect class="s-push" x="432" y="20" width="28" height="110" rx="4"/>
+        <rect class="s-pull" x="462" y="20" width="28" height="110" rx="4"/>
+        <rect class="s-legs" x="492" y="20" width="28" height="110" rx="4"/>
+        <rect class="s-gold" x="110" y="45" width="8" height="60" rx="2"/>
+        <rect class="s-gold" x="522" y="45" width="8" height="60" rx="2"/>
+        <rect class="s-steel2" x="100" y="64" width="8" height="22" rx="2"/>
+        <rect class="s-steel2" x="532" y="64" width="8" height="22" rx="2"/>
+        <text class="s-day" transform="translate(134 75) rotate(-90)" text-anchor="middle" dominant-baseline="central">PUSH A</text>
+        <text class="s-day" transform="translate(164 75) rotate(-90)" text-anchor="middle" dominant-baseline="central">PULL A</text>
+        <text class="s-day" transform="translate(194 75) rotate(-90)" text-anchor="middle" dominant-baseline="central">LEGS A</text>
+        <text class="s-day" transform="translate(446 75) rotate(-90)" text-anchor="middle" dominant-baseline="central">PUSH B</text>
+        <text class="s-day" transform="translate(476 75) rotate(-90)" text-anchor="middle" dominant-baseline="central">PULL B</text>
+        <text class="s-day" transform="translate(506 75) rotate(-90)" text-anchor="middle" dominant-baseline="central">LEGS B</text>
+        <text class="s-cap" x="134" y="148" text-anchor="middle">Mon</text>
+        <text class="s-cap" x="164" y="148" text-anchor="middle">Tue</text>
+        <text class="s-cap" x="194" y="148" text-anchor="middle">Wed</text>
+        <text class="s-cap" x="446" y="148" text-anchor="middle">Thu</text>
+        <text class="s-cap" x="476" y="148" text-anchor="middle">Fri</text>
+        <text class="s-cap" x="506" y="148" text-anchor="middle">Sat</text>
+        <text class="s-cap" x="320" y="58" text-anchor="middle">Sunday: rest</text>
+        <text class="s-note" x="540" y="40">+2.5 kg</text>
+      </svg>
+    </div>
+    <p class="bar-cap">Your week, loaded onto the bar. The small gold plates are the point of the whole plan: the app adds weight as soon as your logs show you’ve earned it.</p>
+    <div class="facts">
+      <a class="fact" href="#engine"><b>Learns your strength</b><span>two calibration weeks, then it sets every weight</span></a>
+      <a class="fact" href="#skips"><b>Skips cost you</b><span>counted, penalised, then a clean slate</span></a>
+      <a class="fact" href="#injuries"><b>Injury mode</b><span>trains around pain and rebuilds the hurt area</span></a>
+      <a class="fact" href="#machines"><b>Machine-proof</b><span>ranked backups for every exercise</span></a>
+    </div>
+    <p class="assume"><b>What I assumed.</b> The examples use a typical office gym and a 70 kg person. In the app, your own details replace them: you enter them once on the setup screens, and from then on weights come from your logs, exercises from what your gym has working today, and the plan bends around skips, injuries and busy weeks.</p>
+  </div>
+</div>
+
+<main>
+<section class="sec" id="split">
+  <div class="wrap">
+    <h2>Your split, upgraded</h2>
+    <p class="sec-lede">Your instinct — one focus per day — is right. But your list leaves out two big muscle groups and trains everything only once a week.</p>
+    <div class="grid-2">
+      <div class="card">
+        <p class="kind">Your version</p>
+        <div class="chips"><span class="chip">Chest</span><span class="chip">Biceps</span><span class="chip">Shoulders</span><span class="chip">Abs and core</span><span class="chip">Legs</span><span class="chip missing">Back?</span><span class="chip missing">Triceps?</span></div>
+        <ul class="checks x">
+          <li><span><b>No back day.</b> Your back is your biggest upper-body muscle group. It’s what makes you look wide and stand tall, which matters even more with a desk job.</span></li>
+          <li><span><b>No triceps.</b> They make up most of your upper arm’s size. Big arms need both sides.</span></li>
+          <li><span><b>Each muscle only once a week.</b> Twice a week makes it easier to get enough quality work in, and you get more practice on the big lifts, so strength climbs faster.</span></li>
+          <li><span><b>A whole day for biceps or abs.</b> Small muscles recover quickly and fit at the end of other sessions.</span></li>
+        </ul>
+      </div>
+      <div class="card chosen">
+        <p class="kind">Upgraded: Push / Pull / Legs, twice a week</p>
+        <div class="chips"><span class="chip fill t-push">Push: chest, shoulders, triceps</span><span class="chip fill t-pull">Pull: back, biceps, rear delts</span><span class="chip fill t-legs">Legs: quads, hamstrings, glutes, calves, core</span></div>
+        <ul class="checks ok">
+          <li><span><b>Everything you asked for stays.</b> Biceps get 12 hard sets a week, and abs and core are trained 3 days a week.</span></li>
+          <li><span><b>Adds what was missing:</b> back, triceps, rear shoulders, hamstrings and calves.</span></li>
+          <li><span><b>Every muscle twice a week,</b> with one full rest day.</span></li>
+          <li><span><b>A and B versions of each day,</b> so the week doesn’t feel repetitive. A days lean on chest, lats and quads; B days on shoulders, back thickness and hamstrings.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="week">
+  <div class="wrap">
+    <h2>Your week</h2>
+    <p class="sec-lede">Six sessions and one rest day. The colours follow gym plates: red for push, blue for pull, green for legs.</p>
+    <div class="week">
+      <div class="dayc t-push"><span class="dow">Monday</span><span class="dname">Push A</span><span class="dfocus">Chest focus</span><span class="dmus">Chest, front and side delts, triceps</span></div>
+      <div class="dayc t-pull"><span class="dow">Tuesday</span><span class="dname">Pull A</span><span class="dfocus">Lats and width</span><span class="dmus">Lats, upper back, rear delts, biceps</span></div>
+      <div class="dayc t-legs"><span class="dow">Wednesday</span><span class="dname">Legs A</span><span class="dfocus">Quads, plus core</span><span class="dmus">Quads, hamstrings, calves, abs</span></div>
+      <div class="dayc t-push"><span class="dow">Thursday</span><span class="dname">Push B</span><span class="dfocus">Shoulder focus</span><span class="dmus">Shoulders, upper chest, triceps, rear delts</span></div>
+      <div class="dayc t-pull"><span class="dow">Friday</span><span class="dname">Pull B</span><span class="dfocus">Back thickness and arms</span><span class="dmus">Mid-back, lats, biceps, abs</span></div>
+      <div class="dayc t-legs"><span class="dow">Saturday</span><span class="dname">Legs B</span><span class="dfocus">Hamstrings and glutes, plus core</span><span class="dmus">Hamstrings, glutes, quads, calves, core</span></div>
+      <div class="dayc t-rest"><span class="dow">Sunday</span><span class="dname">Rest</span><span class="dfocus">Recover</span><span class="dmus">Walk 8–10k steps, 10 minutes of stretching</span></div>
+    </div>
+    <div class="callout t-gold"><span class="lbl">Workouts run in order, not by weekday</span>Miss a day and nothing is lost: you always do the next workout in the order, Push A, Pull A, Legs A, Push B, Pull B, Legs B. If the office gym is shut or you’re working from home, the home version of any day counts as done. What an unexcused skip costs you is in <a href="#skips">the skips section</a>.</div>
+
+    <h3>Hard sets per muscle, per week</h3>
+    <div class="vol">
+      <div class="vrow t-pull"><span>Back</span><div class="vtrack"><div class="vbar v18"></div></div><span class="vval">18</span></div>
+      <div class="vrow t-pull"><span>Biceps</span><div class="vtrack"><div class="vbar v12"></div></div><span class="vval">12</span></div>
+      <div class="vrow t-push"><span>Chest</span><div class="vtrack"><div class="vbar v15"></div></div><span class="vval">15</span></div>
+      <div class="vrow t-push"><span>Side and rear delts</span><div class="vtrack"><div class="vbar v13"></div></div><span class="vval">13</span></div>
+      <div class="vrow t-push"><span>Triceps</span><div class="vtrack"><div class="vbar v9"></div></div><span class="vval">9</span></div>
+      <div class="vrow t-legs"><span>Quads</span><div class="vtrack"><div class="vbar v12"></div></div><span class="vval">12</span></div>
+      <div class="vrow t-legs"><span>Hamstrings and glutes</span><div class="vtrack"><div class="vbar v12"></div></div><span class="vval">12</span></div>
+      <div class="vrow t-legs"><span>Calves</span><div class="vtrack"><div class="vbar v6"></div></div><span class="vval">6</span></div>
+      <div class="vrow t-gold"><span>Core</span><div class="vtrack"><div class="vbar v13"></div></div><span class="vval">13</span></div>
+      <div class="vscale" aria-hidden="true"><span></span><div><i class="at0">0</i><i class="at10">10</i><i class="at20">20 sets</i></div><span></span></div>
+    </div>
+    <p class="small">These are starting numbers, and the auto-enhancer adjusts them week by week. The hatched zone is 10–20 hard sets a week, the sweet spot for growth in big muscles. Triceps, front delts and glutes also get plenty of indirect work from presses, squats and deadlifts. There’s more back than chest on purpose: it balances out desk posture.</p>
+  </div>
+</section>
+<section class="sec" id="workouts">
+  <div class="wrap">
+    <h2>The workouts</h2>
+    <p class="sec-lede">About 60 minutes each, warm-up included. The first exercise every day is the heavy strength lift; the rest build muscle. Each line is a slot: the app uses the first option your gym has working today that doesn’t clash with an injury, and the auto-enhancer sets its weight.</p>
+    <div class="grid-4 how">
+      <div class="card"><h4>Warm up, 7–10 min</h4><p>5 minutes of easy cardio, then arm circles, leg swings and hip openers. Do 2–3 lighter ramp-up sets of the first lift: roughly 50% × 8, 70% × 4, 85% × 2.</p></div>
+      <div class="card"><h4>Work sets</h4><p>Stop each set with the reps left the app asks for: 3 early in a block, 1 by the end. A rep only counts if it looks like your first one.</p></div>
+      <div class="card"><h4>Rest properly</h4><p>2–3 minutes after the heavy lift, about 2 after other big moves, 60–90 seconds after small ones. Rushing rest costs you reps.</p></div>
+      <div class="card"><h4>Log every set</h4><p>Weight, reps, and how many reps you had left. Three taps, and it’s all the auto-enhancer needs.</p></div>
+    </div>
+    <div class="callout t-pull"><span class="lbl">Weeks 1–2: calibration</span>Week 1: for each exercise, start light and work up in sets of 8, noting reps left each time, and stop at the set where you had 2–3 left. Week 2: the app gives its first prescriptions and runs its first honesty checks. Both weeks use 2 working sets instead of 3, and from week 3 the app sets every weight. <a href="#engine">How the auto-enhancer works</a></div>
+
+    <details class="day t-push" open>
+      <summary><span class="sum-day">Mon</span><span class="sum-title">Push A<span class="sum-sub">Chest focus, 6 exercises</span></span><span class="chev" aria-hidden="true"></span></summary>
+      <ol class="ex-list">
+        <li><span class="ex-name">Barbell bench press</span><span class="ex-dose">3 × 6–8</span><span class="ex-rest">rest 2–3 min</span><span class="ex-swap"><b>Backups:</b> Smith machine bench, dumbbell bench, chest press machine</span></li>
+        <li><span class="ex-name">Incline dumbbell press</span><span class="ex-dose">3 × 8–12</span><span class="ex-rest">rest 2 min</span><span class="ex-swap"><b>Backups:</b> incline Smith press, incline press machine</span></li>
+        <li><span class="ex-name">Seated dumbbell shoulder press</span><span class="ex-dose">3 × 8–12</span><span class="ex-rest">rest 2 min</span><span class="ex-swap"><b>Backups:</b> shoulder press machine</span></li>
+        <li><span class="ex-name">Cable fly or pec deck</span><span class="ex-dose">3 × 12–15</span><span class="ex-rest">rest 90 s</span><span class="ex-swap"><b>Backups:</b> dumbbell fly</span></li>
+        <li><span class="ex-name">Dumbbell lateral raise</span><span class="ex-dose">3 × 12–15</span><span class="ex-rest">rest 60–90 s</span><span class="ex-swap"><b>Backups:</b> cable lateral raise, lateral raise machine</span></li>
+        <li><span class="ex-name">Triceps rope pushdown</span><span class="ex-dose">3 × 10–15</span><span class="ex-rest">rest 60–90 s</span><span class="ex-swap"><b>Backups:</b> straight-bar pushdown, bench dips</span></li>
+      </ol>
+    </details>
+
+    <details class="day t-pull">
+      <summary><span class="sum-day">Tue</span><span class="sum-title">Pull A<span class="sum-sub">Lats and width, 6 exercises</span></span><span class="chev" aria-hidden="true"></span></summary>
+      <ol class="ex-list">
+        <li><span class="ex-name">Lat pulldown, or pull-ups if you can</span><span class="ex-dose">3 × 6–10</span><span class="ex-rest">rest 2–3 min</span><span class="ex-swap"><b>Backups:</b> assisted pull-up machine</span></li>
+        <li><span class="ex-name">Seated cable row</span><span class="ex-dose">3 × 8–12</span><span class="ex-rest">rest 2 min</span><span class="ex-swap"><b>Backups:</b> seated row machine, chest-supported dumbbell row</span></li>
+        <li><span class="ex-name">One-arm dumbbell row</span><span class="ex-dose">3 × 8–12</span><span class="ex-rest">rest 90 s</span><span class="ex-swap"><b>Backups:</b> one-arm cable row, machine row. Reps are per side.</span></li>
+        <li><span class="ex-name">Face pull with rope</span><span class="ex-dose">3 × 12–15</span><span class="ex-rest">rest 60–90 s</span><span class="ex-swap"><b>Backups:</b> reverse pec deck, bent-over rear-delt raise</span></li>
+        <li><span class="ex-name">EZ-bar or barbell curl</span><span class="ex-dose">3 × 8–12</span><span class="ex-rest">rest 90 s</span><span class="ex-swap"><b>Backups:</b> dumbbell curl, cable curl</span></li>
+        <li><span class="ex-name">Hammer curl</span><span class="ex-dose">3 × 10–12</span><span class="ex-rest">rest 60–90 s</span><span class="ex-swap"><b>Backups:</b> rope cable hammer curl</span></li>
+      </ol>
+    </details>
+
+    <details class="day t-legs">
+      <summary><span class="sum-day">Wed</span><span class="sum-title">Legs A<span class="sum-sub">Quads plus core, 7 exercises</span></span><span class="chev" aria-hidden="true"></span></summary>
+      <ol class="ex-list">
+        <li><span class="ex-name">Barbell back squat</span><span class="ex-dose">3 × 6–8</span><span class="ex-rest">rest 2–3 min</span><span class="ex-swap"><b>Backups:</b> Smith machine squat, or goblet squat if you’re new to squatting</span></li>
+        <li><span class="ex-name">Leg press</span><span class="ex-dose">3 × 10–12</span><span class="ex-rest">rest 2 min</span><span class="ex-swap"><b>Backups:</b> hack squat, walking lunges</span></li>
+        <li><span class="ex-name">Leg extension</span><span class="ex-dose">3 × 12–15</span><span class="ex-rest">rest 90 s</span><span class="ex-swap"><b>Backups:</b> step-ups, slow goblet squat</span></li>
+        <li><span class="ex-name">Lying or seated leg curl</span><span class="ex-dose">3 × 10–12</span><span class="ex-rest">rest 90 s</span><span class="ex-swap"><b>Backups:</b> Swiss-ball leg curl</span></li>
+        <li><span class="ex-name">Standing calf raise</span><span class="ex-dose">3 × 10–15</span><span class="ex-rest">rest 60 s</span><span class="ex-swap"><b>Backups:</b> calf raise on the leg press, Smith calf raise</span></li>
+        <li><span class="ex-name">Cable crunch<span class="core">core</span></span><span class="ex-dose">3 × 10–15</span><span class="ex-rest">rest 60 s</span><span class="ex-swap"><b>Backups:</b> ab crunch machine, decline crunch</span></li>
+        <li><span class="ex-name">Plank<span class="core">core</span></span><span class="ex-dose">2 × 30–60 s</span><span class="ex-rest">rest 60 s</span><span class="ex-swap"><b>Backups:</b> dead bug</span></li>
+      </ol>
+    </details>
+
+    <details class="day t-push">
+      <summary><span class="sum-day">Thu</span><span class="sum-title">Push B<span class="sum-sub">Shoulder focus, 6 exercises</span></span><span class="chev" aria-hidden="true"></span></summary>
+      <ol class="ex-list">
+        <li><span class="ex-name">Overhead press, barbell or Smith</span><span class="ex-dose">3 × 6–8</span><span class="ex-rest">rest 2–3 min</span><span class="ex-swap"><b>Backups:</b> shoulder press machine, seated dumbbell press</span></li>
+        <li><span class="ex-name">Incline bench press, barbell or Smith</span><span class="ex-dose">3 × 8–10</span><span class="ex-rest">rest 2 min</span><span class="ex-swap"><b>Backups:</b> incline dumbbell press, incline press machine</span></li>
+        <li><span class="ex-name">Lateral raise, cable or dumbbell</span><span class="ex-dose">4 × 12–15</span><span class="ex-rest">rest 60–90 s</span><span class="ex-swap"><b>Backups:</b> lateral raise machine</span></li>
+        <li><span class="ex-name">Dips, assisted if needed</span><span class="ex-dose">3 × 8–12</span><span class="ex-rest">rest 2 min</span><span class="ex-swap"><b>Backups:</b> close-grip bench or Smith press, chest press machine</span></li>
+        <li><span class="ex-name">Overhead triceps extension, cable or dumbbell</span><span class="ex-dose">3 × 10–12</span><span class="ex-rest">rest 90 s</span><span class="ex-swap"><b>Backups:</b> EZ-bar skull crusher</span></li>
+        <li><span class="ex-name">Reverse pec deck</span><span class="ex-dose">3 × 12–15</span><span class="ex-rest">rest 60–90 s</span><span class="ex-swap"><b>Backups:</b> face pull, bent-over rear-delt raise</span></li>
+      </ol>
+    </details>
+
+    <details class="day t-pull">
+      <summary><span class="sum-day">Fri</span><span class="sum-title">Pull B<span class="sum-sub">Back thickness and arms, 6 exercises</span></span><span class="chev" aria-hidden="true"></span></summary>
+      <ol class="ex-list">
+        <li><span class="ex-name">Barbell row</span><span class="ex-dose">3 × 6–8</span><span class="ex-rest">rest 2–3 min</span><span class="ex-swap"><b>Backups:</b> T-bar row, heavy machine row</span></li>
+        <li><span class="ex-name">Close- or neutral-grip lat pulldown</span><span class="ex-dose">3 × 8–12</span><span class="ex-rest">rest 2 min</span><span class="ex-swap"><b>Backups:</b> chin-ups, assisted chin-ups</span></li>
+        <li><span class="ex-name">Chest-supported row, machine or dumbbells on an incline bench</span><span class="ex-dose">3 × 10–12</span><span class="ex-rest">rest 90 s</span><span class="ex-swap"><b>Backups:</b> wide-grip seated cable row</span></li>
+        <li><span class="ex-name">Incline dumbbell curl</span><span class="ex-dose">3 × 10–12</span><span class="ex-rest">rest 90 s</span><span class="ex-swap"><b>Backups:</b> standing dumbbell curl</span></li>
+        <li><span class="ex-name">Preacher curl, machine or EZ bar</span><span class="ex-dose">3 × 12–15</span><span class="ex-rest">rest 60–90 s</span><span class="ex-swap"><b>Backups:</b> cable curl</span></li>
+        <li><span class="ex-name">Hanging knee raise<span class="core">core</span></span><span class="ex-dose">3 × 10–15</span><span class="ex-rest">rest 60 s</span><span class="ex-swap"><b>Backups:</b> captain’s chair, lying leg raise</span></li>
+      </ol>
+    </details>
+
+    <details class="day t-legs">
+      <summary><span class="sum-day">Sat</span><span class="sum-title">Legs B<span class="sum-sub">Hamstrings and glutes plus core, 7 exercises</span></span><span class="chev" aria-hidden="true"></span></summary>
+      <ol class="ex-list">
+        <li><span class="ex-name">Romanian deadlift, barbell or dumbbells</span><span class="ex-dose">3 × 8–10</span><span class="ex-rest">rest 2–3 min</span><span class="ex-swap"><b>Backups:</b> Smith Romanian deadlift</span></li>
+        <li><span class="ex-name">Bulgarian split squat with dumbbells</span><span class="ex-dose">3 × 8–12</span><span class="ex-rest">rest 2 min</span><span class="ex-swap"><b>Backups:</b> walking lunges, Smith split squat. Reps are per leg.</span></li>
+        <li><span class="ex-name">Seated or lying leg curl</span><span class="ex-dose">3 × 10–12</span><span class="ex-rest">rest 90 s</span><span class="ex-swap"><b>Backups:</b> Swiss-ball leg curl</span></li>
+        <li><span class="ex-name">Hip thrust, barbell, Smith or machine</span><span class="ex-dose">3 × 8–12</span><span class="ex-rest">rest 2 min</span><span class="ex-swap"><b>Backups:</b> glute bridge, cable pull-through</span></li>
+        <li><span class="ex-name">Seated calf raise</span><span class="ex-dose">3 × 12–15</span><span class="ex-rest">rest 60 s</span><span class="ex-swap"><b>Backups:</b> calf raise on the leg press</span></li>
+        <li><span class="ex-name">Pallof press<span class="core">core</span></span><span class="ex-dose">3 × 10–12</span><span class="ex-rest">rest 60 s</span><span class="ex-swap"><b>Backups:</b> bird dog. Reps are per side.</span></li>
+        <li><span class="ex-name">Side plank<span class="core">core</span></span><span class="ex-dose">2 × 30–45 s</span><span class="ex-rest">rest 60 s</span><span class="ex-swap"><b>Backups:</b> suitcase carry. Time is per side.</span></li>
+      </ol>
+    </details>
+    <p class="small">Backups are listed in the order the app tries them. Once you send me your gym’s equipment list, I’ll rebuild them around your exact machines.</p>
+  </div>
+</section>
+
+<section class="sec" id="engine">
+  <div class="wrap">
+    <h2>The auto-enhancer</h2>
+    <p class="sec-lede">It spends two weeks learning how strong you are on every exercise, then writes your weight and reps before each session. After your first set it checks whether today is a good or bad day, and after every session it updates what it knows about you.</p>
+    <ol class="loop">
+      <li><h4>Log</h4><p>Weight, reps, and how many reps you had left.</p></li>
+      <li><h4>Estimate</h4><p>Every set becomes an estimated one-rep max, without ever testing one.</p></li>
+      <li><h4>Prescribe</h4><p>Picks the weight your gym actually has that lands you in the rep range at this week’s effort.</p></li>
+      <li><h4>Adjust</h4><p>After your first set, eases off or pushes on if today is very different from usual.</p></li>
+      <li><h4>Learn</h4><p>Updates your strength, your honesty correction and next week’s sets.</p></li>
+    </ol>
+
+    <h3>Weeks 1–2: calibration</h3>
+    <div class="grid-3">
+      <div class="card"><p class="kind">Week 1</p><h4>Find your weights</h4><p>Every exercise starts light. Work up in sets of 8, noting reps left after each, and stop at the set where you had 2–3 left. That set is your starting point.</p></div>
+      <div class="card"><p class="kind">Week 2</p><h4>First prescriptions</h4><p>The app writes your sets at 3 reps left and compares what happens with what it predicted. Big misses get corrected straight away.</p></div>
+      <div class="card"><p class="kind">Weekly, from week 2</p><h4>Honesty check</h4><p>On the last set of one machine or cable exercise, you guess your reps left, then keep going until no clean rep is left. The gap becomes your personal correction. Most people have more in the tank than they think.</p></div>
+    </div>
+    <p class="small">Honesty checks only ever happen on machines and cables, never on barbell lifts.</p>
+
+    <h3>The maths, in one line</h3>
+    <div class="formula">
+      <p class="f">Estimated max = weight × (1 + (reps + reps left) ÷ 30)</p>
+      <p>This is the Epley formula, counting the reps you had left. 45 kg for 9 reps with 3 left estimates 63 kg. To prescribe, the app runs it backwards: for 6–8 reps with 3 left, 47.5 kg is the heaviest weight that fits, at 7 reps. Strength charts only use sets of 12 reps-to-failure or fewer, where the formula holds up best; for high-rep exercises the app only predicts within the same rep range, where its error mostly cancels out.</p>
+    </div>
+
+    <h3>How effort rises through a block</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Block week</th><th>Big lifts stop with</th><th>Small lifts stop with</th></tr></thead>
+      <tbody>
+        <tr><td>1–2</td><td>3 reps left</td><td>2 reps left</td></tr>
+        <tr><td>3–4</td><td>2 reps left</td><td>1 rep left</td></tr>
+        <tr><td>5–6</td><td>1 rep left</td><td>0–1 reps left</td></tr>
+        <tr><td>Deload</td><td colspan="2">4 or more left, half the sets, about 10% lighter</td></tr>
+      </tbody>
+    </table></div>
+    <p class="small">Big lifts are presses, rows, pulldowns, squats, leg presses, deadlifts and lunges. Small lifts are raises, curls, pushdowns, flyes, leg extensions and leg curls, calf raises and core work. As the target effort rises, the same strength earns a heavier weight, so the bar keeps going up.</p>
+
+    <h3>Example: bench press, 3 × 6–8</h3>
+    <div class="tbl wide"><table>
+      <thead><tr><th>Week</th><th>Target</th><th>App said</th><th>You did, first set</th><th>What the app took from it</th><th class="n">Estimate</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Find your weight</td><td>Work up in sets of 8</td><td>40 × 8 with 3 left, then 45 × 8 with 2 left</td><td>Starting point</td><td class="n">60.0 kg</td></tr>
+        <tr><td>2</td><td>3 left</td><td class="nw">45 × 7</td><td class="reps">45 × 8, 3 left</td><td>Better than predicted</td><td class="n">61.5 kg</td></tr>
+        <tr class="win"><td>3</td><td>3 left</td><td class="nw">45 × 8</td><td class="reps">45 × 9, 3 left</td><td><b>Beat the top of the range: weight goes up</b></td><td class="n">63.0 kg</td></tr>
+        <tr><td>4</td><td>3 left</td><td class="nw">47.5 × 7</td><td class="reps">47.5 × 4, 2 left</td><td>Bad day: sets 2 and 3 dropped to 45 kg, estimate held</td><td class="n">63.0 kg</td></tr>
+        <tr><td>5</td><td>2 left</td><td class="nw">47.5 × 8</td><td class="reps">47.5 × 8, 2 left</td><td>On target</td><td class="n">63.3 kg</td></tr>
+        <tr><td>6</td><td>2 left</td><td class="nw">47.5 × 8</td><td class="reps">47.5 × 9, 2 left</td><td>Stronger again</td><td class="n">64.9 kg</td></tr>
+        <tr class="win"><td>7</td><td>1 left</td><td class="nw">50 × 8</td><td></td><td><b>Effort rises: weight goes up</b></td><td class="n"></td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Rules it follows</h3>
+    <div class="grid-2">
+      <div class="card"><p class="kind">Every session</p>
+        <ul class="checks ok">
+          <li><span><b>Gains count in full.</b> A better set raises your estimate straight away.</span></li>
+          <li><span><b>Bad days are noise.</b> A slightly weaker session moves your estimate halfway down. One more than 8% below is ignored; two in a row and it counts.</span></li>
+          <li><span><b>The first-set check.</b> If your first set lands 2 or more reps from the prediction, the rest of today’s sets move one weight step down or up.</span></li>
+          <li><span><b>One step at a time.</b> If the next dumbbell is too big a jump, you stay and add reps first.</span></li>
+        </ul>
+      </div>
+      <div class="card"><p class="kind">Every week</p>
+        <ul class="checks ok">
+          <li><span><b>Sets per muscle adjust.</b> Recovered and lifts going up: one more set next week, up to 20. Still sore or lifts dropping: one fewer. Joint pain in an exercise: it gets swapped.</span></li>
+          <li><span><b>Stalls get handled.</b> A lift that hasn’t moved in 3 weeks is checked against your sleep, protein and skips, then gets a new variation or rep range next block.</span></li>
+          <li><span><b>Deloads can come early.</b> Three or more stalled lifts at once brings the deload forward.</span></li>
+          <li><span><b>Sets reset after each deload</b> and build up again through the next block.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout t-pull"><span class="lbl">Optional 10-second readiness check</span>Before a session, tap how you slept and your energy, soreness and stress. Two bad answers make it a light day: one set fewer per exercise and one more rep left, same weights. Three or more, and the app offers the 25-minute minimum session. Short sleep mostly hurts big compound lifts, so the first-set check does most of the work.</div>
+    <div class="callout t-legs"><span class="lbl">When you outgrow the rack</span>If even the heaviest dumbbell or the bottom of the stack leaves you above the rep range, the app moves that exercise to a higher range, up to 20–30 reps, or a harder version: one arm at a time, a pause, or a slower lowering. Taken close to failure, lighter sets build about as much muscle as heavy ones, though heavy sets build more maximum strength.</div>
+
+    <h3>Try it with your numbers</h3>
+    <p class="small">Until the app exists, use this after each exercise: enter your first working set and it gives you next session’s target.</p>
+    <div class="calc" id="calc">
+      <div class="calc-in">
+        <fieldset>
+          <legend>Your first working set</legend>
+          <div class="fields">
+            <div class="field"><label for="c-w">Weight (kg)</label><input id="c-w" type="number" inputmode="decimal" min="0.5" max="500" step="0.25" value="45"></div>
+            <div class="field"><label for="c-r">Reps done</label><input id="c-r" type="number" inputmode="numeric" min="1" max="30" step="1" value="9"></div>
+            <div class="field"><label for="c-l">Reps left</label><select id="c-l"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option></select></div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Next session</legend>
+          <div class="fields">
+            <div class="field"><label for="c-lo">Reps from</label><input id="c-lo" type="number" inputmode="numeric" min="1" max="30" step="1" value="6"></div>
+            <div class="field"><label for="c-hi">Reps to</label><input id="c-hi" type="number" inputmode="numeric" min="1" max="30" step="1" value="8"></div>
+            <div class="field"><label for="c-q">Stop with</label><select id="c-q"><option value="0">0 left</option><option value="1">1 left</option><option value="2">2 left</option><option value="3" selected>3 left</option><option value="4">4 left</option></select></div>
+            <div class="field wide"><label for="c-step">Smallest weight jump on this equipment</label><select id="c-step"><option value="1">1 kg</option><option value="1.25">1.25 kg</option><option value="2">2 kg</option><option value="2.5" selected>2.5 kg</option><option value="5">5 kg</option></select></div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="calc-out" aria-live="polite">
+        <span class="calc-label">Estimated one-rep max</span>
+        <span class="calc-e" id="c-e1rm">63 kg</span>
+        <span class="calc-label">Next time</span>
+        <span class="calc-big" id="c-next">47.5 kg × 7</span>
+        <span class="calc-sub" id="c-sub">stopping with 3 reps left</span>
+        <p class="calc-why" id="c-why">You beat the top of the range, so the weight goes up one step.</p>
+        <div class="tbl"><table><thead><tr><th>Weight</th><th>Reps at that effort</th></tr></thead><tbody id="c-rows"></tbody></table></div>
+        <p class="calc-note" id="c-note"></p>
+      </div>
+    </div>
+    <p class="small">This uses a single set. The app blends every session and your honesty correction, so its targets can differ by a rep.</p>
+
+    <h3>Your first 16 weeks</h3>
+    <div class="scroll-x"><div class="timeline">
+      <div class="tl t-rest w1"><small>Week 0</small><b>Setup</b><span>App setup, weigh-ins, waist and photos</span></div>
+      <div class="tl t-pull w2"><small>Weeks 1–2</small><b>Calibrate</b><span>Find your weights, first honesty checks, 2 sets each</span></div>
+      <div class="tl t-legs w6"><small>Weeks 3–8</small><b>Block 1</b><span>Auto weights, with effort climbing from 3 reps left to 1</span></div>
+      <div class="tl t-gold w1"><small>Week 9</small><b>Deload</b><span>Half the sets, about 10% lighter</span></div>
+      <div class="tl t-push w6"><small>Weeks 10–15</small><b>Block 2</b><span>Same ramp; stalled lifts get a new variation or rep range</span></div>
+      <div class="tl t-gold w1"><small>Week 16</small><b>Deload, review</b><span>Compare lifts, photos and waist, then adjust</span></div>
+    </div></div>
+    <p class="small">What to expect if you’re fairly new to lifting: your main lifts should go up most weeks for the first few months. Visible size takes 8–12 weeks to notice, and photos catch it before the mirror does.</p>
+  </div>
+</section>
+
+<section class="sec" id="skips">
+  <div class="wrap">
+    <h2>Skips have a price</h2>
+    <p class="sec-lede">Every missed session is counted. One skip is free: the rotation just moves on, so no workout is lost. Skip twice within a week and make-up mode starts, adding extra work to your next few sessions. When it’s done, the plan goes back to normal. No money, no messages, no badges.</p>
+
+    <h3>The timeout</h3>
+    <div class="grid-3 how">
+      <div class="card"><h4>You set a time</h4><p>Pick a training time for each day, like 7:30 am before stand-up. A plan tied to a specific time and place is far more likely to happen.</p></div>
+      <div class="card"><h4>It checks in</h4><p>Two hours after that time with no workout started, it asks what’s going on: going later, minimum session, gym closed, sick, injured, or skipping.</p></div>
+      <div class="card"><h4>Midnight decides</h4><p>No workout and no reason by midnight, and the day times out as a skip. Reasons can’t be added the next day.</p></div>
+    </div>
+
+    <h3>What counts</h3>
+    <div class="tbl wide"><table>
+      <thead><tr><th>What happened</th><th>Counts as</th><th>Toward make-up mode</th></tr></thead>
+      <tbody>
+        <tr><td>Full workout</td><td>Done</td><td>No</td></tr>
+        <tr><td>The 25-minute minimum session</td><td>Done</td><td>No</td></tr>
+        <tr><td>Gym closed, and you did the home version</td><td>Done</td><td>No</td></tr>
+        <tr><td>A day off declared by 10 pm the night before, up to 2 a month</td><td>Moved: the rotation shifts</td><td>No</td></tr>
+        <tr><td>Maintenance mode, declared before the week starts</td><td>Planned light week</td><td>No</td></tr>
+        <tr><td>Away mode, set before you leave, like going home for a few days</td><td>Planned: paused, or short home sessions</td><td>No</td></tr>
+        <tr><td>Sick: fever, chest, stomach or whole-body symptoms</td><td>Excused, still counted</td><td>No</td></tr>
+        <tr><td>An injury flares up</td><td>Excused, and injury mode starts</td><td>No</td></tr>
+        <tr><td>A third declared day off in one month</td><td>Unexcused skip</td><td class="strike">Yes</td></tr>
+        <tr><td>Any other reason, or no reason by midnight</td><td>Unexcused skip</td><td class="strike">Yes</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Make-up mode</h3>
+    <p class="small">It depends on how many unexcused skips you have in any 7 days.</p>
+    <div class="ladder">
+      <div class="rung"><span class="plates" aria-hidden="true"><i class="free"></i></span><div><h4>1 skip</h4><span class="when">in 7 days</span></div><p><b>No penalty.</b> The next workout moves to the next day, so nothing is lost. It’s still counted.</p></div>
+      <div class="rung"><span class="plates" aria-hidden="true"><i></i><i></i></span><div><h4>2 skips</h4><span class="when">in 7 days</span></div><p><b>Make-up mode for your next 4 sessions:</b> a 15-minute block at the end of each one.</p></div>
+      <div class="rung"><span class="plates" aria-hidden="true"><i></i><i></i><i></i></span><div><h4>3 skips</h4><span class="when">in 7 days</span></div><p><b>Make-up mode for your next 6 sessions.</b> That’s the cap: about a week of longer workouts.</p></div>
+      <div class="rung"><span class="plates" aria-hidden="true"><i></i><i></i><i></i><i></i></span><div><h4>4 or more</h4><span class="when">in 7 days</span></div><p>Still 6 sessions, and the Sunday review suggests a different training time or the 5-day version, because the plan isn’t fitting your week.</p></div>
+    </div>
+
+    <div class="grid-2 mt16">
+      <div class="card"><p class="kind">What’s in a make-up block</p>
+        <p>Two exercises, 2 sets each at your usual effort, for whichever muscles are furthest behind on their weekly sets. It never uses the muscles you trained that day, so the extra work gives back missed training instead of just wearing you out.</p>
+        <p class="small">Example: you missed Tuesday and Wednesday, so Thursday is still Pull A. Its block adds leg press and leg curls, and the next session, Legs A, gets a chest and shoulder block.</p>
+      </div>
+      <div class="card"><p class="kind">Ground rules</p>
+        <ul class="checks ok">
+          <li><span><b>Skip during make-up mode</b> and the count goes up and the clock restarts, still capped at 6 sessions.</span></li>
+          <li><span><b>A minimum session</b> still counts as done, but its make-up block still has to be done.</span></li>
+          <li><span><b>Clean slate.</b> When the last block is done, the plan is back to normal.</span></li>
+          <li><span><b>Paused when you’re sick or injured,</b> and picked up once you’re well.</span></li>
+          <li><span><b>After a week or more off,</b> comeback mode replaces make-up mode. The first week back is for easing in, not catching up.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout t-push"><span class="lbl">Never used as a penalty</span>No skipped meals or cut calories, which would undo the muscle you’re building. No extra training days, no second workout in a day, no block longer than 15 minutes, and no muscle pushed past 20 sets a week.</div>
+    <div class="callout t-gold"><span class="lbl">Why it’s built like this</span>Missing a single day barely affects habit-building, but repeated misses do, so one skip is free and the penalty starts at two. Exercise used as punishment can make people dislike training, so the extra work is short, has an end date, and is real training for the muscles you missed. Sources are in <a href="#research">the research section</a>.</div>
+
+    <div class="pair">
+      <div class="callout t-legs"><span class="lbl">The 25-minute minimum session</span>Short on time or energy? Do the day’s first lift and the next two exercises, 2 sets each. It counts as done, so “no time” is never a reason to skip. Use it more than twice in a week and the weekly review asks what’s going on.</div>
+      <div class="callout t-gold"><span class="lbl">Sick-day rule</span>Symptoms only above the neck, like a runny nose or a mild sore throat: train lighter or do the minimum session. Fever, chest congestion, a stomach bug, body aches or real fatigue: rest, and it doesn’t count. If you might be contagious, stay out of the shared office gym anyway.</div>
+    </div>
+
+    <h3>Coming back after a break</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Time away</th><th>First week back</th></tr></thead>
+      <tbody>
+        <tr><td class="nw">Under a week</td><td>Nothing changes. Do the next workout.</td></tr>
+        <tr><td class="nw">1–4 weeks</td><td>Same weights, 2 sets per exercise and one more rep left. Back to normal the week after.</td></tr>
+        <tr><td class="nw">4–8 weeks</td><td>About 15% lighter and 2 sets, back to full over two weeks.</td></tr>
+        <tr><td class="nw">Over 8 weeks</td><td>Rerun the two calibration weeks.</td></tr>
+      </tbody>
+    </table></div>
+    <p class="small">Maximum strength barely drops in the first four weeks off, while stamina for higher reps fades sooner. That’s why the first week back trims sets before it trims weight. The app’s skip screen shows sessions done this month, your adherence, every skip with its reason, skips in the last 7 days, and make-up sessions left.</p>
+  </div>
+</section>
+
+<section class="sec" id="changes">
+  <div class="wrap">
+    <h2>Plan changes</h2>
+    <p class="sec-lede">Life moves the week around: a trip home, a deadline, a new office schedule. Tell the app what’s happening and it rebuilds the plan, shows you exactly what changes, and waits for your OK. Every change has one-tap undo.</p>
+
+    <div class="with-phone">
+      <div class="grid-2 status">
+        <div class="card"><p class="kind">“Skipping tomorrow”</p><h4>One day off</h4><p>Declared before the cut-off, 10 pm the night before by default, the rotation just shifts and nothing counts as a skip. Up to 2 a month; after that it counts.</p></div>
+        <div class="card"><p class="kind">“Going home till Sunday”</p><h4>Away mode</h4><p>Give the dates and what you’ll have there. No time: the plan pauses. Some time: 25–30-minute full-body sessions with whatever’s there, 2 or 3 a week. If any muscle would go untrained for over a week, your last session before leaving becomes full-body.</p></div>
+        <div class="card"><p class="kind">“Deadline week”</p><h4>Maintenance mode</h4><p>2–3 full-body sessions of about 40 minutes, with the same heavy weights and 1–2 hard sets per muscle. Up to 2 weeks, then the normal plan comes back by itself.</p></div>
+        <div class="card"><p class="kind">“Only 35 minutes today”</p><h4>Time-fit</h4><p>Keeps the first lift and the most important exercises, pairs others as supersets, and drops the rest. It counts as done.</p></div>
+      </div>
+      <div class="phone-col">
+        <div class="phone" role="img" aria-label="Wireframe of telling the app about a trip in plain words: it shows a preview of the changed days and waits for confirmation">
+          <div class="ph-notch"></div>
+          <div class="ph-body">
+            <div class="ph-top"><span>Tell the app</span><span>Wed 9:40 pm</span></div>
+            <div class="bubble">Going home tomorrow till Sunday. Only dumbbells there, maybe 30 minutes a day.</div>
+            <div class="ph-preview">
+              <b>Away: Thursday to Sunday</b>
+              <div class="ph-row"><span class="nm">Thursday</span><span class="tg">Travel, paused</span></div>
+              <div class="ph-row"><span class="nm">Friday</span><span class="tg">Dumbbells, 30 min</span></div>
+              <div class="ph-row"><span class="nm">Saturday</span><span class="tg">Rest</span></div>
+              <div class="ph-row"><span class="nm">Sunday</span><span class="tg">Dumbbells, 30 min</span></div>
+              <div class="ph-row"><span class="nm">Monday</span><span class="tg">Next workout</span></div>
+            </div>
+            <div class="ph-earned">No skips counted, so make-up mode won’t start.</div>
+            <div class="ph-btn">Confirm</div>
+            <div class="ph-links"><span>Edit</span><span>Undo later</span></div>
+          </div>
+          <div class="ph-nav"><span class="on">Today</span><span>Food</span><span>Progress</span><span>My Gym</span></div>
+        </div>
+        <span class="phone-cap">Tell the app</span>
+      </div>
+    </div>
+
+    <h3>Changing how many days you train</h3>
+    <div class="tbl wide"><table>
+      <thead><tr><th>Days a week</th><th>Split</th><th>Each muscle</th><th class="n">Weekly hard sets at 60-minute sessions</th></tr></thead>
+      <tbody>
+        <tr><td>6</td><td>Push, Pull, Legs, twice</td><td>2 times a week</td><td class="n">about 110</td></tr>
+        <tr><td>5</td><td>Upper, Lower, Push, Pull, Legs</td><td>2 times a week</td><td class="n">about 95</td></tr>
+        <tr><td>4</td><td>Upper, Lower, twice</td><td>2 times a week</td><td class="n">about 75</td></tr>
+        <tr><td>3</td><td>Full body, three times</td><td>3 times a week</td><td class="n">about 55, so 75-minute sessions are suggested</td></tr>
+      </tbody>
+    </table></div>
+    <p class="small">When weekly sets are equal, training a muscle 2 or 3 times a week builds it about equally, so fewer days mostly costs you sets, not results per set. The planner protects the big muscles first: chest, back, quads and hamstrings keep at least 10 hard sets a week, and the extras shrink.</p>
+
+    <h3>The 5-day version</h3>
+    <div class="tbl wide"><table>
+      <thead><tr><th>Day</th><th>First lift</th><th>Then</th></tr></thead>
+      <tbody>
+        <tr class="grp t-gold"><td colspan="3">Same exercises, backups and history as the 6-day plan, rearranged</td></tr>
+        <tr><td><b>Upper</b></td><td>Bench press</td><td>Barbell row, seated dumbbell press, lat pulldown, lateral raise, curl and pushdown superset</td></tr>
+        <tr><td><b>Lower</b></td><td>Back squat</td><td>Romanian deadlift, leg curl, standing calf raise, cable crunch</td></tr>
+        <tr><td><b>Push</b></td><td>Overhead press</td><td>Incline dumbbell press, cable fly, lateral raise, overhead triceps extension</td></tr>
+        <tr><td><b>Pull</b></td><td>Close-grip pulldown</td><td>Chest-supported row, face pull, incline curl, hammer curl</td></tr>
+        <tr><td><b>Legs</b></td><td>Leg press</td><td>Bulgarian split squat, hip thrust, leg extension, seated calf raise, hanging knee raise</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="grid-2 mt16">
+      <div class="card"><p class="kind">What carries over</p>
+        <ul class="checks ok">
+          <li><span>Every exercise’s history and weight estimate, so the auto-enhancer doesn’t restart.</span></li>
+          <li><span>Injuries, equipment status, skips and make-up mode.</span></li>
+          <li><span>Your place in the block, so this week’s effort target stays the same.</span></li>
+        </ul>
+      </div>
+      <div class="card"><p class="kind">What changes</p>
+        <ul class="checks ok">
+          <li><span>The split and the rotation, from your next training day or next Monday, your choice.</span></li>
+          <li><span>Sets per session, sized to your session length.</span></li>
+          <li><span>Check-in times, the timeout and make-up mode, which follow the new days.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>How the planner decides</h3>
+    <ol class="loop">
+      <li><h4>Read</h4><p>Your days, minutes per session, equipment, injuries and place in the block.</p></li>
+      <li><h4>Pick</h4><p>The template for that number of days, or the away and maintenance templates.</p></li>
+      <li><h4>Fill</h4><p>Each slot with the best exercise your gym has working that day.</p></li>
+      <li><h4>Size</h4><p>Sets per muscle to hit weekly targets within your time, big muscles first.</p></li>
+      <li><h4>Preview</h4><p>The changed days, weekly sets before and after, and session length. You confirm.</p></li>
+    </ol>
+    <div class="callout t-pull"><span class="lbl">Where an LLM helps, and where it doesn’t</span>Every change above works with buttons and works offline, because the planner is plain rules. An LLM is worth adding on top, but only as a translator: you type “going home tomorrow till Sunday, only dumbbells there”, it fills in the same Away form, and the planner does the rest. It never writes the workouts itself. The prompt, the output format and the safety checks are in <a href="#hood">Under the hood</a>.</div>
+  </div>
+</section>
+
+<section class="sec" id="injuries">
+  <div class="wrap">
+    <h2>Injury mode</h2>
+    <p class="sec-lede">An injury shouldn’t stop the whole plan. Injury mode takes out the movements that hurt, keeps everything else going, and rebuilds the injured area step by step, with pain as the guide.</p>
+
+    <h3>Sore, or injured?</h3>
+    <div class="grid-2">
+      <div class="card"><p class="kind">Normal training soreness</p>
+        <ul class="checks ok">
+          <li><span>Dull and spread across the muscle, often on both sides</span></li>
+          <li><span>Starts 12–48 hours after training</span></li>
+          <li><span>Eases once you warm up</span></li>
+        </ul>
+        <p class="verdict">Train as normal, with a longer warm-up.</p>
+      </div>
+      <div class="card"><p class="kind">Possible injury</p>
+        <ul class="checks x">
+          <li><span>Sharp, pinching or inside a joint, usually on one side</span></li>
+          <li><span>Started during a set, or the morning after a heavy one</span></li>
+          <li><span>Gets worse as you move</span></li>
+        </ul>
+        <p class="verdict">Tap “Something hurts” and injury mode starts.</p>
+      </div>
+    </div>
+    <div class="callout t-push"><span class="lbl">See a doctor or physio first if</span>you heard or felt a pop, swelling or bruising appeared quickly, you have numbness, tingling or pain shooting down a limb, you can’t put weight on it or lift the limb, it hurts at night or at rest, or it hasn’t improved in two weeks. Chest pain, dizziness or unusual breathlessness while training means stop now and get medical help. Injury mode keeps that area locked until you confirm you’ve been checked.</div>
+
+    <h3>The pain light</h3>
+    <p class="small">Rate pain from 0 to 10 during each set that uses the injured area, and again the next morning.</p>
+    <div class="grid-3">
+      <div class="card rule t-legs"><p class="cond">0–2</p><p class="then">Green: carry on</p><p>Progress as planned.</p></div>
+      <div class="card rule t-gold"><p class="cond">3–5</p><p class="then">Amber: hold</p><p>Same weight next time, no progression. Fine as long as it settles by the next morning.</p></div>
+      <div class="card rule t-push"><p class="cond">6 or more, or sharp</p><p class="then">Red: stop it</p><p>Switch to the friendly option for today and step back one phase.</p></div>
+    </div>
+    <p class="small">The next-morning rule: if it’s worse than your usual morning, step back one phase, whatever the light said during the set. This is the pain-monitoring approach physiotherapists use for tendon problems.</p>
+
+    <h3>Four phases, moved by pain, not the calendar</h3>
+    <div class="scroll-x"><div class="timeline phases">
+      <div class="tl t-push w3"><small>Phase 1</small><b>Calm it down</b><span>Usually 1–3 days. Skip what provokes it, move the area gently without pain, and train everything else as normal.</span></div>
+      <div class="tl t-gold w3"><small>Phase 2</small><b>Rebuild</b><span>Pain-free range only. About 40–60% of your old weight, 12–20 reps, slow lowering and holds.</span></div>
+      <div class="tl t-pull w3"><small>Phase 3</small><b>Return</b><span>The original exercise comes back at about 60% of your pre-injury weight, adding about 10% a session while the light stays green or amber.</span></div>
+      <div class="tl t-legs w3"><small>Phase 4</small><b>Back</b><span>Two sessions at your pre-injury weight with pain 0–2, and injury mode ends.</span></div>
+    </div></div>
+    <p class="small">Complete rest isn’t the goal. Current sports-medicine guidance is to protect an injury briefly, then load it gradually, because long rest weakens tissue. The same guidance questions routine anti-inflammatories, so ask a doctor before taking them regularly. In injury mode, weights come from your saved pre-injury estimate, and the pain light replaces reps left as the signal to progress.</p>
+
+    <h3>What changes for each area</h3>
+    <div class="tbl wide area"><table>
+      <thead><tr><th>Area</th><th>Taken out</th><th>Used instead</th><th>Keeps going</th></tr></thead>
+      <tbody>
+        <tr><td><b>Shoulder</b></td><td>Overhead press, dips, wide-grip bench, upright rows</td><td>Neutral-grip dumbbell or machine press over a shorter range, cable rows, external-rotation work, lateral raises only if painless</td><td>Legs, core, most rows</td></tr>
+        <tr><td><b>Elbow</b></td><td>Heavy curls, skull crushers, pull-ups, close-grip pressing</td><td>Straps for pulling, neutral grips, lighter high-rep arm work, wrist holds</td><td>Legs; chest press if painless</td></tr>
+        <tr><td><b>Wrist</b></td><td>Barbell pressing, push-ups on flat palms, front squats</td><td>Machines with neutral handles, push-ups on fists or handles, straps</td><td>Legs, with straps for deadlifts</td></tr>
+        <tr><td><b>Lower back</b></td><td>Barbell rows, Romanian deadlifts, back squats, standing overhead press, sit-ups</td><td>Chest-supported rows, leg press at moderate depth, leg curl and extension, hip thrust if painless, curl-ups, side planks, bird dogs, walking</td><td>Upper body on machines or with chest support</td></tr>
+        <tr><td><b>Knee</b></td><td>Deep squats, lunges, heavy leg extensions, jumping</td><td>Box squat to a pain-free depth, partial-range leg press, Romanian deadlift, hip thrust, leg curl, wall-sit holds, cycling</td><td>All upper body</td></tr>
+        <tr><td><b>Hip</b></td><td>Deep squats, deep leg press, lunges, wide stances</td><td>Higher box squat, hip thrust or glute bridge if painless, leg extension and curl</td><td>All upper body</td></tr>
+        <tr><td><b>Ankle</b></td><td>Standing calf raises, lunges, jumping</td><td>Seated calf raise if painless, leg extension and curl, seated exercises</td><td>Upper body, seated</td></tr>
+        <tr><td><b>Neck</b></td><td>Shrugs, heavy overhead work, heavy carries</td><td>Supported and machine exercises with your head kept neutral</td><td>Leg machines, most upper body</td></tr>
+        <tr><td><b>A strained muscle</b></td><td>Heavy and deep-stretch work for that muscle</td><td>Light holds, then light full-range sets, building back as pain allows</td><td>Everything else</td></tr>
+      </tbody>
+    </table></div>
+    <p class="small">A sudden pop with bruising in the chest or the front of the upper arm can be a torn tendon. That needs a doctor quickly, not injury mode.</p>
+    <div class="callout t-pull"><span class="lbl">Hurt one side? Keep training the other</span>Training the healthy limb helps the injured one hold on to its strength. In one study, people with an arm in a cast for four weeks kept nearly all its strength when they trained the other arm, while those who didn’t lost about a fifth. Injury mode switches to one-arm and one-leg versions for your healthy side. The evidence is strongest for arms.</div>
+    <p class="small">This is general training guidance, not a diagnosis. If something isn’t clearly improving within a couple of weeks, see a physiotherapist.</p>
+  </div>
+</section>
+
+<section class="sec" id="machines">
+  <div class="wrap">
+    <h2>When the gym lets you down</h2>
+    <p class="sec-lede">Office gyms are small and machines break. Every exercise in the plan is a slot with ranked backups, so a broken or busy machine changes the exercise, never the plan.</p>
+    <div class="grid-3 status">
+      <div class="card"><p class="kind">Busy right now</p><h4>Today only</h4><p>Wait, do the next exercise first if it uses different equipment, or take the first backup.</p></div>
+      <div class="card"><p class="kind">Out of order</p><h4>Until it’s fixed</h4><p>Backups every session. Every few days the app asks whether it’s fixed, and gives you a ready message for the facilities team.</p></div>
+      <div class="card"><p class="kind">Missing weights</p><h4>Plates or dumbbells gone</h4><p>Weights round to what’s actually there. Outgrow the top and it switches to more reps or a harder version.</p></div>
+      <div class="card"><p class="kind">Gone for good</p><h4>Permanent change</h4><p>The best backup takes over the slot, and the week’s sets per muscle are rebalanced.</p></div>
+      <div class="card"><p class="kind">Gym closed</p><h4>Holiday, renovation, WFH</h4><p>Do the 30-minute home version below. It counts as done.</p></div>
+      <div class="card"><p class="kind">Travelling</p><h4>Hotel gym, or none</h4><p>Tick what the hotel has and the app rebuilds the day, or use the home version.</p></div>
+    </div>
+
+    <h3>How a backup gets the right weight</h3>
+    <div class="grid-3 how">
+      <div class="card"><h4>First time</h4><p>The app suggests a cautious starting weight and treats your first set as a calibration set.</p></div>
+      <div class="card"><h4>From then on</h4><p>It has your own numbers for that exercise, and the auto-enhancer runs as usual.</p></div>
+      <div class="card"><h4>When the machine is back</h4><p>Each exercise keeps its own history, so you pick up where you left off.</p></div>
+    </div>
+    <div class="callout t-gold"><span class="lbl">If a whole station goes down</span>A broken cable tower takes out about half a dozen exercises in this plan. The app counts each muscle’s sets for the week and tops up any muscle that falls below 10, using what still works.</div>
+
+    <h3>The 30-minute home version</h3>
+    <div class="grid-3">
+      <div class="card t-push homecard"><p class="kind">Push day</p><ul class="plain">
+        <li><span>Push-ups, feet raised once 20 is easy</span><b>3 × to 2 left</b></li>
+        <li><span>Pike push-ups</span><b>3 × 8–12</b></li>
+        <li><span>Chair dips</span><b>3 × 10–15</b></li>
+        <li><span>Plank</span><b>2 × 45 s</b></li></ul></div>
+      <div class="card t-pull homecard"><p class="kind">Pull day</p><ul class="plain">
+        <li><span>One-arm backpack row, loaded with books</span><b>3 × 10–15</b></li>
+        <li><span>Backpack curl</span><b>3 × 12–15</b></li>
+        <li><span>Face-down Y and T raises</span><b>3 × 12</b></li>
+        <li><span>Superman hold</span><b>2 × 30 s</b></li></ul></div>
+      <div class="card t-legs homecard"><p class="kind">Leg day</p><ul class="plain">
+        <li><span>Bulgarian split squat, backpack on</span><b>3 × 10–15</b></li>
+        <li><span>One-leg Romanian deadlift</span><b>3 × 10</b></li>
+        <li><span>One-leg glute bridge</span><b>3 × 12</b></li>
+        <li><span>Calf raises on a step</span><b>3 × 15–20</b></li></ul></div>
+    </div>
+    <p class="small">Reps are per side for one-arm and one-leg moves. Take every set close to failure, because light loads only build muscle when the set is hard. An inexpensive set of resistance bands with a door anchor makes the pull day much better.</p>
+    <div class="msg"><p class="kind">The ready-made report message</p><p>“Hi, the leg press in the office gym has been out of order since Monday. Could someone take a look? Thanks.”</p></div>
+  </div>
+</section>
+<section class="sec" id="food">
+  <div class="wrap">
+    <h2>Food: yes, it matters</h2>
+    <p class="sec-lede">Training is the signal; food and sleep are what actually build the muscle. Train hard but eat like before, and you’ll get a little stronger but grow very slowly. The good news: rough estimates are enough, because your weekly weigh-in corrects the errors. In the app, every target below is worked out from your setup screens.</p>
+
+    <h3>1. Pick your goal</h3>
+    <div class="grid-2">
+      <div class="card goal t-legs"><h4>Lean bulk</h4><p class="when">If your waist, measured at the belly button, is less than half your height.</p><p>Eat a little above maintenance. Aim to gain about 0.5–1 kg a month; faster than that is mostly fat.</p></div>
+      <div class="card goal t-gold"><h4>Recomp first</h4><p class="when">If your waist is more than half your height.</p><p>Eat around maintenance with high protein. Your weight stays about the same while your waist shrinks and your lifts go up.</p></div>
+    </div>
+    <p class="small">Example: at 175 cm tall, half your height is 87.5 cm.</p>
+
+    <h3>2. Your numbers</h3>
+    <div class="grid-3">
+      <div class="card"><p class="kind">Protein a day</p><span class="big">1.6–2 g</span><span class="big-sub">per kg of body weight</span><p>70 kg means 112–140 g. Spread it over 4 meals of 25–40 g.</p></div>
+      <div class="card"><p class="kind">Calories a day, as a first guess</p><span class="big">36 × kg</span><span class="big-sub">for a lean bulk; 31 × kg for a recomp</span><p>70 kg means about 2,500 kcal on a bulk or 2,200 on a recomp. Step 4 corrects the guess.</p></div>
+      <div class="card"><p class="kind">Carbs and fats</p><span class="big">Don’t track</span><span class="big-sub">just keep two habits</span><p>Keep your rotis and rice; they fuel training. Go easy on oil and ghee, which is where most hidden calories in Indian food live.</p></div>
+    </div>
+
+    <h3>3. Track just two numbers</h3>
+    <div class="duo">
+      <div class="card"><span class="num">1</span><h4>Protein, in grams</h4><p>Log it as you eat, counting rotis, katoris and glasses. The portion guide below does the maths.</p></div>
+      <div class="card"><span class="num">2</span><h4>Morning weight</h4><p>After the bathroom, before food or water. Judge only the 7-day average, never a single day.</p></div>
+    </div>
+    <p class="small">Calories are optional. If protein is on target and your weekly average moves the right way, you’re eating right, even if every estimate was rough.</p>
+
+    <h3>4. Adjust once a week</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>7-day average vs last week, on a lean bulk</th><th>What to do</th></tr></thead>
+      <tbody>
+        <tr><td>Up 0.1–0.25 kg</td><td><b>Perfect.</b> Change nothing.</td></tr>
+        <tr><td>Flat or down, two weeks running</td><td>Add about 200 kcal a day, such as a glass of milk and a banana</td></tr>
+        <tr><td>Up 0.5 kg or more, after the first two weeks</td><td>Cut about 200 kcal a day, such as 2 fewer rotis or skipping the evening samosa or biscuits</td></tr>
+      </tbody>
+    </table></div>
+    <p class="small">On a recomp, aim for a flat weight and a waist that shrinks a little each month. Ignore the jump in week one: it’s mostly water and food, not fat.</p>
+
+    <h3>5. Measure without measuring</h3>
+    <ul class="tips-list">
+      <li><b>Count in units you already use:</b> roti, katori (a bowl of about 150 ml), glass (250 ml), egg, scoop, handful (about 30 g), and a palm-sized piece (about 100 g of cooked chicken or paneer).</li>
+      <li><b>Optional 10-minute calibration:</b> weigh your usual roti, a katori of dal and your serving of rice once on a kitchen scale (about ₹300–500). After that you won’t need it.</li>
+      <li><b>Canteen and restaurant food carries more oil</b> than home food. Assume 1–2 extra teaspoons per dish, about 50–100 kcal.</li>
+      <li><b>Being off by 20% is fine.</b> The weekly weight trend catches it.</li>
+    </ul>
+
+    <div class="thali">
+      <div class="tb"><b>≈ 770</b><span>kcal</span></div>
+      <div class="tb p"><b>≈ 25 g</b><span>protein</span></div>
+      <p><b>The Indian-diet gap.</b> A typical veg canteen thali of 2 rotis, rice, dal, sabzi and curd gives plenty of energy but little protein. Most people here under-eat protein, not calories. The fix is simple: add one protein booster to every meal.</p>
+    </div>
+
+    <h3>6. Logging it in the app</h3>
+    <p>Three ways to log, fastest first. Whichever you use, the numbers come from an Indian food database, not from guesses.</p>
+    <div class="grid-3">
+      <div class="card"><p class="kind">Most meals</p><h4>My usual meals</h4><p>Most people eat the same dozen or so meals. Weigh each one once, save it, and from then on it’s a single tap. It’s also the most accurate method.</p></div>
+      <div class="card"><p class="kind">Anything else</p><h4>Quick portions</h4><p>Tap roti × 2, dal × 1 katori, curd × 1. The database turns those portions into protein and calories.</p></div>
+      <div class="card"><p class="kind">Eating out</p><h4>Snap a photo</h4><p>AI names the dishes and suggests portions, you fix them with + and −, and the database does the maths.</p></div>
+    </div>
+    <div class="callout t-push"><span class="lbl">Let the AI identify the food, not count it</span>In a 2025 test of three leading AI models on 52 food photos, even the best were about a third off on calories on average, and all were more than 60% off on protein. A 2026 test of newer models found the same pattern: very consistent answers, but any single meal could be far off. They are good at naming foods, and better when told more about the dish. So in the app, the AI only suggests dishes and portions; you confirm them, and the numbers come from the database.</div>
+    <ol class="loop">
+      <li><h4>Snap</h4><p>One photo of the plate, from above.</p></li>
+      <li><h4>Suggest</h4><p>The AI returns dish names and portions in rotis and katoris, as data, not a calorie count.</p></li>
+      <li><h4>Ask</h4><p>Two quick questions the photo can’t answer: canteen or home cooking, and any ghee or butter on top.</p></li>
+      <li><h4>Confirm</h4><p>Fix anything wrong with + and −. It takes about ten seconds.</p></li>
+      <li><h4>Calculate</h4><p>Protein and calories come from the database, with extra oil added for canteen food.</p></li>
+    </ol>
+    <div class="grid-2 mt16">
+      <div class="card"><p class="kind">Which AI?</p><p>Gemini works for this, and so do vision models from OpenAI and Anthropic. Before building, photograph 15–20 of your usual meals, weigh them once, and see which model names them best for its price. Since it only has to name dishes and guess portions, a cheaper model may be enough.</p></div>
+      <div class="card"><p class="kind">Where the numbers come from</p><p>The open Indian Nutrient Databank: about 1,100 raw foods and 1,000 common Indian recipes, built mainly from ICMR-NIN’s Indian Food Composition Tables 2017. Check its licence terms before shipping it inside an app.</p></div>
+    </div>
+    <p class="small">Protein is the number that matters most, and the easiest to get right, because protein foods come in countable units: eggs, scoops, katoris of dal, palm-sized pieces of paneer or chicken. Calories can be rougher, since the weekly weight trend corrects them. Photos go to the AI provider, so the app asks first and never keeps them on a server. Each photo also costs a small fee, so photo logging stays optional.</p>
+
+    <h3>Rough Indian portion guide</h3>
+    <div class="tbl wide"><table>
+      <thead><tr><th>Food</th><th>Portion</th><th class="n">kcal</th><th class="n">Protein</th></tr></thead>
+      <tbody>
+        <tr class="grp t-rest"><td colspan="4">Staples</td></tr>
+        <tr><td>Roti or chapati, medium, no ghee</td><td>1</td><td class="n">100</td><td class="n">3 g</td></tr>
+        <tr><td>Aloo paratha with ghee</td><td>1</td><td class="n">280</td><td class="n">6 g</td></tr>
+        <tr><td>Rice, cooked</td><td>1 katori</td><td class="n">200</td><td class="n">4 g</td></tr>
+        <tr><td>Dal tadka</td><td>1 katori</td><td class="n">150</td><td class="n">7 g</td></tr>
+        <tr><td>Rajma or chole</td><td>1 katori</td><td class="n">220</td><td class="n">9 g</td></tr>
+        <tr><td>Dry veg sabzi</td><td>1 katori</td><td class="n">120</td><td class="n">3 g</td></tr>
+        <tr><td>Idli</td><td>2</td><td class="n">120</td><td class="n">4 g</td></tr>
+        <tr><td>Plain dosa with sambar</td><td>1 dosa, 1 katori</td><td class="n">280</td><td class="n">9 g</td></tr>
+        <tr><td>Poha or upma</td><td>1 plate</td><td class="n">250</td><td class="n">5 g</td></tr>
+        <tr><td>Banana</td><td>1 medium</td><td class="n">105</td><td class="n">1 g</td></tr>
+        <tr class="grp t-legs"><td colspan="4">Protein boosters</td></tr>
+        <tr><td>Paneer</td><td>100 g, 8–10 cubes</td><td class="n">280</td><td class="n">18 g</td></tr>
+        <tr><td>Paneer sabzi, like bhurji or palak paneer</td><td>1 katori</td><td class="n">270</td><td class="n">13 g</td></tr>
+        <tr><td>Curd (dahi)</td><td>1 katori</td><td class="n">100</td><td class="n">5 g</td></tr>
+        <tr><td>Hung curd or Greek yogurt</td><td>1 katori</td><td class="n">140</td><td class="n">12 g</td></tr>
+        <tr><td>Toned milk</td><td>1 glass, 250 ml</td><td class="n">150</td><td class="n">8 g</td></tr>
+        <tr><td>Whole egg</td><td>1</td><td class="n">75</td><td class="n">6 g</td></tr>
+        <tr><td>Egg whites</td><td>3</td><td class="n">50</td><td class="n">11 g</td></tr>
+        <tr><td>Soya chunks</td><td>30 g dry, about 1 katori cooked</td><td class="n">105 + oil</td><td class="n">15 g</td></tr>
+        <tr><td>Chicken breast, cooked</td><td>palm-sized, about 100 g</td><td class="n">165</td><td class="n">30 g</td></tr>
+        <tr><td>Chicken curry</td><td>1 katori</td><td class="n">250</td><td class="n">20 g</td></tr>
+        <tr><td>Whey protein</td><td>1 scoop, about 30 g</td><td class="n">120</td><td class="n">24 g</td></tr>
+        <tr><td>Roasted chana</td><td>1 handful, 30 g</td><td class="n">110</td><td class="n">6 g</td></tr>
+        <tr><td>Peanuts</td><td>1 handful, 30 g</td><td class="n">170</td><td class="n">7 g</td></tr>
+        <tr class="grp t-push"><td colspan="4">Hidden calories</td></tr>
+        <tr><td>Ghee or oil</td><td>1 tsp</td><td class="n">45</td><td class="n">0 g</td></tr>
+        <tr><td>Chai with milk and sugar</td><td>1 cup</td><td class="n">90</td><td class="n">2 g</td></tr>
+        <tr><td>Samosa</td><td>1</td><td class="n">250</td><td class="n">4 g</td></tr>
+        <tr><td>Gulab jamun</td><td>1</td><td class="n">150</td><td class="n">2 g</td></tr>
+      </tbody>
+    </table></div>
+    <p class="small">These are rounded averages and recipes vary. Close enough is the point.</p>
+
+    <h3>A sample day: vegetarian, 70 kg, lean bulk</h3>
+    <div class="tbl wide"><table>
+      <thead><tr><th>Time</th><th>Meal</th><th class="n">kcal</th><th class="n">Protein</th></tr></thead>
+      <tbody>
+        <tr><td class="nw">8:00</td><td>40 g oats cooked in a glass of milk, with a banana and 1 tbsp peanut butter</td><td class="n">500</td><td class="n">18 g</td></tr>
+        <tr><td class="nw">11:00</td><td>A katori of hung curd and a handful of peanuts</td><td class="n">310</td><td class="n">19 g</td></tr>
+        <tr><td class="nw">13:30</td><td>Canteen thali: 2 rotis, dal, rice, sabzi, curd</td><td class="n">770</td><td class="n">25 g</td></tr>
+        <tr><td class="nw">18:30</td><td>After the gym: a scoop of whey in water and a banana</td><td class="n">225</td><td class="n">25 g</td></tr>
+        <tr><td class="nw">20:30</td><td>Soya chunk curry, 2 rotis and a katori of dal</td><td class="n">500</td><td class="n">28 g</td></tr>
+        <tr><td class="nw">22:00</td><td>A glass of milk</td><td class="n">150</td><td class="n">8 g</td></tr>
+        <tr class="total"><td>Total</td><td></td><td class="n">≈ 2,455</td><td class="n">≈ 123 g</td></tr>
+      </tbody>
+    </table></div>
+    <p class="small"><b>Eat eggs?</b> Breakfast becomes a 3-egg omelette, 2 slices of toast and a glass of milk (about 560 kcal, 31 g). <b>Eat chicken?</b> Swap dinner’s soya for chicken curry (about 450 kcal with 2 rotis, 26 g). <b>No whey?</b> Add 100 g of paneer (18 g) or 2 eggs plus 3 egg whites (23 g). <b>Heavier than 70 kg?</b> Add 10–15 g of protein for every extra 10 kg.</p>
+    <div class="callout t-legs"><span class="lbl">Supplements and water</span>None are required. Whey is simply the cheapest, easiest 25 g of protein; buy it from the brand’s own store or an authorised seller, because fakes are common. Drink about 3 litres of water a day, more on hot days and gym days. Pale-yellow urine means you’re fine.</div>
+  </div>
+</section>
+<section class="sec" id="ideas">
+  <div class="wrap">
+    <h2>More ideas you didn’t ask for</h2>
+    <p class="sec-lede">The first five came with the adaptive version. The rest carry over, because they still decide whether the plan works.</p>
+    <div class="tips">
+      <div class="tip"><h4>Book it like a meeting</h4><p>Put each session in your work calendar at a fixed time. A specific when-and-where plan is one of the best-tested ways to actually follow through.</p></div>
+      <div class="tip"><h4>Fasting days</h4><p>During Navratri, Ramzan or any other fast, use <a href="#changes">maintenance mode</a>, train after you’ve eaten, and keep protein up with whatever your fast allows, like paneer, curd, milk or nuts.</p></div>
+      <div class="tip"><h4>A gym buddy</h4><p>Train with a colleague when you can. Someone expecting you makes skipping harder, and starting a heavy set after a bad night’s sleep easier.</p></div>
+      <div class="tip"><h4>A little cardio</h4><p>Two easy 20-minute sessions a week plus your steps look after your heart, and research says they don’t cost you muscle or strength. Do them after lifting or as a separate visit.</p></div>
+      <div class="tip"><h4>The Sunday review</h4><p>Two minutes: sessions done, skips and penalties, lifts up or down, protein days hit and your weight trend. The app proposes changes, and you approve them.</p></div>
+      <div class="tip"><h4>Film one set a week</h4><p>Your first lift, from the side. Compare it with a good tutorial, and ask the gym trainer to check it once a month.</p></div>
+      <div class="tip"><h4>Sleep is training too</h4><p>7–9 hours with a steady bedtime. Short sleep mostly hits your big lifts, and on a bulk it means more fat gain.</p></div>
+      <div class="tip"><h4>Warm-ups and mobility</h4><p>7–10 minutes before every session, already built in. Desk-stiff hips and upper back are where most gym injuries start.</p></div>
+      <div class="tip"><h4>Undo the desk</h4><p>More pulling than pushing is built in. At work, stand up every hour and stretch your chest and hip flexors for two minutes.</p></div>
+      <div class="tip"><h4>A baseline check-up</h4><p>A routine blood test before you start: CBC, vitamin D, B12, thyroid, lipids and blood sugar. Low vitamin D and B12 are common in India and quietly drain energy.</p></div>
+      <div class="tip"><h4>Creatine, if you want it</h4><p>Creatine monohydrate, 3–5 g a day, is the most researched supplement for strength and muscle. Skip it if you have kidney problems, and ask a doctor if you’re unsure.</p></div>
+      <div class="tip"><h4>Track more than the scale</h4><p>Waist weekly, photos monthly in the same light and pose, and your lifts. Muscle comes slowly, and these show it first.</p></div>
+      <div class="tip"><h4>Abs are revealed, not built</h4><p>Core work makes your abs stronger and thicker; lower body fat makes them visible. Crunches can’t burn belly fat.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="app">
+  <div class="wrap">
+    <h2>The app</h2>
+    <p class="sec-lede">Working name: <b>Raise the Bar</b>. A strict coach in your pocket that knows your gym, your strength and your excuses.</p>
+    <p class="promise">Walk into the gym and open the app. It already knows what you’re lifting, on which machine and at what weight. It knows the leg press is broken, your shoulder is in phase 2, and whether you’re in make-up mode.</p>
+    <div class="grid-4">
+      <div class="card"><h4>Built for the gym floor</h4><p>One hand, big buttons, works offline. Office gyms are often in basements with no signal.</p></div>
+      <div class="card"><h4>No thinking between sets</h4><p>The app decides every weight. You lift and tap.</p></div>
+      <div class="card"><h4>Strict but fair</h4><p>Skips cost something, reasons must come before midnight, and illness and injury are never punished.</p></div>
+      <div class="card"><h4>Indian food built in</h4><p>Rotis and katoris, not grams. Your usual office thali is one tap.</p></div>
+    </div>
+
+    <h3>First launch: the setup screens</h3>
+    <p class="small">About two minutes, once. Everything the plan needs to know about you lives here, so nothing has to be worked out by hand.</p>
+    <ol class="loop">
+      <li><h4>About you</h4><p>Weight, height, age, veg, egg or non-veg, how long you’ve lifted, and any old injuries, which pre-load injury mode.</p></li>
+      <li><h4>Your goal</h4><p>Waist and height decide lean bulk or recomp. The app then sets your protein target and first calorie guess.</p></li>
+      <li><h4>Your week</h4><p>Training days and times, which drive the check-ins and the midnight timeout, plus your rest day.</p></li>
+      <li><h4>My Gym</h4><p>Tick the machines, dumbbell range and plates, with photos if you like, and mark anything broken.</p></li>
+      <li><h4>Your rules</h4><p>The day-off cut-off and make-up mode settings, with the defaults from this page.</p></li>
+    </ol>
+
+    <h3>Features, and when to build them</h3>
+    <div class="features">
+      <div class="card feat"><div class="tags"><span class="tag mvp">Phase 1</span></div><h4>My Gym</h4><p>Your machines, dumbbell range and plates, each marked working, busy, broken or gone. Every exercise is filtered to what works today.</p></div>
+      <div class="card feat"><div class="tags"><span class="tag mvp">Phase 1</span></div><h4>Program as slots</h4><p>Push, Pull, Legs twice a week, run as a rotation. Each slot has ranked backups that respect your equipment and injuries.</p></div>
+      <div class="card feat"><div class="tags"><span class="tag mvp">Phase 1</span><span class="tag v2">Phase 2</span></div><h4>Exercise library</h4><p>Phase 1: about 100 exercises bundled with photos and form cues, so they work offline. Phase 2: demo video links and your own recorded clips.</p></div>
+      <div class="card feat"><div class="tags"><span class="tag mvp">Phase 1</span><span class="tag v2">Phase 2</span></div><h4>Plan changes</h4><p>Phase 1: day off and away mode. Phase 2: maintenance mode, time-fit, 5-, 4- and 3-day plans, and the AI assistant that fills in the forms from a sentence.</p></div>
+      <div class="card feat"><div class="tags"><span class="tag mvp">Phase 1</span></div><h4>Workout log</h4><p>Pre-filled targets, one-tap sets, reps-left buttons, a rest timer that starts itself, and the first-set check.</p></div>
+      <div class="card feat"><div class="tags"><span class="tag mvp">Phase 1</span><span class="tag v2">Phase 2</span></div><h4>Auto-enhancer</h4><p>Phase 1: calibration, estimates, weight picking and the effort ramp. Phase 2: honesty checks, weekly set changes, stall detection and early deloads.</p></div>
+      <div class="card feat"><div class="tags"><span class="tag mvp">Phase 1</span><span class="tag v2">Phase 2</span></div><h4>Skips and make-up mode</h4><p>Phase 1: check-ins, the midnight timeout, the skip counter and make-up mode. Phase 2: comeback mode.</p></div>
+      <div class="card feat"><div class="tags"><span class="tag mvp">Phase 1</span></div><h4>Injury mode</h4><p>Body area, red-flag questions, exercise filters and swaps, the pain light and the four phases.</p></div>
+      <div class="card feat"><div class="tags"><span class="tag mvp">Phase 1</span><span class="tag v2">Phase 2</span></div><h4>Food and body</h4><p>Phase 1: usual meals, quick portions and morning weight with a 7-day average. Phase 2: photo logging, the full Indian food database and weekly calorie nudges.</p></div>
+      <div class="card feat"><div class="tags"><span class="tag v2">Phase 2</span></div><h4>Progress and review</h4><p>Strength charts, sets per muscle, personal records, adherence and the Sunday review.</p></div>
+      <div class="card feat"><div class="tags"><span class="tag v3">Phase 3</span></div><h4>Later</h4><p>Scheduling around your calendar, sleep and steps from a watch, progress photos, and an AI coach that explains your progress.</p></div>
+    </div>
+
+    <h3>Key screens, as rough wireframes</h3>
+    <div class="phones">
+      <div class="phone-col">
+        <div class="phone" role="img" aria-label="Wireframe of the Today screen for Pull B, with readiness answers, weights set by the app, and a broken machine replaced by its backup">
+          <div class="ph-notch"></div>
+          <div class="ph-body">
+            <div class="ph-top"><span>Friday 7:30 am</span><span>Block 1, week 3</span></div>
+            <span class="ph-tag t-pull">Pull B</span>
+            <div class="ph-h">Back and arms</div>
+            <div class="ph-chips"><span class="ok">Slept 7 h</span><span class="ok">Energy OK</span><span class="ok">Not sore</span></div>
+            <div class="ph-rows tight">
+              <div class="ph-row"><div><span class="nm">Barbell row</span><span class="mt">3 × 6–8, stop with 2 left</span></div><span class="tg up">52.5 ↑</span></div>
+              <div class="ph-row"><div><span class="nm">Close-grip pulldown</span><span class="mt">3 × 8–12, 2 left</span></div><span class="tg">55</span></div>
+              <div class="ph-row"><div><span class="nm">Incline dumbbell row</span><span class="mt sw">Row machine broken: backup 1</span></div><span class="tg">16</span></div>
+              <div class="ph-row"><div><span class="nm">Incline curl</span><span class="mt">3 × 10–12, 1 left</span></div><span class="tg">10</span></div>
+              <div class="ph-row"><div><span class="nm">Preacher curl</span><span class="mt">3 × 12–15, 1 left</span></div><span class="tg">20</span></div>
+              <div class="ph-row"><div><span class="nm">Hanging knee raise</span><span class="mt">3 × 10–15</span></div><span class="tg">Body</span></div>
+            </div>
+            <div class="ph-btn">Start workout</div>
+          </div>
+          <div class="ph-nav"><span class="on">Today</span><span>Food</span><span>Progress</span><span>My Gym</span></div>
+        </div>
+        <span class="phone-cap">Today</span>
+      </div>
+      <div class="phone-col">
+        <div class="phone" role="img" aria-label="Wireframe of logging the first set of barbell rows, with reps-left buttons and the remaining sets automatically dropped to 50 kilograms">
+          <div class="ph-notch"></div>
+          <div class="ph-body">
+            <div class="ph-top"><span>Barbell row</span><span>Set 1 of 3</span></div>
+            <div class="ph-h">Target 7 reps, 2 left</div>
+            <div class="stepper"><i>−</i><div><b>52.5</b><small>kg</small></div><i>+</i></div>
+            <div class="stepper"><i>−</i><div><b>5</b><small>reps</small></div><i>+</i></div>
+            <span class="ph-label">Reps left in the tank?</span>
+            <div class="rl"><span>0</span><span class="on">1</span><span>2</span><span>3</span><span>4+</span></div>
+            <div class="ph-alert">Harder than predicted, so sets 2 and 3 drop to 50 kg.</div>
+            <div class="ph-btn">Log set</div>
+            <div class="ph-links"><span>Machine busy? Swap</span><span>Something hurts</span></div>
+          </div>
+          <div class="ph-nav"><span class="on">Today</span><span>Food</span><span>Progress</span><span>My Gym</span></div>
+        </div>
+        <span class="phone-cap">Logging a set</span>
+      </div>
+      <div class="phone-col">
+        <div class="phone" role="img" aria-label="Wireframe of make-up mode after two skips in a week: a 15-minute block is added to each of the next 4 sessions, built from the muscles that are behind">
+          <div class="ph-notch"></div>
+          <div class="ph-body">
+            <div class="ph-top"><span>Thursday 8:02 am</span><span>2 skips</span></div>
+            <span class="ph-tag t-push">Make-up mode</span>
+            <div class="ph-h">+15 minutes for 4 sessions</div>
+            <div class="ph-sub">Tuesday and Wednesday timed out at midnight. Today is still Pull A, so no workout is lost.</div>
+            <span class="ph-label">Make-up blocks</span>
+            <div class="ph-tasks">
+              <div class="ph-task"><i></i><span>Today: leg press and leg curl, 2 sets each</span></div>
+              <div class="ph-task"><i></i><span>Next session: chest and shoulders</span></div>
+              <div class="ph-task"><i></i><span>Sessions 3 and 4: whatever is still behind</span></div>
+            </div>
+            <div class="ph-alert">Skip again before these are done and it stretches to 6 sessions.</div>
+            <div class="ph-sub">Then it’s back to the normal plan.</div>
+            <div class="ph-btn">Start Pull A</div>
+          </div>
+          <div class="ph-nav"><span class="on">Today</span><span>Food</span><span>Progress</span><span>My Gym</span></div>
+        </div>
+        <span class="phone-cap">After a skip</span>
+      </div>
+      <div class="phone-col">
+        <div class="phone" role="img" aria-label="Wireframe of the injury check: shoulder selected, pain 4 out of 10, no red flags, and the changes it will make to the plan">
+          <div class="ph-notch"></div>
+          <div class="ph-body">
+            <div class="ph-top"><span>Something hurts</span><span>Step 3 of 3</span></div>
+            <div class="ph-h">Left shoulder</div>
+            <span class="ph-label">Where</span>
+            <div class="ph-chips"><span class="on">Shoulder</span><span>Elbow</span><span>Wrist</span><span>Lower back</span><span>Knee</span><span>Hip</span><span>Ankle</span><span>Neck</span><span>A muscle</span></div>
+            <span class="ph-label">Pain right now, 0 to 10</span>
+            <div class="scale"><span class="g">0</span><span class="g">1</span><span class="g">2</span><span class="a">3</span><span class="a on">4</span><span class="a">5</span><span class="r">6</span><span class="r">7</span><span class="r">8</span><span class="r">9</span><span class="r">10</span></div>
+            <span class="ph-label">A pop, swelling, numbness or weakness?</span>
+            <div class="seg two"><span>Yes</span><span class="on">No</span></div>
+            <div class="ph-earned"><b>Shoulder mode, phase 1.</b> Overhead press, dips and wide-grip bench are out, with 4 swaps made. Legs and rows carry on as normal.</div>
+            <div class="ph-btn">Apply to my plan</div>
+          </div>
+          <div class="ph-nav"><span class="on">Today</span><span>Food</span><span>Progress</span><span>My Gym</span></div>
+        </div>
+        <span class="phone-cap">Something hurts</span>
+      </div>
+      <div class="phone-col">
+        <div class="phone" role="img" aria-label="Wireframe of the Food screen: protein ring at 62 of 120 grams, quick-add buttons and today’s meals">
+          <div class="ph-notch"></div>
+          <div class="ph-body">
+            <div class="ph-top"><span>Today</span><span>6:04 pm</span></div>
+            <div class="ring"><div><b>62 g</b><small>of 120 g protein</small></div></div>
+            <span class="ph-label">Add</span>
+            <div class="qchips"><span>Roti</span><span>Dal</span><span>Rice</span><span>Paneer</span><span>Curd</span><span>Egg</span><span>Whey</span><span>Milk</span></div>
+            <span class="ph-label">My usual meals</span>
+            <div class="qchips"><span class="mine">Office thali, 25 g</span><span class="mine">Oats breakfast, 18 g</span></div>
+            <div>
+              <div class="ph-row"><div><span class="nm">Breakfast</span><span class="mt">Oats, milk, banana, peanut butter</span></div><span class="tg">18 g</span></div>
+              <div class="ph-row"><div><span class="nm">Snack</span><span class="mt">Hung curd and peanuts</span></div><span class="tg">19 g</span></div>
+              <div class="ph-row"><div><span class="nm">Lunch</span><span class="mt">Office thali</span></div><span class="tg">25 g</span></div>
+            </div>
+            <div class="ph-sub">Weight 70.4 kg, 7-day average up 0.2 kg</div>
+          </div>
+          <div class="ph-nav"><span>Today</span><span class="on">Food</span><span>Progress</span><span>My Gym</span></div>
+        </div>
+        <span class="phone-cap">Food</span>
+      </div>
+      <div class="phone-col">
+        <div class="phone" role="img" aria-label="Wireframe of photo logging: the AI suggests four dishes with portions in rotis and katoris, asks two quick questions, and the totals come from the food database">
+          <div class="ph-notch"></div>
+          <div class="ph-body">
+            <div class="ph-top"><span>Lunch</span><span>1:42 pm</span></div>
+            <div class="ph-photo" aria-hidden="true">Your photo</div>
+            <span class="ph-label">Looks like this. Fix anything wrong.</span>
+            <div class="ph-items">
+              <div class="ph-item"><span>Roti</span><span class="qty"><i>−</i>2<i>+</i></span></div>
+              <div class="ph-item"><span>Dal tadka, katori</span><span class="qty"><i>−</i>1<i>+</i></span></div>
+              <div class="ph-item"><span>Bhindi sabzi, katori</span><span class="qty"><i>−</i>1<i>+</i></span></div>
+              <div class="ph-item"><span>Rice, katori</span><span class="qty"><i>−</i>1<i>+</i></span></div>
+            </div>
+            <span class="ph-label">Two quick questions</span>
+            <div class="seg two"><span class="on">Canteen</span><span>Home</span></div>
+            <div class="seg two"><span>Ghee or butter</span><span class="on">Neither</span></div>
+            <div class="ph-earned"><b>20 g protein, about 760 kcal,</b> from the food database, with extra canteen oil.</div>
+            <div class="ph-btn">Save meal</div>
+          </div>
+          <div class="ph-nav"><span>Today</span><span class="on">Food</span><span>Progress</span><span>My Gym</span></div>
+        </div>
+        <span class="phone-cap">Photo log</span>
+      </div>
+    </div>
+
+    <h3>The logic, in pseudocode</h3>
+    <pre class="code"><code><span class="c"># ---------- Auto-enhancer ----------</span>
+def e1rm(weight, reps, reps_left):
+    left = reps_left + profile.rir_bias              <span class="c"># learned honesty correction</span>
+    return weight * (1 + (reps + left) / 30)         <span class="c"># Epley, counting reps left</span>
+
+def predicted_reps(E, weight, target_left):
+    return round(30 * (E / weight - 1) - target_left)
+
+def next_weight(ex, target_left):                    <span class="c"># before every session</span>
+    w = ex.current_weight
+    if w is None:                                    <span class="c"># first time: one rep above the bottom</span>
+        w = heaviest(x for x in gym.weights(ex)
+                     if predicted_reps(ex.E, x, target_left) &gt;= ex.lo + 1)
+    elif predicted_reps(ex.E, w, target_left) &gt; ex.hi:
+        up = gym.step_up(ex, w)
+        if predicted_reps(ex.E, up, target_left) &gt;= ex.lo:
+            w = up                                   <span class="c"># earned it, one step at a time</span>
+    while predicted_reps(ex.E, w, target_left) &lt; ex.lo and gym.step_down(ex, w):
+        w = gym.step_down(ex, w)
+    return w
+
+def after_first_set(ex, s):                          <span class="c"># adjusts the rest of today</span>
+    actual = s.reps + s.reps_left + profile.rir_bias
+    gap = actual - predicted_reps(ex.E, s.weight, 0)
+    if gap &lt;= -2: return gym.step_down(ex, s.weight)
+    if gap &gt;= 2:  return gym.step_up(ex, s.weight)
+    return s.weight
+
+def after_session(ex, sets):
+    S = max(e1rm(s.weight, s.reps, s.reps_left) for s in sets)
+    if S &gt;= ex.E:            ex.E, ex.bad_days = S, 0               <span class="c"># gains count in full</span>
+    elif S &gt;= 0.92 * ex.E:   ex.E, ex.bad_days = (ex.E + S) / 2, 0  <span class="c"># small dip: halfway</span>
+    else:
+        ex.bad_days += 1                                            <span class="c"># one bad day is noise</span>
+        if ex.bad_days &gt;= 2: ex.E = (ex.E + S) / 2                  <span class="c"># two is a pattern</span>
+
+<span class="c"># ---------- Skips and make-up mode ----------</span>
+every night at 00:00:                                <span class="c"># the timeout</span>
+    if not trained(today) and not reason_given(today):
+        skips.add(today)
+        recent = skips.within_last(days=7)
+        if len(recent) &gt;= 2 and not comeback_mode:
+            makeup.sessions_left = min(2 * len(recent), 6)   <span class="c"># restarts the clock</span>
+before each session:
+    if makeup.sessions_left &gt; 0 and not sick_or_injured:
+        today.add_block(minutes=15, exercises=2, sets=2,
+                        muscles=furthest_behind(exclude=today.muscles, weekly_cap=20))
+when a make-up block is finished:
+    makeup.sessions_left -= 1                        <span class="c"># 0 means back to normal</span>
+
+<span class="c"># ---------- Injuries and broken machines ----------</span>
+def pick_exercise(slot):
+    for ex in slot.options:                          <span class="c"># ranked, best first</span>
+        if gym.working(ex) and not clashes(ex.stresses, profile.injuries):
+            return ex
+    return slot.home_version
+
+<span class="c"># ---------- Plan changes ----------</span>
+def apply(change):                                   <span class="c"># from a button or the assistant</span>
+    draft = planner.rebuild(plan, change)            <span class="c"># template, slots, sets, time budget</span>
+    show_preview(changed_days(plan, draft),
+                 weekly_sets(plan), weekly_sets(draft))
+    if user_confirms():
+        plan.previous, plan = plan, draft            <span class="c"># one-tap undo</span></code></pre>
+
+    <h3>Data model</h3>
+    <div class="entities">
+      <div class="ent"><h5>Equipment</h5><ul><li>id, name, kind</li><li>weights_available, step_kg</li><li>status: working | busy |</li><li>&nbsp;&nbsp;broken | gone</li><li>broken_since</li></ul></div>
+      <div class="ent"><h5>Exercise</h5><ul><li>id, name, muscles[]</li><li>equipment_ids[], big_or_small</li><li>stresses[]: shoulder_overhead,</li><li>&nbsp;&nbsp;knee_deep, spine_loaded…</li><li>cues[], images[], video_url</li><li>my_clip, source, licence</li></ul></div>
+      <div class="ent"><h5>Slot</h5><ul><li>program_day, order</li><li>sets, rep_low, rep_high, rest_s</li><li>options[]: exercise_ids, ranked</li><li>home_version</li></ul></div>
+      <div class="ent"><h5>Plan</h5><ul><li>days_per_week, template</li><li>session_minutes, starts_on</li><li>previous, for undo</li></ul></div>
+      <div class="ent"><h5>Away</h5><ul><li>start, end, kind: day_off |</li><li>&nbsp;&nbsp;away | maintenance</li><li>equipment_there, minutes_per_day</li></ul></div>
+      <div class="ent"><h5>Estimate</h5><ul><li>exercise_id, e1rm_kg</li><li>current_weight, bad_days</li><li>rep_drop_per_set, sessions</li></ul></div>
+      <div class="ent"><h5>Session</h5><ul><li>id, date, program_day</li><li>kind: full | minimum | home |</li><li>&nbsp;&nbsp;maintenance | deload | payback</li><li>sleep, energy, soreness, stress</li></ul></div>
+      <div class="ent"><h5>SetLog</h5><ul><li>session_id, exercise_id, set_no</li><li>weight_kg, reps, reps_left</li><li>pain_0_10, in injury mode</li><li>is_honesty_check</li></ul></div>
+      <div class="ent"><h5>Skip</h5><ul><li>date, program_day</li><li>reason, declared_at</li><li>excused</li></ul></div>
+      <div class="ent"><h5>MakeUp</h5><ul><li>triggered_on, skips_counted</li><li>sessions_left, block_minutes</li><li>paused</li></ul></div>
+      <div class="ent"><h5>Injury</h5><ul><li>area, side, phase, started</li><li>pre_injury_e1rm{}</li><li>red_flag, checked_by_doctor</li></ul></div>
+      <div class="ent"><h5>Profile</h5><ul><li>height_cm, goal, protein_g</li><li>training_times[], rir_bias</li><li>day_off_cutoff, makeup_settings</li></ul></div>
+      <div class="ent"><h5>Food</h5><ul><li>indb_id, name, unit</li><li>kcal, protein_g, diet_type</li></ul></div>
+      <div class="ent"><h5>FoodLog, BodyLog</h5><ul><li>date, meal, food_id, qty</li><li>source: usual | tap | photo</li><li>weight_kg, waist_cm</li></ul></div>
+    </div>
+
+    <h3>How to build it</h3>
+    <div class="grid-3">
+      <div class="card"><div class="tags"><span class="tag rec">Recommended</span></div><h4>React Native with Expo</h4><p>One codebase for Android and iPhone, with a local SQLite database on the phone. Works offline, with no server and no login needed.</p></div>
+      <div class="card"><div class="tags"><span class="tag v3">Alternative</span></div><h4>Flutter</h4><p>Just as good if you prefer Dart. Same local-first approach.</p></div>
+      <div class="card"><div class="tags"><span class="tag v3">Quick prototype</span></div><h4>Web app (PWA)</h4><p>Fastest to build and pin to your home screen, but the midnight check-ins and reminders are less dependable than in a native app.</p></div>
+    </div>
+    <p class="small">The auto-enhancer, make-up mode, injury mode and the planner are plain logic that runs on the phone, so Phase 1 needs no server at all. From Phase 2, one free server function holds the AI key and the GitHub token. How that works is in <a href="#hood">Under the hood</a>.</p>
+
+    <h3>Build roadmap</h3>
+    <div class="grid-4 road">
+      <div class="card t-rest"><p class="kind">Now</p><h4>Train with this page</h4><p>Log in a notebook, use the calculator above for weights, and count your own skips. Those logs become the app’s first data.</p></div>
+      <div class="card t-gold"><p class="kind">Phase 1</p><h4>The core</h4><p>The setup screens, the exercise library with photos, My Gym, slots and backups, the log, calibration and auto weights, skips and make-up mode, day off and away mode, injury mode, weight and protein.</p></div>
+      <div class="card t-pull"><p class="kind">Phase 2</p><h4>Smarter</h4><p>Honesty checks, weekly set changes, stalls and deloads, readiness, maintenance and comeback modes, 5-, 4- and 3-day plans, the server function with GitHub backup, photo logging, the AI assistant, charts and reminders.</p></div>
+      <div class="card t-rest"><p class="kind">Phase 3</p><h4>Later</h4><p>Calendar and watch sync, your own exercise clips, progress photos, and an AI coach that explains your progress.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="hood">
+  <div class="wrap">
+    <h2>Under the hood</h2>
+    <p class="sec-lede">The exercise library, where your data lives, the one free server that keeps secrets off your phone, and the AI assistant.</p>
+
+    <h3>The exercise library</h3>
+    <div class="with-phone">
+      <div>
+        <p>Start from <a href="https://github.com/yuhonas/free-exercise-db">free-exercise-db</a>: over 800 exercises as public-domain JSON, each with step-by-step instructions, muscles, equipment and demonstration photos. Public domain means no licence worries, even if you publish the app one day.</p>
+        <div class="grid-2 status">
+          <div class="card"><p class="kind">In the app</p><h4>Bundled, offline</h4><p>The 100 or so exercises your plan and its backups use ship inside the app with their photos, so they work in a basement gym with no signal. Anything else downloads on first use and stays cached.</p></div>
+          <div class="card"><p class="kind">Each record</p><h4>What we add</h4><p>Your gym’s equipment, joint-stress tags for injury mode, big or small for the effort ramp, three short form cues, gym nicknames like “lat pull”, and a video link.</p></div>
+          <div class="card"><p class="kind">Videos</p><h4>Links, and your own clips</h4><p>Open exercise videos are rare. Each main exercise gets a link to one good demo, opened when you’re online, plus “Record my clip” to film 10 seconds on your own gym’s machine. Your clip stays on your phone.</p></div>
+          <div class="card"><p class="kind">Licences</p><h4>Not everything free is free</h4><p><a href="https://github.com/wger-project/wger">wger</a>, another open library with some videos, licenses each exercise under Creative Commons, often share-alike, so credit and terms carry over. Scraped GIF collections often hold images nobody licensed, so leave those out.</p></div>
+        </div>
+      </div>
+      <div class="phone-col">
+        <div class="phone" role="img" aria-label="Wireframe of an exercise page: start and end photos, muscles, three form cues, buttons to watch a video or record your own clip, and the backup order">
+          <div class="ph-notch"></div>
+          <div class="ph-body">
+            <div class="ph-top"><span>Push A, slot 1</span><span>Saved offline</span></div>
+            <div class="ph-photos"><div class="ph-photo" aria-hidden="true">Start</div><div class="ph-photo" aria-hidden="true">End</div></div>
+            <div class="ph-h">Barbell bench press</div>
+            <div class="ph-chips"><span class="on">Chest</span><span>Triceps</span><span>Front delts</span></div>
+            <span class="ph-label">Form cues</span>
+            <ul class="ph-cues"><li>Shoulder blades squeezed and down</li><li>Bar to mid-chest, elbows at about 45°</li><li>Feet planted, hips on the bench</li></ul>
+            <div class="seg two"><span>Watch video</span><span class="on">Record my clip</span></div>
+            <span class="ph-label">If it’s busy or broken</span>
+            <div class="ph-sub">Smith machine bench, then dumbbell bench, then chest press machine</div>
+          </div>
+          <div class="ph-nav"><span class="on">Today</span><span>Food</span><span>Progress</span><span>My Gym</span></div>
+        </div>
+        <span class="phone-cap">Exercise page</span>
+      </div>
+    </div>
+
+    <h3>Where your data lives</h3>
+    <p>GitHub works as free storage, with one change to the plan: the token never goes inside the app, encrypted or not. To decrypt it, the app would need the decryption key too, so anyone with the app file could pull out both. Hardcoded keys in app files are the top risk on <a href="https://owasp.org/www-project-mobile-top-10/">OWASP’s mobile list</a>. Encrypt your data instead, and keep the token on a server.</p>
+    <div class="grid-3">
+      <div class="card t-legs homecard"><p class="kind">On your phone</p><h4>The real database</h4><p>SQLite holds everything and works offline, so a workout never waits for the internet.</p></div>
+      <div class="card t-pull homecard"><p class="kind">Public GitHub repo</p><h4>The exercise library</h4><p>JSON and photos, read with no token at all through GitHub’s raw file links. Updating the library is just a commit.</p></div>
+      <div class="card t-push homecard"><p class="kind">Private GitHub repo</p><h4>Nightly backup</h4><p>One encrypted file a day, written by the server function. It’s a backup, not a live database, because commits are slow and clash if two devices write at once.</p></div>
+    </div>
+    <div class="callout t-gold"><span class="lbl">Encrypt the backup, not the token</span>Before uploading, the phone encrypts the backup with AES-256-GCM, using a key derived from a passphrase only you know (with scrypt or Argon2id), so even GitHub can’t read your weight, injuries or food logs. Write the passphrase down: without it the backup can’t be opened, which is the point. Progress photos and your exercise clips stay on the phone and never go to GitHub.</div>
+
+    <h3>One free server function</h3>
+    <p>A <a href="https://developers.cloudflare.com/workers/platform/limits">Cloudflare Worker</a> on the free plan holds every secret, so nothing sensitive ships inside the app. The free plan allows 100,000 requests a day, and you’ll use perhaps 20.</p>
+    <div class="tbl wide"><table>
+      <thead><tr><th>Endpoint</th><th>What it does</th><th>Secret it uses</th></tr></thead>
+      <tbody>
+        <tr><td class="nw"><code>/backup</code></td><td>Takes the already-encrypted backup and commits it to the private repo</td><td>GitHub token</td></tr>
+        <tr><td class="nw"><code>/assistant</code></td><td>Sends a plan-change message to the AI and returns checked JSON</td><td>AI key</td></tr>
+        <tr><td class="nw"><code>/food-photo</code></td><td>Sends a meal photo to the AI and returns dish names and portions</td><td>AI key</td></tr>
+      </tbody>
+    </table></div>
+    <ul class="checks ok mt16">
+      <li><span><b>Secrets live in the Worker’s encrypted settings,</b> never in the app or in Git.</span></li>
+      <li><span><b>The phone proves it’s yours</b> with a random device key kept in <a href="https://docs.expo.dev/versions/latest/sdk/secure-store/">secure storage</a>: Keychain on iPhone, Keystore on Android.</span></li>
+      <li><span><b>The GitHub token is fine-grained:</b> one private repo, Contents read and write only, with an expiry date.</span></li>
+      <li><span><b>The Worker rate-limits and checks every input,</b> and never logs photos or health data.</span></li>
+      <li><span><b>The 10 ms CPU limit isn’t a problem,</b> because time spent waiting for the AI’s reply doesn’t count toward it.</span></li>
+    </ul>
+
+    <h3>The AI assistant: worth it, as a translator</h3>
+    <div class="grid-2">
+      <div class="card"><p class="kind">Let the AI do this</p>
+        <ul class="checks ok">
+          <li><span>Turn a message like “going home tomorrow till Sunday” into one structured change request.</span></li>
+          <li><span>Work out the dates, the equipment and the time you’ll have.</span></li>
+          <li><span>Ask one short question when something essential is missing.</span></li>
+          <li><span>Name the dishes in a food photo.</span></li>
+        </ul>
+      </div>
+      <div class="card"><p class="kind">Keep the AI away from this</p>
+        <ul class="checks x">
+          <li><span><b>Writing workouts.</b> It can invent exercises your gym doesn’t have, and give different answers to the same request.</span></li>
+          <li><span><b>Weights, sets and effort.</b> The auto-enhancer already has your numbers.</span></li>
+          <li><span><b>Anything mid-workout.</b> It needs the internet, and the basement may not have it.</span></li>
+          <li><span><b>Injury decisions.</b> It only opens injury mode with the area filled in.</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="small">Once the buttons exist, it’s little extra work: one prompt, one output format, a checking step and the same preview screen. Any provider that can return JSON matching a schema will do, including Gemini, OpenAI and Anthropic models, and a small, cheap model is enough, because the job is reading one sentence, not planning. Build it in Phase 2, after the forms work without it.</p>
+
+    <h3>The system prompt</h3>
+    <p class="small">The app fills in the values in braces before every call.</p>
+    <pre class="code"><code>You turn a lifter's message into exactly one plan-change request for the
+Raise the Bar app. You never write workouts, weights, sets or medical advice.
+
+<span class="c"># Context, filled in by the app</span>
+Today: {today_date}, {weekday}
+Plan: {days_per_week} days a week, {split_name}. Next workout: {next_workout}
+Training days and times: {training_schedule}
+Session length: {session_minutes} minutes
+Equipment (id: name): {equipment_list}
+Broken right now: {broken_equipment}
+Active injuries: {active_injuries}
+Planned absences: {away_periods}
+Day-off cut-off: {day_off_cutoff}. Days off used this month: {days_off_used} of 2
+
+<span class="c"># Rules</span>
+- Reply only with JSON that matches the schema.
+- Choose one intent: day_off, away, maintenance, change_split, change_days,
+  time_fit, equipment_status, injury or clarify.
+- Turn relative dates like "tomorrow" or "till Sunday" into YYYY-MM-DD from today.
+- Use only equipment ids from the list above.
+- If anything essential is missing or unclear, use clarify and ask one short question.
+- For pain or injury, use injury with the body area and side. Never suggest treatment.</code></pre>
+
+    <h3>What comes back</h3>
+    <div class="grid-2">
+      <div class="tbl"><table>
+        <thead><tr><th>Intent</th><th>Fields</th></tr></thead>
+        <tbody>
+          <tr><td class="nw"><code>day_off</code></td><td>date</td></tr>
+          <tr><td class="nw"><code>away</code></td><td>start, end, equipment there, minutes per day</td></tr>
+          <tr><td class="nw"><code>maintenance</code></td><td>start, weeks (1–2)</td></tr>
+          <tr><td class="nw"><code>change_split</code></td><td>days per week (3–6), start</td></tr>
+          <tr><td class="nw"><code>change_days</code></td><td>training days, times</td></tr>
+          <tr><td class="nw"><code>time_fit</code></td><td>minutes (20–90)</td></tr>
+          <tr><td class="nw"><code>equipment_status</code></td><td>equipment id, status</td></tr>
+          <tr><td class="nw"><code>injury</code></td><td>area, side</td></tr>
+          <tr><td class="nw"><code>clarify</code></td><td>one question</td></tr>
+        </tbody>
+      </table></div>
+      <div>
+        <p class="small">For “Going home tomorrow till Sunday. Only dumbbells there, maybe 30 minutes a day,” sent on Wednesday 21 October:</p>
+        <pre class="code"><code>{
+  "intent": "away",
+  "start": "2026-10-22",
+  "end": "2026-10-25",
+  "equipment_there": ["dumbbells"],
+  "minutes_per_day": 30,
+  "summary": "Going home Thursday to Sunday with dumbbells"
+}</code></pre>
+      </div>
+    </div>
+    <ul class="checks ok mt16">
+      <li><span><b>Anything that doesn’t match the schema is thrown away,</b> and you get the normal form instead.</span></li>
+      <li><span><b>Dates must be today or later,</b> within the next 60 days, with the end on or after the start.</span></li>
+      <li><span><b>Equipment ids must exist in your gym,</b> and unknown intents are rejected.</span></li>
+      <li><span><b>Nothing applies until you’ve seen the preview and tapped Confirm,</b> and every change can be undone.</span></li>
+      <li><span><b>No internet?</b> The same options are one tap away as buttons.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="research">
+  <div class="wrap">
+    <h2>What the research says</h2>
+    <p class="sec-lede">The main rules in this plan come from a study, a review or a clinical guideline. Where the evidence is thin, the plan says so.</p>
+
+    <h3>Auto-enhancer</h3>
+    <div class="refs">
+      <div class="ref"><p>Setting weights by effort, using reps left, produced the same strength gains as fixed percentages of a tested max.</p><p class="use">So the auto-enhancer isn’t magic. Its job is to find the right weights without max testing, and to react to good and bad days. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8762534">Hickmott et al., Sports Medicine – Open, 2022</a></p></div>
+      <div class="ref"><p>People usually stop with about one more rep in the tank than they think, and they judge better close to failure and in sets of 12 reps or fewer.</p><p class="use">Hence the weekly honesty check and its correction. <a href="https://pubmed.ncbi.nlm.nih.gov/34542869/">Halperin et al., Sports Medicine, 2022</a></p></div>
+      <div class="ref"><p>One-rep-max formulas were most accurate from sets of fewer than 10 reps to failure.</p><p class="use">Hence strength charts use low-to-moderate rep sets. <a href="https://pubmed.ncbi.nlm.nih.gov/18714230/">Mayhew et al., JSCR, 2008</a></p></div>
+      <div class="ref"><p>Light and heavy loads built similar muscle when sets went to failure, while heavy loads built more maximum strength.</p><p class="use">Hence higher reps when you outgrow the rack, and light rebuilding sets in injury mode. <a href="https://pubmed.ncbi.nlm.nih.gov/28834797/">Schoenfeld et al., JSCR, 2017</a></p></div>
+      <div class="ref"><p>Inadequate sleep reduced maximal strength in compound lifts.</p><p class="use">Hence the readiness check and the first-set adjustment. <a href="https://pubmed.ncbi.nlm.nih.gov/29422383/">Knowles et al., Journal of Science and Medicine in Sport, 2018</a></p></div>
+    </div>
+
+    <h3>Skips and make-up mode</h3>
+    <div class="refs">
+      <div class="ref"><p>Missing one day didn’t materially slow habit formation, but people who were very inconsistent never formed the habit.</p><p class="use">Hence one skip is free, and make-up mode starts at two. <a href="https://www.ucl.ac.uk/news/2009/aug/how-long-does-it-take-form-habit">Lally et al., European Journal of Social Psychology, 2010</a></p></div>
+      <div class="ref"><p>If-then plans that fix when and where you’ll act had a medium-to-large effect on reaching goals across 94 tests.</p><p class="use">Hence a fixed training time and the check-in. <a href="https://kops.uni-konstanz.de/entities/publication/2e749bfb-8533-437c-8203-7e788c910c5f">Gollwitzer and Sheeran, 2006</a></p></div>
+      <div class="ref"><p>Physical-education bodies advise against exercise as punishment because it can make people dislike being active. That evidence comes from schools, not adults setting their own rules.</p><p class="use">Hence make-up blocks are short, have an end date, and give back missed training instead of punishing drills. <a href="https://shapeamerica.org/Common/Uploaded%20files/uploads/pdfs/2019/advocacy/position-statements/pa/Physical-Activity-as-Punishment.pdf">SHAPE America position statement</a></p></div>
+      <div class="ref"><p>Doing cardio alongside lifting didn’t reduce muscle growth or maximum strength across 43 studies. Only explosive strength suffered a little, mostly when both were done in the same session.</p><p class="use">Hence the cardio suggestion in More ideas. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8891239/">Schumann et al., Sports Medicine, 2022</a></p></div>
+      <div class="ref"><p>Maximum strength was barely affected by up to four weeks without training, while stamina for higher reps dropped sooner.</p><p class="use">Hence comeback mode trims sets before weight. <a href="https://www.strongerbyscience.com/detraining/">Summary of Bosquet et al., 2013</a></p></div>
+      <div class="ref"><p>Strength and muscle size held for up to 32 weeks on one session a week and one set per exercise, as long as the weights stayed heavy.</p><p class="use">Hence maintenance mode for busy weeks. <a href="https://pubmed.ncbi.nlm.nih.gov/33629972/">Spiering et al., JSCR, 2021</a></p></div>
+      <div class="ref"><p>Exercise is usually fine with symptoms above the neck, but not with a fever, chest symptoms, an upset stomach, fatigue or widespread aches.</p><p class="use">Hence the sick-day rule. <a href="https://www.mayoclinic.org/healthy-lifestyle/fitness/expert-answers/exercise/faq-20058494">Mayo Clinic</a></p></div>
+    </div>
+
+    <h3>Plan changes</h3>
+    <div class="refs">
+      <div class="ref"><p>Across 25 studies, when weekly volume was equal, how many times a week a muscle was trained made no meaningful difference to how much it grew.</p><p class="use">Hence switching from 6 days to 5, 4 or 3 keeps weekly sets first and frequency second. <a href="https://lida.sport-iat.de/ta/Record/4052540?lng=en">Schoenfeld et al., Journal of Sports Sciences, 2019</a></p></div>
+    </div>
+
+    <h3>Injuries</h3>
+    <div class="refs">
+      <div class="ref"><p>Tendon patients who kept training with pain allowed up to about 5 out of 10, settling by the next morning, showed no harm compared with resting.</p><p class="use">Hence the pain light and the next-morning rule. <a href="https://search.pedro.org.au/search-results/record-detail/18389">Silbernagel et al., American Journal of Sports Medicine, 2007</a></p></div>
+      <div class="ref"><p>Current guidance for soft-tissue injuries: protect briefly, keep rest short, let pain decide when protection ends, then load progressively and stay active.</p><p class="use">Hence the four phases, and training everything else. <a href="https://bjsm.bmj.com/content/54/2/72.full">Dubois and Esculier, British Journal of Sports Medicine, 2020</a></p></div>
+      <div class="ref"><p>Training the free arm while the other spent four weeks in a cast preserved the cast arm’s strength: a 2% loss, versus 22% without training.</p><p class="use">Hence one-sided training for the healthy limb. <a href="https://researchportal.northumbria.ac.uk/en/publications/unilateral-strength-training-leads-to-muscle-specific-sparing-eff/">Andrushko et al., Journal of Applied Physiology, 2018</a></p></div>
+    </div>
+    <h3>Food logging</h3>
+    <div class="refs">
+      <div class="ref"><p>Three leading AI models estimating nutrition from 52 food photos: the best were about 36% off on calories on average, all were more than 60% off on protein, and errors grew with bigger portions.</p><p class="use">Hence the AI suggests dishes and portions, and never supplies the numbers. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12513282/">Current Developments in Nutrition, 2025</a></p></div>
+      <div class="ref"><p>Newer models gave very consistent answers, but any single meal could still be far off. The authors suggest naming the foods in the prompt and linking a food database.</p><p class="use">Hence you confirm the dishes, and the database does the maths. <a href="https://www.cureus.com/posters/3217-validity-and-reliability-of-photo-based-ai-estimates-of-meal-calories-and-macronutrients">Cureus poster, 2026</a></p></div>
+      <div class="ref"><p>An AI model named the foods in meal photos correctly about 93% of the time and judged small portions well, but struggled with medium and large ones.</p><p class="use">Hence portions are yours to set, in rotis and katoris. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11858203/">Nutrients, 2025</a></p></div>
+      <div class="ref"><p>Telling the model more about the dish, such as its ingredients, made its estimates clearly better.</p><p class="use">Hence the two quick questions after each photo. <a href="https://repositorio.uneatlantico.es/id/eprint/17880">ChatGPT-5 food image study, 2025</a></p></div>
+      <div class="ref"><p>The open Indian Nutrient Databank holds 1,095 raw foods and 1,014 common Indian recipes, built mainly from ICMR-NIN’s Indian Food Composition Tables 2017.</p><p class="use">Hence the database behind every number. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11277795/">Vijayakumar et al., Current Developments in Nutrition, 2024</a></p></div>
+    </div>
+    <p class="small">Some rules have no direct study behind them: the 8% bad-day threshold, the weekly set changes, the pain-light cut-offs for general gym injuries, and the make-up mode numbers. They’re sensible starting points, and the Sunday review is where you tune them.</p>
+  </div>
+</section>
+
+<section class="sec" id="next">
+  <div class="wrap">
+    <h2>Next steps</h2>
+    <p class="sec-lede">Nothing to send me. Your details belong in the app’s setup screens, so until it exists, this page and a notebook are enough.</p>
+    <ol class="next">
+      <li><div><h4>Week 0: baseline</h4><p>Weigh in on 3 mornings, measure your waist, take front, side and back photos, and book a basic blood test.</p></div></li>
+      <li><div><h4>Weeks 1–2: calibrate</h4><p>Find your weights in a notebook and use the calculator on this page. Count your skips by the same timeout rules from day one.</p></div></li>
+      <li><div><h4>Test photo logging</h4><p>Photograph 15–20 of your usual meals and weigh them once. Comparing an AI’s guesses with the scale tells us whether photo logging is worth building early.</p></div></li>
+      <li><div><h4>Build Phase 1 together</h4><p>Screen by screen, starting with the setup screens, the exercise library, My Gym, the workout log and the auto-enhancer.</p></div></li>
+    </ol>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Rough numbers, solid method. Food values are approximate. This is general fitness guidance, not medical advice: for a health condition, or an injury that isn’t clearly improving, see a doctor or physiotherapist.</p>
+  </div>
+</footer>
+<script>
+(function () {
+  'use strict';
+  function el(id) { return document.getElementById(id); }
+  if (!el('calc')) { return; }
+
+  // Inputs are parsed as numbers and range-checked before use; output is written with textContent only.
+  function read(id, min, max, whole) {
+    var v = Number(el(id).value);
+    if (!isFinite(v) || v < min || v > max) { return null; }
+    if (whole && Math.floor(v) !== v) { return null; }
+    return v;
+  }
+  function round2(x) { return Math.round(x * 100) / 100; }
+  function kg(x) { return String(round2(x)) + ' kg'; }
+  function predicted(E, w, left) { return Math.round(30 * (E / w - 1) - left); }
+
+  function setRows(rows) {
+    var body = el('c-rows');
+    while (body.firstChild) { body.removeChild(body.firstChild); }
+    rows.forEach(function (r) {
+      var tr = document.createElement('tr');
+      tr.className = r.pick ? 'win' : (r.inRange ? '' : 'out');
+      var a = document.createElement('td');
+      a.textContent = kg(r.w);
+      var b = document.createElement('td');
+      b.textContent = String(Math.max(r.reps, 0)) + (r.inRange ? '' : ', outside range');
+      tr.appendChild(a);
+      tr.appendChild(b);
+      body.appendChild(tr);
+    });
+  }
+
+  function render() {
+    var w = read('c-w', 0.5, 500, false), r = read('c-r', 1, 30, true), l = read('c-l', 0, 4, true);
+    var lo = read('c-lo', 1, 30, true), hi = read('c-hi', 1, 30, true), q = read('c-q', 0, 4, true);
+    var step = read('c-step', 0.5, 10, false);
+    if (w === null || r === null || l === null || lo === null || hi === null || q === null || step === null || hi < lo) {
+      el('c-e1rm').textContent = '–';
+      el('c-next').textContent = '–';
+      el('c-sub').textContent = '';
+      el('c-why').textContent = 'Enter a weight, whole-number reps, and a rep range whose first number isn’t bigger than the second.';
+      el('c-note').textContent = '';
+      setRows([]);
+      return;
+    }
+    var E = w * (1 + (r + l) / 30);
+    var W = w;
+    var msg;
+    if (predicted(E, W, q) > hi) {
+      var up = round2(W + step);
+      if (predicted(E, up, q) >= lo) {
+        W = up;
+        msg = 'You beat the top of the range, so the weight goes up one step.';
+      } else {
+        msg = 'The next weight up is too big a jump, so stay here and add reps first.';
+      }
+    } else if (predicted(E, W, q) < lo) {
+      var guard = 0;
+      while (predicted(E, W, q) < lo && W - step >= step && guard < 200) { W = round2(W - step); guard += 1; }
+      msg = 'That weight would put you below the range, so it comes down.';
+    } else {
+      msg = 'Same weight. Your rep target moves with your new estimate.';
+    }
+    var p = predicted(E, W, q);
+    el('c-e1rm').textContent = kg(Math.round(E * 10) / 10);
+    el('c-next').textContent = kg(W) + ' × ' + Math.max(p, 1);
+    el('c-sub').textContent = 'stopping with ' + q + (q === 1 ? ' rep' : ' reps') + ' left';
+    el('c-why').textContent = msg;
+    var rows = [];
+    [W - step, W, W + step, W + 2 * step].forEach(function (x) {
+      x = round2(x);
+      if (x <= 0) { return; }
+      var pr = predicted(E, x, q);
+      rows.push({ w: x, reps: pr, inRange: pr >= lo && pr <= hi, pick: x === W });
+    });
+    setRows(rows);
+    el('c-note').textContent = (r + l > 12) ? 'Above about 12 reps to failure the max estimate is rough, but targets in the same rep range stay reliable.' : '';
+  }
+
+  ['c-w', 'c-r', 'c-l', 'c-lo', 'c-hi', 'c-q', 'c-step'].forEach(function (id) {
+    el(id).addEventListener('input', render);
+    el(id).addEventListener('change', render);
+  });
+  render();
+})();
+</script>
+</body>
+</html>
