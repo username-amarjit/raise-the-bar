@@ -35,6 +35,7 @@ import com.raisethebar.app.data.startSession
 import com.raisethebar.app.ui.LocalSnackbar
 import com.raisethebar.app.ui.checkin.CheckinScreen
 import com.raisethebar.app.ui.exercise.ExerciseScreen
+import com.raisethebar.app.ui.food.FoodScreen
 import com.raisethebar.app.ui.gym.EquipmentScreen
 import com.raisethebar.app.ui.gym.GymScreen
 import com.raisethebar.app.ui.injury.InjuryScreen
@@ -151,7 +152,7 @@ private fun AppNav(start: Any, snackbar: SnackbarHostState, checkinRequest: Muta
                 })
             }
             composable<TodayRoute> { TodayScreen(today) }
-            composable<FoodRoute> { PendingScreen("Food", "Protein, quick portions and your usual meals arrive in milestone 12.") }
+            composable<FoodRoute> { FoodScreen() }
             composable<ProgressRoute> { ProgressScreen(onInjury = { nav.goToTab(Tab.TODAY) }) }
             composable<GymRoute> { GymScreen(onItem = { id -> nav.navigate(EquipmentRoute(id)) }) }
             composable<ExerciseRoute> { e ->

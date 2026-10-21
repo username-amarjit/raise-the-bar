@@ -33,6 +33,7 @@ class ShellSmokeTest {
         compose.setContent { RtbTheme(darkTheme = true) { CompositionLocalProvider(LocalRepo provides repo) { RaiseTheBarRoot() } } }
         compose.waitUntil(5_000) { compose.onAllNodesWithText("Food").fetchSemanticsNodes().isNotEmpty() }
         compose.onNodeWithText("Food").performClick()
-        compose.onNodeWithText("Protein", substring = true).assertIsDisplayed()
+        compose.waitUntil(5_000) { compose.onAllNodesWithText("of 120 g protein").fetchSemanticsNodes().isNotEmpty() }
+        compose.onNodeWithText("of 120 g protein").assertIsDisplayed()
     }
 }
