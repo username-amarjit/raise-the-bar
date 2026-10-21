@@ -33,3 +33,11 @@ The plan left these open, so the checklist decided them:
 22. **No network at all.** The manifest removes `INTERNET` and `ACCESS_NETWORK_STATE`, even if a library asks for them; cleartext is blocked by `network_security_config.xml`. Release builds strip `android.util.Log` calls with R8, and the app never logs personal data in any build.
 23. **Backups.** `android:allowBackup="false"` plus `data_extraction_rules.xml` excluding every domain from cloud backup and device-to-device transfer (Android 12+ ignores `allowBackup` for transfers).
 24. **Tap targets.** 48 dp minimum (Android's guideline), which is above the 44 pt the checklist asks for.
+
+### Local database (milestone 1)
+
+25. **Room on SQLite, numbered migrations.** Schema version 1 is exactly the checklist's table list (plus foreign-key indexes); version 2 adds the columns the app needs (resume state, make-up block, injury phase progress, quick-add labels and so on) and the date indexes. Each migration is a plain SQL `Migration(n, n + 1)` in `db/Migrations.kt`; `MigrationTest` builds a real version 1 database from the exported schema in `app/schemas/`, fills every table, upgrades it and checks every row survived.
+26. **Column names.** `order` is an SQL keyword, so program days and slots use `position`. `meta` is a key/value table (`schema_version`, `last_evaluated_date`, `install_date` and later markers), so new markers never need a migration.
+27. **Weekdays** are stored 0 = Monday … 6 = Sunday (ISO order).
+28. **Time formats.** Dates are `YYYY-MM-DD`; timestamps are `yyyy-MM-dd'T'HH:mm:ss.SSS±hh:mm` (always with offset and milliseconds, so they sort as text within one time zone). `Time.endOfDay` is the following local midnight.
+29. **Validation before writes.** `Store` checks every input against `Rules.Limits` (and enum fields against their allowed values) inside the transaction before writing; a rejected input throws `InputRejected` and writes nothing.
