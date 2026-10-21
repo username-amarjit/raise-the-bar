@@ -33,6 +33,7 @@ import com.raisethebar.app.ui.components.ScreenTitle
 import com.raisethebar.app.ui.components.SecondaryButton
 import com.raisethebar.app.ui.components.SectionLabel
 import com.raisethebar.app.ui.gym.FixedPrompt
+import com.raisethebar.app.ui.injury.InjuryCards
 import com.raisethebar.app.ui.rememberLoad
 import com.raisethebar.app.ui.theme.Accent
 import com.raisethebar.app.ui.theme.Rtb
@@ -110,6 +111,7 @@ fun TodayScreen(a: TodayActions = TodayActions()) {
         }
         if (state == null || lib == null) return@Column
         Banners(state, a)
+        InjuryCards(state)
         when (state.kind) {
             TodayKind.TRAIN, TodayKind.PRE_TRIP, TodayKind.AWAY_SESSION -> Workout(state, lib, a)
             else -> NoWorkout(state, a)

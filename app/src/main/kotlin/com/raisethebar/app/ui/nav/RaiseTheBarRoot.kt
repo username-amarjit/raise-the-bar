@@ -37,6 +37,7 @@ import com.raisethebar.app.ui.checkin.CheckinScreen
 import com.raisethebar.app.ui.exercise.ExerciseScreen
 import com.raisethebar.app.ui.gym.EquipmentScreen
 import com.raisethebar.app.ui.gym.GymScreen
+import com.raisethebar.app.ui.injury.InjuryScreen
 import com.raisethebar.app.ui.plan.PlanChangesScreen
 import com.raisethebar.app.ui.progress.ProgressScreen
 import com.raisethebar.app.ui.rememberActions
@@ -151,7 +152,7 @@ private fun AppNav(start: Any, snackbar: SnackbarHostState, checkinRequest: Muta
             }
             composable<TodayRoute> { TodayScreen(today) }
             composable<FoodRoute> { PendingScreen("Food", "Protein, quick portions and your usual meals arrive in milestone 12.") }
-            composable<ProgressRoute> { ProgressScreen(onInjury = { nav.navigate(InjuryRoute()) }) }
+            composable<ProgressRoute> { ProgressScreen(onInjury = { nav.goToTab(Tab.TODAY) }) }
             composable<GymRoute> { GymScreen(onItem = { id -> nav.navigate(EquipmentRoute(id)) }) }
             composable<ExerciseRoute> { e ->
                 val r = e.toRoute<ExerciseRoute>()
@@ -175,7 +176,7 @@ private fun AppNav(start: Any, snackbar: SnackbarHostState, checkinRequest: Muta
                     onSomethingHurts = { sid -> nav.navigate(InjuryRoute(fromSession = sid)) },
                 )
             }
-            composable<InjuryRoute> { PendingScreen("Something hurts", "Injury mode arrives in milestone 11.") }
+            composable<InjuryRoute> { e -> InjuryScreen(e.toRoute<InjuryRoute>().fromSession, onDone = { nav.popBackStack() }) }
             composable<PlanChangesRoute> { PlanChangesScreen(onBack = { nav.popBackStack() }) }
             composable<CheckinRoute> { e ->
                 CheckinScreen(

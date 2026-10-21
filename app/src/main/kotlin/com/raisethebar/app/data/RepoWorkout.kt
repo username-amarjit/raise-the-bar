@@ -59,7 +59,7 @@ data class SessionState(
     fun rampOngoing(pe: PlannedExercise): Boolean = pe.ramp && pe.key !in rampDone && pe.key !in stopped
 }
 
-private fun encodeState(s: SessionState): String = SeedData.json.encodeToString(SessionState.serializer(), s)
+internal fun encodeState(s: SessionState): String = SeedData.json.encodeToString(SessionState.serializer(), s)
 
 fun decodeState(json: String?): SessionState? =
     json?.let {
