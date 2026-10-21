@@ -15,15 +15,17 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.raisethebar.app.data.OldInjury
 import com.raisethebar.app.data.completeSetup
+import com.raisethebar.app.ui.components.LinkButton
 import com.raisethebar.app.ui.components.PrimaryButton
 import com.raisethebar.app.ui.components.ScreenFrame
 import com.raisethebar.app.ui.rememberActions
+import com.raisethebar.app.ui.settings.BackupImport
 
 private val STEPS = listOf("About you", "Your goal", "Your week", "My Gym", "Your rules")
 
-/** First launch (milestone 4): about you, your goal, your week, My Gym and your rules. */
+/** First launch (milestone 4): about you, your goal, your week, My Gym and your rules. Or restore a backup instead. */
 @Composable
-fun SetupScreen(onDone: (hurting: List<OldInjury>) -> Unit) {
+fun SetupScreen(onDone: (hurting: List<OldInjury>) -> Unit, onRestored: () -> Unit = {}) {
     val d: SetupDraft = viewModel()
     val actions = rememberActions()
     var step by rememberSaveable { mutableIntStateOf(0) }
@@ -55,7 +57,10 @@ fun SetupScreen(onDone: (hurting: List<OldInjury>) -> Unit) {
         },
     ) {
         when (step) {
-            0 -> AboutYouForm(d)
+            0 -> {
+                AboutYouForm(d)
+                BackupImport(onImported = onRestored) { open -> LinkButton("Moving phones? Restore from a backup", onClick = open) }
+            }
             1 -> GoalForm(d)
             2 -> WeekForm(d, onNotificationsWanted = askNotifications)
             3 -> GymForm(d.equipment)

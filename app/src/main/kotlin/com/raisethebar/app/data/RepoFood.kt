@@ -52,9 +52,9 @@ data class FoodDay(
     val weighInsThisWeek: Int,
 )
 
-private const val MAX_QTY = 20.0
-private const val MAX_MEAL_KCAL = 5000.0
-private const val MAX_MEAL_PROTEIN_G = 300.0
+internal const val MAX_QTY = 20.0
+internal const val MAX_MEAL_KCAL = 5000.0
+internal const val MAX_MEAL_PROTEIN_G = 300.0
 
 fun FoodEntity.toModel() = Food(id, name, shortName ?: name, unit, kcal, proteinG, dietType, cooked, category)
 

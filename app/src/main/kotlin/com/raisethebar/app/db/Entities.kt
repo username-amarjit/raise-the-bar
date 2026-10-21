@@ -1,3 +1,5 @@
+@file:UseSerializers(LocalDateSerializer::class, OffsetDateTimeSerializer::class)
+
 package com.raisethebar.app.db
 
 import androidx.room.ColumnInfo
@@ -5,9 +7,13 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import com.raisethebar.engine.LocalDateSerializer
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.UseSerializers
 import java.time.LocalDate
 import java.time.OffsetDateTime
 
+@Serializable
 @Entity(tableName = "profile")
 data class ProfileEntity(
     @PrimaryKey val id: Int = 1,
@@ -28,6 +34,7 @@ data class ProfileEntity(
     @ColumnInfo(name = "hide_in_switcher", defaultValue = "0") val hideInSwitcher: Boolean = false,
 )
 
+@Serializable
 @Entity(tableName = "schedule")
 data class ScheduleEntity(
     @PrimaryKey val weekday: Int,
@@ -35,6 +42,7 @@ data class ScheduleEntity(
     val time: String,
 )
 
+@Serializable
 @Entity(tableName = "plan")
 data class PlanEntity(
     @PrimaryKey val id: Int = 1,
@@ -44,6 +52,7 @@ data class PlanEntity(
     val previous: String?,
 )
 
+@Serializable
 @Entity(tableName = "equipment")
 data class EquipmentEntity(
     @PrimaryKey val id: String,
@@ -67,6 +76,7 @@ data class EquipmentEntity(
     val note: String? = null,
 )
 
+@Serializable
 @Entity(tableName = "exercise")
 data class ExerciseEntity(
     @PrimaryKey val id: String,
@@ -97,6 +107,7 @@ data class ExerciseEntity(
     @ColumnInfo(name = "source_id") val sourceId: String? = null,
 )
 
+@Serializable
 @Entity(tableName = "program_day")
 data class ProgramDayEntity(
     @PrimaryKey val id: String,
@@ -108,6 +119,7 @@ data class ProgramDayEntity(
     @ColumnInfo(name = "day_type", defaultValue = "push") val dayType: String = "push",
 )
 
+@Serializable
 @Entity(
     tableName = "slot",
     foreignKeys = [
@@ -132,6 +144,7 @@ data class SlotEntity(
     @ColumnInfo(name = "promoted_exercise_id") val promotedExerciseId: String? = null,
 )
 
+@Serializable
 @Entity(
     tableName = "estimate",
     foreignKeys = [
@@ -150,6 +163,7 @@ data class EstimateEntity(
     @ColumnInfo(name = "hold_offset_s", defaultValue = "0") val holdOffsetS: Int = 0,
 )
 
+@Serializable
 @Entity(tableName = "session", indices = [Index("local_date")])
 data class SessionEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
@@ -168,6 +182,7 @@ data class SessionEntity(
     @ColumnInfo(defaultValue = "0") val abandoned: Boolean = false,
 )
 
+@Serializable
 @Entity(
     tableName = "set_log",
     foreignKeys = [
@@ -198,6 +213,7 @@ data class SetLogEntity(
     @ColumnInfo(name = "target_left") val targetLeft: Int? = null,
 )
 
+@Serializable
 @Entity(tableName = "day_log")
 data class DayLogEntity(
     @PrimaryKey @ColumnInfo(name = "local_date") val localDate: LocalDate,
@@ -209,6 +225,7 @@ data class DayLogEntity(
     @ColumnInfo(name = "later_time") val laterTime: String? = null,
 )
 
+@Serializable
 @Entity(tableName = "absence", indices = [Index("start"), Index("end")])
 data class AbsenceEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
@@ -223,6 +240,7 @@ data class AbsenceEntity(
     @ColumnInfo(name = "counts_as_skip", defaultValue = "0") val countsAsSkip: Boolean = false,
 )
 
+@Serializable
 @Entity(tableName = "makeup")
 data class MakeupEntity(
     @PrimaryKey val id: Int = 1,
@@ -233,6 +251,7 @@ data class MakeupEntity(
     @ColumnInfo(name = "updated_at") val updatedAt: OffsetDateTime,
 )
 
+@Serializable
 @Entity(tableName = "injury")
 data class InjuryEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
@@ -255,6 +274,7 @@ data class InjuryEntity(
     @ColumnInfo(name = "resolved_at") val resolvedAt: OffsetDateTime? = null,
 )
 
+@Serializable
 @Entity(
     tableName = "pain_log",
     foreignKeys = [
@@ -274,6 +294,7 @@ data class PainLogEntity(
     @ColumnInfo(name = "set_log_id") val setLogId: Long? = null,
 )
 
+@Serializable
 @Entity(tableName = "food")
 data class FoodEntity(
     @PrimaryKey val id: String,
@@ -289,6 +310,7 @@ data class FoodEntity(
     @ColumnInfo(defaultValue = "0") val position: Int = 0,
 )
 
+@Serializable
 @Entity(tableName = "usual_meal")
 data class UsualMealEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
@@ -300,6 +322,7 @@ data class UsualMealEntity(
     @ColumnInfo(defaultValue = "0") val seeded: Boolean = false,
 )
 
+@Serializable
 @Entity(tableName = "food_log", indices = [Index("local_date")])
 data class FoodLogEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
@@ -317,6 +340,7 @@ data class FoodLogEntity(
     @ColumnInfo(name = "logged_at") val loggedAt: OffsetDateTime? = null,
 )
 
+@Serializable
 @Entity(tableName = "body_log")
 data class BodyLogEntity(
     @PrimaryKey @ColumnInfo(name = "local_date") val localDate: LocalDate,
@@ -324,6 +348,7 @@ data class BodyLogEntity(
 )
 
 /** Key/value store for schema_version, last_evaluated_date, install_date and similar markers. */
+@Serializable
 @Entity(tableName = "meta")
 data class MetaEntity(
     @PrimaryKey val key: String,

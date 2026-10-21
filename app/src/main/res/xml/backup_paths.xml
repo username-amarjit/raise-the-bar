@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Only the export folder in the app's private cache can be shared (Settings, Export your data). -->
+<paths>
+    <cache-path
+        name="backup"
+        path="backup/" />
+</paths>

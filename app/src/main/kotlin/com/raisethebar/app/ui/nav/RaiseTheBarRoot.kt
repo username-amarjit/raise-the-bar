@@ -146,10 +146,13 @@ private fun AppNav(start: Any, snackbar: SnackbarHostState, checkinRequest: Muta
     ) { padding ->
         NavHost(nav, startDestination = start, modifier = Modifier.padding(padding).consumeWindowInsets(padding)) {
             composable<SetupRoute> {
-                SetupScreen(onDone = { hurting ->
-                    nav.navigate(TodayRoute) { popUpTo(SetupRoute) { inclusive = true } }
-                    if (hurting.isNotEmpty()) nav.navigate(InjuryRoute())
-                })
+                SetupScreen(
+                    onDone = { hurting ->
+                        nav.navigate(TodayRoute) { popUpTo(SetupRoute) { inclusive = true } }
+                        if (hurting.isNotEmpty()) nav.navigate(InjuryRoute())
+                    },
+                    onRestored = { nav.navigate(TodayRoute) { popUpTo(SetupRoute) { inclusive = true } } },
+                )
             }
             composable<TodayRoute> { TodayScreen(today) }
             composable<FoodRoute> { FoodScreen() }

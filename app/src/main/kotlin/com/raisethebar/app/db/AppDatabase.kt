@@ -56,6 +56,8 @@ abstract class AppDatabase : RoomDatabase() {
 
     abstract fun meta(): MetaDao
 
+    abstract fun backup(): BackupDao
+
     companion object {
         const val VERSION = 3
         const val NAME = "raise-the-bar.db"

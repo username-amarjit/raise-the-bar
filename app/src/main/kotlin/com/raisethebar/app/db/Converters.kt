@@ -2,11 +2,26 @@ package com.raisethebar.app.db
 
 import androidx.room.TypeConverter
 import com.raisethebar.engine.Time
+import kotlinx.serialization.KSerializer
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.builtins.serializer
+import kotlinx.serialization.descriptors.PrimitiveKind
+import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.Json
 import java.time.LocalDate
 import java.time.OffsetDateTime
+
+/** Timestamps in the export file use the same ISO text with offset as the database. */
+object OffsetDateTimeSerializer : KSerializer<OffsetDateTime> {
+    override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("OffsetDateTime", PrimitiveKind.STRING)
+
+    override fun serialize(encoder: Encoder, value: OffsetDateTime) = encoder.encodeString(Time.timestamp(value))
+
+    override fun deserialize(decoder: Decoder): OffsetDateTime = Time.parseTimestamp(decoder.decodeString())
+}
 
 /** Dates are stored as local YYYY-MM-DD text, timestamps as ISO text with offset, lists as JSON text. */
 class Converters {

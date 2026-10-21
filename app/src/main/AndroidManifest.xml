@@ -47,5 +47,15 @@
         <receiver
             android:name=".notify.RestReceiver"
             android:exported="false" />
+        <!-- Export (milestone 13): hands the backup file to the share sheet with a one-off read grant. -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.backup"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/backup_paths" />
+        </provider>
     </application>
 </manifest>

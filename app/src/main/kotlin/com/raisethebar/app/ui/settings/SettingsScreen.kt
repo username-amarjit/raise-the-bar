@@ -2,17 +2,23 @@ package com.raisethebar.app.ui.settings
 
 import androidx.compose.runtime.Composable
 import com.raisethebar.app.BuildConfig
+import com.raisethebar.app.data.updateProfile
 import com.raisethebar.app.ui.components.Body
 import com.raisethebar.app.ui.components.ListRow
 import com.raisethebar.app.ui.components.RtbCard
 import com.raisethebar.app.ui.components.ScreenFrame
 import com.raisethebar.app.ui.components.SectionLabel
 import com.raisethebar.app.ui.components.SubHeading
+import com.raisethebar.app.ui.components.SwitchRow
+import com.raisethebar.app.ui.rememberActions
+import com.raisethebar.app.ui.rememberLoad
 import com.raisethebar.app.ui.setup.EditSection
 import com.raisethebar.engine.SeedData
 
 @Composable
 fun SettingsScreen(onBack: () -> Unit, onAbout: () -> Unit, onEdit: (String) -> Unit = {}, onGym: () -> Unit = {}) {
+    val actions = rememberActions()
+    val hide = rememberLoad { profile()?.hideInSwitcher == true }
     ScreenFrame(title = "Settings", onBack = onBack) {
         SectionLabel("You and your plan")
         ListRow(name = "About you", meta = "Weight, height, age, diet and experience", onClick = { onEdit(EditSection.ABOUT) })
@@ -20,6 +26,15 @@ fun SettingsScreen(onBack: () -> Unit, onAbout: () -> Unit, onEdit: (String) -> 
         ListRow(name = "Your week", meta = "Training days, times and check-in notifications", onClick = { onEdit(EditSection.WEEK) })
         ListRow(name = "Your rules", meta = "Day-off cut-off and make-up mode", onClick = { onEdit(EditSection.RULES) })
         ListRow(name = "My Gym", meta = "Equipment, weights and what's broken", onClick = onGym)
+        SectionLabel("Your data")
+        ExportRow()
+        BackupImport { open -> ListRow(name = "Import a backup", meta = "Replaces everything here, after you confirm", onClick = open) }
+        SwitchRow(
+            "Hide in the app switcher",
+            hide == true,
+            { on -> actions.run { updateProfile { it.copy(hideInSwitcher = on) } } },
+            detail = "Shows a blank preview there and blocks screenshots",
+        )
         SectionLabel("The app")
         ListRow(name = "About", meta = "Credits and the general-guidance note", onClick = onAbout)
     }

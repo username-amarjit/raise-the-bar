@@ -89,3 +89,13 @@ The plan left these open, so the checklist decided them:
 63. A session's pain light is its worst rating for the injured area. Red steps back one phase at Finish. Green or amber move the phases only when the session included the affected exercise at injury loads. Amber holds without resetting the green count.
 64. The "usual morning" starts at the triage pain rating and becomes the lowest morning rating since. Anything worse steps back one phase. After 14 days still in phase 1 or 2, the app suggests a physio.
 65. Canteen oil is added per portion (45 kcal × quantity) of a cooked item. A usual meal stores its portions and a note in `items`; meals entered as totals get no canteen oil.
+66. Food quantities step by half a portion, up to 20 of one item. A usual meal entered by its totals is limited to 0–5000 kcal and 0–300 g protein.
+67. Targets follow the 7-day average once there is one (3 weigh-ins in 7 days), and the latest weigh-in before that. The weight they were set at is stored (`targets_basis_kg`); only a 2 kg move from it recalculates them, and the user is told the new numbers.
+
+### Export, import and privacy (milestone 13)
+
+68. **Export format.** One JSON file: `app`, `schema_version`, `exported_at`, and every table under `tables` with the database's own table and column names. It's written to a private cache folder (only the latest export is kept) and shared through a `FileProvider` with a one-off read grant.
+69. **Import checks first, then replaces everything at once.** Files from schema version 1 up to the app's own are accepted. The file is only ever parsed as data. Unknown keys, missing tables or fields, out-of-range values, broken references between tables, unreadable dates or times and unsafe image paths reject the whole file with a plain message. A valid file replaces every table in one transaction, so a failure leaves the old data untouched.
+70. After an import the bundled exercise library and food list are applied again, as after an app update, and any days since the export go through the normal midnight timeout.
+71. Import is also offered on the first setup screen ("Moving phones? Restore from a backup"), so a reinstall doesn't need setting up first.
+72. "Hide in the app switcher" uses `FLAG_SECURE`, which also blocks screenshots. It's off by default.
