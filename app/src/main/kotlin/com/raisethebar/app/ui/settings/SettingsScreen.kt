@@ -8,11 +8,18 @@ import com.raisethebar.app.ui.components.RtbCard
 import com.raisethebar.app.ui.components.ScreenFrame
 import com.raisethebar.app.ui.components.SectionLabel
 import com.raisethebar.app.ui.components.SubHeading
+import com.raisethebar.app.ui.setup.EditSection
 import com.raisethebar.engine.SeedData
 
 @Composable
-fun SettingsScreen(onBack: () -> Unit, onAbout: () -> Unit) {
+fun SettingsScreen(onBack: () -> Unit, onAbout: () -> Unit, onEdit: (String) -> Unit = {}, onGym: () -> Unit = {}) {
     ScreenFrame(title = "Settings", onBack = onBack) {
+        SectionLabel("You and your plan")
+        ListRow(name = "About you", meta = "Weight, height, age, diet and experience", onClick = { onEdit(EditSection.ABOUT) })
+        ListRow(name = "Your goal", meta = "Lean bulk or recomp, protein and calories", onClick = { onEdit(EditSection.GOAL) })
+        ListRow(name = "Your week", meta = "Training days, times and check-in notifications", onClick = { onEdit(EditSection.WEEK) })
+        ListRow(name = "Your rules", meta = "Day-off cut-off and make-up mode", onClick = { onEdit(EditSection.RULES) })
+        ListRow(name = "My Gym", meta = "Equipment, weights and what's broken", onClick = onGym)
         SectionLabel("The app")
         ListRow(name = "About", meta = "Credits and the general-guidance note", onClick = onAbout)
     }

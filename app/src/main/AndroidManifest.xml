@@ -10,6 +10,9 @@
         android:name="android.permission.ACCESS_NETWORK_STATE"
         tools:node="remove" />
 
+    <!-- Check-in notifications (milestone 8); asked for on the setup "Your week" step. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <!-- Health data stays out of device and cloud backups; export is the backup. -->
     <application
         android:name=".RaiseTheBarApp"

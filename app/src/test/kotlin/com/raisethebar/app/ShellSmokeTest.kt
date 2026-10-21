@@ -3,6 +3,7 @@ package com.raisethebar.app
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.v2.createComposeRule
+import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -20,15 +21,17 @@ class ShellSmokeTest {
 
     @Test
     fun opensInLightModeWithTheFourTabs() {
-        val repo = TestRepo.create()
+        val repo = TestRepo.createSetUp()
         compose.setContent { RtbTheme(darkTheme = false) { CompositionLocalProvider(LocalRepo provides repo) { RaiseTheBarRoot() } } }
+        compose.waitUntil(5_000) { compose.onAllNodesWithText("My Gym").fetchSemanticsNodes().isNotEmpty() }
         listOf("Food", "Progress", "My Gym").forEach { compose.onNodeWithText(it).assertIsDisplayed() }
     }
 
     @Test
     fun opensInDarkModeAndSwitchesTabs() {
-        val repo = TestRepo.create()
+        val repo = TestRepo.createSetUp()
         compose.setContent { RtbTheme(darkTheme = true) { CompositionLocalProvider(LocalRepo provides repo) { RaiseTheBarRoot() } } }
+        compose.waitUntil(5_000) { compose.onAllNodesWithText("Food").fetchSemanticsNodes().isNotEmpty() }
         compose.onNodeWithText("Food").performClick()
         compose.onNodeWithText("Protein", substring = true).assertIsDisplayed()
     }
