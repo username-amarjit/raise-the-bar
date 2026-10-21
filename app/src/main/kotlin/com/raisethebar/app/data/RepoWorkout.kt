@@ -269,9 +269,11 @@ suspend fun Repo.logSet(sessionId: Long, input: SetInput) =
     }
 
 private suspend fun Repo.finishLog(view: SessionView, state: SessionState, pe: PlannedExercise, now: java.time.OffsetDateTime, sessionId: Long) {
-    var st = state.copy(restEndsAt = Time.timestamp(now.plusSeconds(pe.restS.toLong())))
+    val restEnds = now.plusSeconds(pe.restS.toLong())
+    var st = state.copy(restEndsAt = Time.timestamp(restEnds))
     st = advance(st, sessionId)
     db.session().update(view.session.copy(state = encodeState(st)))
+    notifier.scheduleRestEnd(restEnds)
 }
 
 private fun rampFinished(st: SessionState, pe: PlannedExercise, weight: Double, view: SessionView, last: SetResult): SessionState {
@@ -320,6 +322,7 @@ suspend fun Repo.clearRest(sessionId: Long) =
         val s = db.session().get(sessionId) ?: return@write
         val st = decodeState(s.state) ?: return@write
         db.session().update(s.copy(state = encodeState(st.copy(restEndsAt = null))))
+        notifier.cancelRestEnd()
     }
 
 /** "Machine busy?": use the next backup for today only. */
@@ -372,6 +375,7 @@ suspend fun Repo.discardSession(sessionId: Long) =
     write {
         val s = db.session().get(sessionId) ?: return@write
         if (s.completedAt == null) db.session().update(s.copy(abandoned = true))
+        notifier.cancelRestEnd()
     }
 
 /**
@@ -385,6 +389,7 @@ suspend fun Repo.finishSession(sessionId: Long) =
         val st = decodeState(s.state) ?: return@write
         val now = time.now()
         db.session().update(s.copy(completedAt = now, state = encodeState(st.copy(restEndsAt = null))))
+        notifier.cancelRestEnd()
         val sets = db.setLog().forSession(sessionId)
         val logged =
             sets.map {

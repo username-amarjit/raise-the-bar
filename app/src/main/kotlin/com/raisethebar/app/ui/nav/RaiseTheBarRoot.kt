@@ -33,9 +33,11 @@ import androidx.navigation.toRoute
 import com.raisethebar.app.data.planForToday
 import com.raisethebar.app.data.startSession
 import com.raisethebar.app.ui.LocalSnackbar
+import com.raisethebar.app.ui.checkin.CheckinScreen
 import com.raisethebar.app.ui.exercise.ExerciseScreen
 import com.raisethebar.app.ui.gym.EquipmentScreen
 import com.raisethebar.app.ui.gym.GymScreen
+import com.raisethebar.app.ui.progress.ProgressScreen
 import com.raisethebar.app.ui.rememberActions
 import com.raisethebar.app.ui.rememberLoad
 import com.raisethebar.app.ui.settings.AboutScreen
@@ -46,6 +48,7 @@ import com.raisethebar.app.ui.setup.SetupScreen
 import com.raisethebar.app.ui.theme.Rtb
 import com.raisethebar.app.ui.today.TodayActions
 import com.raisethebar.app.ui.today.TodayScreen
+import com.raisethebar.app.ui.workout.SessionScreen
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
@@ -103,6 +106,10 @@ private fun AppNav(start: Any, snackbar: SnackbarHostState, checkinRequest: Muta
     val entry by nav.currentBackStackEntryAsState()
     val currentTab = entry?.destination.tab()
     val requested = checkinRequest.value
+    LaunchedEffect(Unit) {
+        // A workout left open (app closed or killed) resumes exactly where it was.
+        if (start == TodayRoute && requested == null) actions.repo.db.session().open()?.let { nav.navigate(SessionRoute(it.id)) }
+    }
     LaunchedEffect(requested, entry?.destination?.route) {
         if (requested != null && entry != null && entry?.destination?.hasRoute<SetupRoute>() != true) {
             checkinRequest.value = null
@@ -143,7 +150,7 @@ private fun AppNav(start: Any, snackbar: SnackbarHostState, checkinRequest: Muta
             }
             composable<TodayRoute> { TodayScreen(today) }
             composable<FoodRoute> { PendingScreen("Food", "Protein, quick portions and your usual meals arrive in milestone 12.") }
-            composable<ProgressRoute> { PendingScreen("Progress", "Session history and the skip screen arrive in milestones 8 and 13.") }
+            composable<ProgressRoute> { ProgressScreen(onInjury = { nav.navigate(InjuryRoute()) }) }
             composable<GymRoute> { GymScreen(onItem = { id -> nav.navigate(EquipmentRoute(id)) }) }
             composable<ExerciseRoute> { e ->
                 val r = e.toRoute<ExerciseRoute>()
@@ -159,10 +166,30 @@ private fun AppNav(start: Any, snackbar: SnackbarHostState, checkinRequest: Muta
             }
             composable<AboutRoute> { AboutScreen(onBack = { nav.popBackStack() }) }
             composable<EditRoute> { e -> EditScreen(e.toRoute<EditRoute>().section, onBack = { nav.popBackStack() }) }
-            composable<SessionRoute> { PendingScreen("Workout", "The workout log arrives in milestone 7.") }
+            composable<SessionRoute> { e ->
+                SessionScreen(
+                    e.toRoute<SessionRoute>().id,
+                    onClose = { nav.popBackStack() },
+                    onExercise = { id -> nav.navigate(ExerciseRoute(id)) },
+                    onSomethingHurts = { sid -> nav.navigate(InjuryRoute(fromSession = sid)) },
+                )
+            }
             composable<InjuryRoute> { PendingScreen("Something hurts", "Injury mode arrives in milestone 11.") }
             composable<PlanChangesRoute> { PendingScreen("Plan changes", "Day off and away mode arrive in milestone 10.") }
-            composable<CheckinRoute> { PendingScreen("Check-in", "Check-ins arrive in milestone 8.") }
+            composable<CheckinRoute> { e ->
+                CheckinScreen(
+                    e.toRoute<CheckinRoute>().date,
+                    onBack = { nav.popBackStack() },
+                    onStart = { kind ->
+                        actions.run {
+                            val plan = planForToday(kind) ?: return@run
+                            val id = startSession(plan)
+                            nav.navigate(SessionRoute(id)) { popUpTo<CheckinRoute> { inclusive = true } }
+                        }
+                    },
+                    onInjured = { date -> nav.navigate(InjuryRoute(date = date)) { popUpTo<CheckinRoute> { inclusive = true } } },
+                )
+            }
             composable<EquipmentRoute> { e ->
                 EquipmentScreen(e.toRoute<EquipmentRoute>().id, onBack = { nav.popBackStack() }, onExercise = { id ->
                     nav.navigate(ExerciseRoute(id))

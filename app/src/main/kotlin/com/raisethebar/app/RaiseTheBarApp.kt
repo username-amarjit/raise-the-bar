@@ -7,6 +7,7 @@ import com.raisethebar.app.data.Repo
 import com.raisethebar.app.data.Seeder
 import com.raisethebar.app.data.evaluateDays
 import com.raisethebar.app.db.AppDatabase
+import com.raisethebar.app.notify.AndroidNotifier
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -30,5 +31,5 @@ class RaiseTheBarApp : Application() {
             repo.changed()
         }
 
-    private fun notifier(): Notifier = Notifier.NONE
+    private fun notifier(): Notifier = AndroidNotifier(this)
 }

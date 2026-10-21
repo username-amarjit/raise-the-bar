@@ -37,6 +37,11 @@ interface Notifier {
 
     fun cancelCheckin(date: LocalDate)
 
+    /** Buzzes when the rest timer reaches zero, even with the screen locked. */
+    fun scheduleRestEnd(at: java.time.OffsetDateTime) = Unit
+
+    fun cancelRestEnd() = Unit
+
     companion object {
         val NONE =
             object : Notifier {
