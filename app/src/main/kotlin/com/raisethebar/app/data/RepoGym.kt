@@ -66,6 +66,8 @@ data class ExercisePage(
     val caution: String?,
     val blockReason: String?,
     val rules: InjuryRules,
+    /** Why each ranked option can't be used today (null when it can). */
+    val optionBlocks: Map<String, String?> = emptyMap(),
 )
 
 suspend fun Repo.exercisePage(exerciseId: String, slotId: String?): ExercisePage? {
@@ -91,14 +93,23 @@ suspend fun Repo.exercisePage(exerciseId: String, slotId: String?): ExercisePage
         ctx.injuries
             .firstOrNull { (it.status == InjuryStatus.WATCH || it.isActive) && Injuries.usesArea(ex, it, rules) }
             ?.let { "Careful with your ${Injuries.areaName(it, rules).lowercase()}: stop if it hurts" }
+    val ranked = slot?.ranked?.mapNotNull { lib[it] }.orEmpty()
     return ExercisePage(
         exercise = ex,
         day = day,
         slot = slot,
-        ranked = slot?.ranked?.mapNotNull { lib[it] }.orEmpty(),
+        ranked = ranked,
         outgrown = outgrown,
         caution = caution,
         blockReason = Selection.blockingEquipment(ex, ctx),
         rules = rules,
+        optionBlocks =
+            ranked.associate { o ->
+                o.id to
+                    (
+                        Selection.blockingEquipment(o, ctx)
+                            ?: Selection.blockingInjury(o, ctx)?.let { "Out while your ${Injuries.areaName(it, rules).lowercase()} heals" }
+                    )
+            },
     )
 }

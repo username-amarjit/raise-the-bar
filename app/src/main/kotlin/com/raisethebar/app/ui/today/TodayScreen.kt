@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLocale
 import androidx.compose.ui.unit.dp
 import com.raisethebar.app.ui.components.DayTag
+import com.raisethebar.app.ui.components.LinkButton
 import com.raisethebar.app.ui.components.PrimaryButton
 import com.raisethebar.app.ui.components.RtbCard
 import com.raisethebar.app.ui.components.ScreenTitle
@@ -22,9 +23,9 @@ import com.raisethebar.app.ui.theme.Rtb
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
-/** Milestone 0 placeholder for the Today screen. */
+/** Placeholder for the Today screen until milestone 4. */
 @Composable
-fun TodayScreen() {
+fun TodayScreen(onSettings: () -> Unit = {}) {
     val locale = LocalLocale.current.platformLocale
     val date = LocalDate.now().format(DateTimeFormatter.ofPattern("EEEE d MMMM", locale))
     Column(
@@ -45,5 +46,6 @@ fun TodayScreen() {
             )
         }
         PrimaryButton(text = "Start workout", onClick = {}, enabled = false)
+        LinkButton("Settings", onClick = onSettings)
     }
 }
