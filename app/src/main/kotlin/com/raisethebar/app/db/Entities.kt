@@ -62,6 +62,9 @@ data class EquipmentEntity(
     // v2: display order, and the last date the app asked "Is it fixed yet?".
     @ColumnInfo(defaultValue = "0") val position: Int = 0,
     @ColumnInfo(name = "fixed_asked_on") val fixedAskedOn: LocalDate? = null,
+    // v3: the checklist group it is shown under, and a short note.
+    @ColumnInfo(defaultValue = "") val section: String = "",
+    val note: String? = null,
 )
 
 @Entity(tableName = "exercise")
@@ -89,6 +92,9 @@ data class ExerciseEntity(
     @ColumnInfo(name = "secondary_muscles", defaultValue = "[]") val secondaryMuscles: List<String> = emptyList(),
     @ColumnInfo(name = "body_region", defaultValue = "upper") val bodyRegion: String = "upper",
     @ColumnInfo(defaultValue = "0") val assisted: Boolean = false,
+    // v3: how the exercise is loaded, and the free-exercise-db record it came from.
+    @ColumnInfo(name = "load_kind", defaultValue = "none") val loadKind: String = "none",
+    @ColumnInfo(name = "source_id") val sourceId: String? = null,
 )
 
 @Entity(tableName = "program_day")

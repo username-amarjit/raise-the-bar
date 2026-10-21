@@ -60,4 +60,16 @@ val MIGRATION_1_2 =
         }
     }
 
-val ALL_MIGRATIONS: Array<Migration> = arrayOf(MIGRATION_1_2)
+val MIGRATION_2_3 =
+    object : Migration(2, 3) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            listOf(
+                "ALTER TABLE exercise ADD COLUMN load_kind TEXT NOT NULL DEFAULT 'none'",
+                "ALTER TABLE exercise ADD COLUMN source_id TEXT",
+                "ALTER TABLE equipment ADD COLUMN section TEXT NOT NULL DEFAULT ''",
+                "ALTER TABLE equipment ADD COLUMN note TEXT",
+            ).forEach(db::execSQL)
+        }
+    }
+
+val ALL_MIGRATIONS: Array<Migration> = arrayOf(MIGRATION_1_2, MIGRATION_2_3)

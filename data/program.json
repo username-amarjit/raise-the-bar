@@ -1,0 +1,194 @@
+{
+  "rotation": ["push_a", "pull_a", "legs_a", "push_b", "pull_b", "legs_b"],
+  "rest_day_text": "Walk 8–10k steps and stretch for 10 minutes",
+  "weekly_targets": {
+    "chest": 15, "back": 18, "delts": 13, "biceps": 12, "triceps": 9,
+    "quads": 12, "hams_glutes": 12, "calves": 6, "core": 13
+  },
+  "home_for": { "push": "home_push", "pull": "home_pull", "legs": "home_legs" },
+  "away_templates": { "bodyweight": "away_bodyweight", "dumbbells": "away_dumbbells" },
+  "pre_trip": "pre_trip_gym",
+  "makeup_candidates": {
+    "chest": ["chest_press_machine", "incline_dumbbell_press", "cable_fly"],
+    "back": ["seated_cable_row", "lat_pulldown", "one_arm_dumbbell_row"],
+    "delts": ["dumbbell_lateral_raise", "reverse_pec_deck", "face_pull"],
+    "biceps": ["hammer_curl", "ez_bar_curl"],
+    "triceps": ["triceps_rope_pushdown", "dumbbell_overhead_triceps_extension"],
+    "quads": ["leg_press", "leg_extension"],
+    "hams_glutes": ["lying_leg_curl", "seated_leg_curl", "barbell_hip_thrust"],
+    "calves": ["standing_calf_raise", "seated_calf_raise"],
+    "core": ["cable_crunch", "pallof_press"]
+  },
+  "days": [
+    {
+      "id": "push_a", "name": "Push A", "focus": "Chest focus", "kind": "rotation", "day_type": "push",
+      "slots": [
+        { "id": "push_a_1", "position": 1, "sets": 3, "rep_low": 6, "rep_high": 8, "rest_s": 150,
+          "options": ["barbell_bench_press", "smith_bench_press", "dumbbell_bench_press", "chest_press_machine"] },
+        { "id": "push_a_2", "position": 2, "sets": 3, "rep_low": 8, "rep_high": 12, "rest_s": 120,
+          "options": ["incline_dumbbell_press", "incline_smith_press", "incline_press_machine"] },
+        { "id": "push_a_3", "position": 3, "sets": 3, "rep_low": 8, "rep_high": 12, "rest_s": 120,
+          "options": ["seated_dumbbell_shoulder_press", "shoulder_press_machine"] },
+        { "id": "push_a_4", "position": 4, "sets": 3, "rep_low": 12, "rep_high": 15, "rest_s": 90,
+          "options": ["cable_fly", "pec_deck", "dumbbell_fly"] },
+        { "id": "push_a_5", "position": 5, "sets": 3, "rep_low": 12, "rep_high": 15, "rest_s": 75,
+          "options": ["dumbbell_lateral_raise", "cable_lateral_raise", "lateral_raise_machine"] },
+        { "id": "push_a_6", "position": 6, "sets": 3, "rep_low": 10, "rep_high": 15, "rest_s": 75,
+          "options": ["triceps_rope_pushdown", "straight_bar_pushdown", "bench_dips"] }
+      ]
+    },
+    {
+      "id": "pull_a", "name": "Pull A", "focus": "Lats and width", "kind": "rotation", "day_type": "pull",
+      "slots": [
+        { "id": "pull_a_1", "position": 1, "sets": 3, "rep_low": 6, "rep_high": 10, "rest_s": 150,
+          "options": ["lat_pulldown", "pull_ups", "assisted_pull_up"] },
+        { "id": "pull_a_2", "position": 2, "sets": 3, "rep_low": 8, "rep_high": 12, "rest_s": 120,
+          "options": ["seated_cable_row", "chest_supported_row_machine", "chest_supported_dumbbell_row"] },
+        { "id": "pull_a_3", "position": 3, "sets": 3, "rep_low": 8, "rep_high": 12, "rest_s": 90,
+          "options": ["one_arm_dumbbell_row", "one_arm_cable_row", "chest_supported_row_machine"] },
+        { "id": "pull_a_4", "position": 4, "sets": 3, "rep_low": 12, "rep_high": 15, "rest_s": 75,
+          "options": ["face_pull", "reverse_pec_deck", "bent_over_rear_delt_raise"] },
+        { "id": "pull_a_5", "position": 5, "sets": 3, "rep_low": 8, "rep_high": 12, "rest_s": 90,
+          "options": ["ez_bar_curl", "barbell_curl", "dumbbell_curl", "cable_curl"] },
+        { "id": "pull_a_6", "position": 6, "sets": 3, "rep_low": 10, "rep_high": 12, "rest_s": 75,
+          "options": ["hammer_curl", "rope_cable_hammer_curl"] }
+      ]
+    },
+    {
+      "id": "legs_a", "name": "Legs A", "focus": "Quads, plus core", "kind": "rotation", "day_type": "legs",
+      "slots": [
+        { "id": "legs_a_1", "position": 1, "sets": 3, "rep_low": 6, "rep_high": 8, "rest_s": 150,
+          "options": ["barbell_back_squat", "smith_machine_squat", "goblet_squat"] },
+        { "id": "legs_a_2", "position": 2, "sets": 3, "rep_low": 10, "rep_high": 12, "rest_s": 120,
+          "options": ["leg_press", "hack_squat", "walking_lunges"] },
+        { "id": "legs_a_3", "position": 3, "sets": 3, "rep_low": 12, "rep_high": 15, "rest_s": 90,
+          "options": ["leg_extension", "step_ups", "slow_goblet_squat"] },
+        { "id": "legs_a_4", "position": 4, "sets": 3, "rep_low": 10, "rep_high": 12, "rest_s": 90,
+          "options": ["lying_leg_curl", "seated_leg_curl", "swiss_ball_leg_curl"] },
+        { "id": "legs_a_5", "position": 5, "sets": 3, "rep_low": 10, "rep_high": 15, "rest_s": 60,
+          "options": ["standing_calf_raise", "leg_press_calf_raise", "smith_calf_raise"] },
+        { "id": "legs_a_6", "position": 6, "sets": 3, "rep_low": 10, "rep_high": 15, "rest_s": 60,
+          "options": ["cable_crunch", "ab_crunch_machine", "decline_crunch"] },
+        { "id": "legs_a_7", "position": 7, "sets": 2, "sec_low": 30, "sec_high": 60, "rest_s": 60,
+          "options": ["plank", "dead_bug"] }
+      ]
+    },
+    {
+      "id": "push_b", "name": "Push B", "focus": "Shoulder focus", "kind": "rotation", "day_type": "push",
+      "slots": [
+        { "id": "push_b_1", "position": 1, "sets": 3, "rep_low": 6, "rep_high": 8, "rest_s": 150,
+          "options": ["barbell_overhead_press", "smith_overhead_press", "shoulder_press_machine", "seated_dumbbell_shoulder_press"] },
+        { "id": "push_b_2", "position": 2, "sets": 3, "rep_low": 8, "rep_high": 10, "rest_s": 120,
+          "options": ["incline_barbell_bench_press", "incline_smith_press", "incline_dumbbell_press", "incline_press_machine"] },
+        { "id": "push_b_3", "position": 3, "sets": 4, "rep_low": 12, "rep_high": 15, "rest_s": 75,
+          "options": ["cable_lateral_raise", "dumbbell_lateral_raise", "lateral_raise_machine"] },
+        { "id": "push_b_4", "position": 4, "sets": 3, "rep_low": 8, "rep_high": 12, "rest_s": 120,
+          "options": ["dips", "assisted_dip", "close_grip_bench_press", "close_grip_smith_press", "chest_press_machine"] },
+        { "id": "push_b_5", "position": 5, "sets": 3, "rep_low": 10, "rep_high": 12, "rest_s": 90,
+          "options": ["cable_overhead_triceps_extension", "dumbbell_overhead_triceps_extension", "ez_bar_skull_crusher"] },
+        { "id": "push_b_6", "position": 6, "sets": 3, "rep_low": 12, "rep_high": 15, "rest_s": 75,
+          "options": ["reverse_pec_deck", "face_pull", "bent_over_rear_delt_raise"] }
+      ]
+    },
+    {
+      "id": "pull_b", "name": "Pull B", "focus": "Back thickness and arms", "kind": "rotation", "day_type": "pull",
+      "slots": [
+        { "id": "pull_b_1", "position": 1, "sets": 3, "rep_low": 6, "rep_high": 8, "rest_s": 150,
+          "options": ["barbell_row", "t_bar_row", "chest_supported_row_machine"] },
+        { "id": "pull_b_2", "position": 2, "sets": 3, "rep_low": 8, "rep_high": 12, "rest_s": 120,
+          "options": ["close_grip_lat_pulldown", "neutral_grip_lat_pulldown", "chin_ups", "assisted_chin_ups"] },
+        { "id": "pull_b_3", "position": 3, "sets": 3, "rep_low": 10, "rep_high": 12, "rest_s": 90,
+          "options": ["chest_supported_row_machine", "chest_supported_dumbbell_row", "wide_grip_seated_cable_row"] },
+        { "id": "pull_b_4", "position": 4, "sets": 3, "rep_low": 10, "rep_high": 12, "rest_s": 90,
+          "options": ["incline_dumbbell_curl", "dumbbell_curl"] },
+        { "id": "pull_b_5", "position": 5, "sets": 3, "rep_low": 12, "rep_high": 15, "rest_s": 75,
+          "options": ["preacher_curl_machine", "ez_bar_preacher_curl", "cable_curl"] },
+        { "id": "pull_b_6", "position": 6, "sets": 3, "rep_low": 10, "rep_high": 15, "rest_s": 60,
+          "options": ["hanging_knee_raise", "captains_chair_knee_raise", "lying_leg_raise"] }
+      ]
+    },
+    {
+      "id": "legs_b", "name": "Legs B", "focus": "Hamstrings and glutes, plus core", "kind": "rotation", "day_type": "legs",
+      "slots": [
+        { "id": "legs_b_1", "position": 1, "sets": 3, "rep_low": 8, "rep_high": 10, "rest_s": 150,
+          "options": ["barbell_romanian_deadlift", "dumbbell_romanian_deadlift", "smith_romanian_deadlift"] },
+        { "id": "legs_b_2", "position": 2, "sets": 3, "rep_low": 8, "rep_high": 12, "rest_s": 120,
+          "options": ["dumbbell_bulgarian_split_squat", "walking_lunges", "smith_split_squat"] },
+        { "id": "legs_b_3", "position": 3, "sets": 3, "rep_low": 10, "rep_high": 12, "rest_s": 90,
+          "options": ["seated_leg_curl", "lying_leg_curl", "swiss_ball_leg_curl"] },
+        { "id": "legs_b_4", "position": 4, "sets": 3, "rep_low": 8, "rep_high": 12, "rest_s": 120,
+          "options": ["barbell_hip_thrust", "smith_hip_thrust", "hip_thrust_machine", "glute_bridge", "cable_pull_through"] },
+        { "id": "legs_b_5", "position": 5, "sets": 3, "rep_low": 12, "rep_high": 15, "rest_s": 60,
+          "options": ["seated_calf_raise", "leg_press_calf_raise"] },
+        { "id": "legs_b_6", "position": 6, "sets": 3, "rep_low": 10, "rep_high": 12, "rest_s": 60,
+          "options": ["pallof_press", "bird_dog"] },
+        { "id": "legs_b_7", "position": 7, "sets": 2, "sec_low": 30, "sec_high": 45, "rest_s": 60,
+          "options": ["side_plank", "suitcase_carry"] }
+      ]
+    },
+    {
+      "id": "home_push", "name": "Home push", "focus": "Gym closed, about 30 minutes", "kind": "home", "day_type": "push", "minutes": 30,
+      "slots": [
+        { "id": "home_push_1", "position": 1, "sets": 3, "stop_left": 2, "options": ["push_ups"], "note": "Raise your feet once 20 is easy" },
+        { "id": "home_push_2", "position": 2, "sets": 3, "rep_low": 8, "rep_high": 12, "options": ["pike_push_ups"] },
+        { "id": "home_push_3", "position": 3, "sets": 3, "rep_low": 10, "rep_high": 15, "options": ["chair_dips"] },
+        { "id": "home_push_4", "position": 4, "sets": 2, "sec_low": 45, "sec_high": 45, "options": ["plank"] }
+      ]
+    },
+    {
+      "id": "home_pull", "name": "Home pull", "focus": "Gym closed, about 30 minutes", "kind": "home", "day_type": "pull", "minutes": 30,
+      "slots": [
+        { "id": "home_pull_1", "position": 1, "sets": 3, "rep_low": 10, "rep_high": 15, "options": ["one_arm_backpack_row"], "note": "Load the backpack with books" },
+        { "id": "home_pull_2", "position": 2, "sets": 3, "rep_low": 12, "rep_high": 15, "options": ["backpack_curl"] },
+        { "id": "home_pull_3", "position": 3, "sets": 3, "rep_low": 12, "rep_high": 12, "options": ["y_t_raise"] },
+        { "id": "home_pull_4", "position": 4, "sets": 2, "sec_low": 30, "sec_high": 30, "options": ["superman_hold"] }
+      ]
+    },
+    {
+      "id": "home_legs", "name": "Home legs", "focus": "Gym closed, about 30 minutes", "kind": "home", "day_type": "legs", "minutes": 30,
+      "slots": [
+        { "id": "home_legs_1", "position": 1, "sets": 3, "rep_low": 10, "rep_high": 15, "options": ["backpack_bulgarian_split_squat"] },
+        { "id": "home_legs_2", "position": 2, "sets": 3, "rep_low": 10, "rep_high": 10, "options": ["one_leg_romanian_deadlift"] },
+        { "id": "home_legs_3", "position": 3, "sets": 3, "rep_low": 12, "rep_high": 12, "options": ["one_leg_glute_bridge"] },
+        { "id": "home_legs_4", "position": 4, "sets": 3, "rep_low": 15, "rep_high": 20, "options": ["step_calf_raise"] }
+      ]
+    },
+    {
+      "id": "away_bodyweight", "name": "Bodyweight full body", "focus": "Away, about 25 minutes", "kind": "away", "day_type": "full", "minutes": 25,
+      "slots": [
+        { "id": "away_bodyweight_1", "position": 1, "sets": 3, "stop_left": 2, "options": ["push_ups"] },
+        { "id": "away_bodyweight_2", "position": 2, "sets": 3, "rep_low": 10, "rep_high": 15, "options": ["one_arm_backpack_row"] },
+        { "id": "away_bodyweight_3", "position": 3, "sets": 3, "rep_low": 10, "rep_high": 15, "options": ["backpack_bulgarian_split_squat"] },
+        { "id": "away_bodyweight_4", "position": 4, "sets": 2, "rep_low": 10, "rep_high": 10, "options": ["one_leg_romanian_deadlift"] },
+        { "id": "away_bodyweight_5", "position": 5, "sets": 2, "sec_low": 45, "sec_high": 45, "options": ["plank"] }
+      ]
+    },
+    {
+      "id": "away_dumbbells", "name": "Dumbbell full body", "focus": "Away, about 30 minutes", "kind": "away", "day_type": "full", "minutes": 30,
+      "slots": [
+        { "id": "away_dumbbells_1", "position": 1, "sets": 3, "rep_low": 8, "rep_high": 12, "options": ["goblet_squat"] },
+        { "id": "away_dumbbells_2", "position": 2, "sets": 3, "rep_low": 8, "rep_high": 12, "options": ["dumbbell_floor_press"] },
+        { "id": "away_dumbbells_3", "position": 3, "sets": 3, "rep_low": 8, "rep_high": 12, "options": ["one_arm_dumbbell_row"] },
+        { "id": "away_dumbbells_4", "position": 4, "sets": 3, "rep_low": 8, "rep_high": 12, "options": ["dumbbell_romanian_deadlift"] },
+        { "id": "away_dumbbells_5", "position": 5, "sets": 2, "rep_low": 12, "rep_high": 15, "options": ["dumbbell_lateral_raise"] }
+      ]
+    },
+    {
+      "id": "pre_trip_gym", "name": "Gym full body", "focus": "Before a trip, about 55 minutes", "kind": "pre_trip", "day_type": "full", "minutes": 55,
+      "slots": [
+        { "id": "pre_trip_gym_1", "position": 1, "sets": 3, "rep_low": 6, "rep_high": 10, "rest_s": 150,
+          "options": ["barbell_back_squat", "leg_press", "smith_machine_squat", "hack_squat", "goblet_squat"] },
+        { "id": "pre_trip_gym_2", "position": 2, "sets": 3, "rep_low": 6, "rep_high": 8, "rest_s": 150,
+          "options": ["barbell_bench_press", "smith_bench_press", "dumbbell_bench_press", "chest_press_machine"] },
+        { "id": "pre_trip_gym_3", "position": 3, "sets": 3, "rep_low": 8, "rep_high": 12, "rest_s": 120,
+          "options": ["seated_cable_row", "chest_supported_row_machine", "chest_supported_dumbbell_row"] },
+        { "id": "pre_trip_gym_4", "position": 4, "sets": 3, "rep_low": 8, "rep_high": 10, "rest_s": 150,
+          "options": ["barbell_romanian_deadlift", "dumbbell_romanian_deadlift", "smith_romanian_deadlift"] },
+        { "id": "pre_trip_gym_5", "position": 5, "sets": 2, "rep_low": 8, "rep_high": 12, "rest_s": 120,
+          "options": ["lat_pulldown", "pull_ups", "assisted_pull_up"] },
+        { "id": "pre_trip_gym_6", "position": 6, "sets": 2, "rep_low": 12, "rep_high": 15, "rest_s": 75,
+          "options": ["dumbbell_lateral_raise", "cable_lateral_raise", "lateral_raise_machine"] }
+      ]
+    }
+  ]
+}

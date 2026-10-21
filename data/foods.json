@@ -1,0 +1,40 @@
+{
+  "foods": [
+    { "id": "roti", "name": "Roti or chapati, medium, no ghee", "short_name": "Roti", "unit": "1", "kcal": 100, "protein_g": 3, "diet_type": "veg", "cooked": false, "category": "staple" },
+    { "id": "aloo_paratha", "name": "Aloo paratha with ghee", "short_name": "Paratha", "unit": "1", "kcal": 280, "protein_g": 6, "diet_type": "veg", "cooked": true, "category": "staple" },
+    { "id": "rice", "name": "Rice, cooked", "short_name": "Rice", "unit": "1 katori", "kcal": 200, "protein_g": 4, "diet_type": "veg", "cooked": false, "category": "staple" },
+    { "id": "dal_tadka", "name": "Dal tadka", "short_name": "Dal", "unit": "1 katori", "kcal": 150, "protein_g": 7, "diet_type": "veg", "cooked": true, "category": "staple" },
+    { "id": "rajma_chole", "name": "Rajma or chole", "short_name": "Rajma or chole", "unit": "1 katori", "kcal": 220, "protein_g": 9, "diet_type": "veg", "cooked": true, "category": "staple" },
+    { "id": "dry_veg_sabzi", "name": "Dry veg sabzi", "short_name": "Sabzi", "unit": "1 katori", "kcal": 120, "protein_g": 3, "diet_type": "veg", "cooked": true, "category": "staple" },
+    { "id": "idli", "name": "Idli", "short_name": "Idli", "unit": "2", "kcal": 120, "protein_g": 4, "diet_type": "veg", "cooked": false, "category": "staple" },
+    { "id": "dosa_sambar", "name": "Plain dosa with sambar", "short_name": "Dosa", "unit": "1 dosa and 1 katori", "kcal": 280, "protein_g": 9, "diet_type": "veg", "cooked": true, "category": "staple" },
+    { "id": "poha_upma", "name": "Poha or upma", "short_name": "Poha or upma", "unit": "1 plate", "kcal": 250, "protein_g": 5, "diet_type": "veg", "cooked": true, "category": "staple" },
+    { "id": "banana", "name": "Banana", "short_name": "Banana", "unit": "1 medium", "kcal": 105, "protein_g": 1, "diet_type": "veg", "cooked": false, "category": "staple" },
+    { "id": "paneer", "name": "Paneer", "short_name": "Paneer", "unit": "100 g (8-10 cubes)", "kcal": 280, "protein_g": 18, "diet_type": "veg", "cooked": false, "category": "protein" },
+    { "id": "paneer_sabzi", "name": "Paneer sabzi (bhurji, palak paneer)", "short_name": "Paneer sabzi", "unit": "1 katori", "kcal": 270, "protein_g": 13, "diet_type": "veg", "cooked": true, "category": "protein" },
+    { "id": "curd", "name": "Curd (dahi)", "short_name": "Curd", "unit": "1 katori", "kcal": 100, "protein_g": 5, "diet_type": "veg", "cooked": false, "category": "protein" },
+    { "id": "hung_curd", "name": "Hung curd or Greek yogurt", "short_name": "Hung curd", "unit": "1 katori", "kcal": 140, "protein_g": 12, "diet_type": "veg", "cooked": false, "category": "protein" },
+    { "id": "toned_milk", "name": "Toned milk", "short_name": "Milk", "unit": "1 glass (250 ml)", "kcal": 150, "protein_g": 8, "diet_type": "veg", "cooked": false, "category": "protein" },
+    { "id": "whole_egg", "name": "Whole egg", "short_name": "Egg", "unit": "1", "kcal": 75, "protein_g": 6, "diet_type": "egg", "cooked": false, "category": "protein" },
+    { "id": "egg_whites", "name": "Egg whites", "short_name": "Egg whites", "unit": "3", "kcal": 50, "protein_g": 11, "diet_type": "egg", "cooked": false, "category": "protein" },
+    { "id": "soya_chunks", "name": "Soya chunks", "short_name": "Soya", "unit": "30 g dry (about 1 katori cooked)", "kcal": 105, "protein_g": 15, "diet_type": "veg", "cooked": true, "category": "protein" },
+    { "id": "chicken_breast", "name": "Chicken breast, cooked", "short_name": "Chicken", "unit": "palm-sized, about 100 g", "kcal": 165, "protein_g": 30, "diet_type": "non_veg", "cooked": false, "category": "protein" },
+    { "id": "chicken_curry", "name": "Chicken curry", "short_name": "Chicken curry", "unit": "1 katori", "kcal": 250, "protein_g": 20, "diet_type": "non_veg", "cooked": true, "category": "protein" },
+    { "id": "whey", "name": "Whey protein", "short_name": "Whey", "unit": "1 scoop (about 30 g)", "kcal": 120, "protein_g": 24, "diet_type": "veg", "cooked": false, "category": "protein" },
+    { "id": "roasted_chana", "name": "Roasted chana", "short_name": "Chana", "unit": "1 handful (30 g)", "kcal": 110, "protein_g": 6, "diet_type": "veg", "cooked": false, "category": "protein" },
+    { "id": "peanuts", "name": "Peanuts", "short_name": "Peanuts", "unit": "1 handful (30 g)", "kcal": 170, "protein_g": 7, "diet_type": "veg", "cooked": false, "category": "protein" },
+    { "id": "ghee_oil", "name": "Ghee or oil", "short_name": "Ghee or oil", "unit": "1 tsp", "kcal": 45, "protein_g": 0, "diet_type": "veg", "cooked": false, "category": "hidden" },
+    { "id": "chai", "name": "Chai with milk and sugar", "short_name": "Chai", "unit": "1 cup", "kcal": 90, "protein_g": 2, "diet_type": "veg", "cooked": false, "category": "hidden" },
+    { "id": "samosa", "name": "Samosa", "short_name": "Samosa", "unit": "1", "kcal": 250, "protein_g": 4, "diet_type": "veg", "cooked": false, "category": "hidden" },
+    { "id": "gulab_jamun", "name": "Gulab jamun", "short_name": "Gulab jamun", "unit": "1", "kcal": 150, "protein_g": 2, "diet_type": "veg", "cooked": false, "category": "hidden" }
+  ],
+  "usual_meals": [
+    { "name": "Office thali", "note": "2 roti, dal tadka, rice, dry veg sabzi and curd",
+      "items": [ { "food_id": "roti", "qty": 2 }, { "food_id": "dal_tadka", "qty": 1 }, { "food_id": "rice", "qty": 1 },
+                 { "food_id": "dry_veg_sabzi", "qty": 1 }, { "food_id": "curd", "qty": 1 } ] },
+    { "name": "Oats breakfast", "note": "40 g oats cooked in a glass of milk, 1 banana, 1 tbsp peanut butter",
+      "items": [], "kcal": 500, "protein_g": 18 },
+    { "name": "After-gym shake", "note": "1 scoop whey in water and 1 banana",
+      "items": [ { "food_id": "whey", "qty": 1 }, { "food_id": "banana", "qty": 1 } ] }
+  ]
+}

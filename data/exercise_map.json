@@ -1,0 +1,1350 @@
+[
+ {
+  "id": "ab_crunch_machine",
+  "name": "Ab crunch machine",
+  "matched_id": "Ab_Crunch_Machine",
+  "matched_name": "Ab Crunch Machine",
+  "match": "exact",
+  "name_similarity": 1.0,
+  "used_in": [
+   "legs_a_6#1"
+  ]
+ },
+ {
+  "id": "assisted_chin_ups",
+  "name": "Assisted chin-ups",
+  "matched_id": null,
+  "matched_name": null,
+  "match": "custom",
+  "name_similarity": 0.0,
+  "used_in": [
+   "pull_b_2#3"
+  ]
+ },
+ {
+  "id": "assisted_dip",
+  "name": "Assisted dip machine",
+  "matched_id": null,
+  "matched_name": null,
+  "match": "custom",
+  "name_similarity": 0.0,
+  "used_in": [
+   "push_b_4#1"
+  ]
+ },
+ {
+  "id": "assisted_pull_up",
+  "name": "Assisted pull-up machine",
+  "matched_id": null,
+  "matched_name": null,
+  "match": "custom",
+  "name_similarity": 0.0,
+  "used_in": [
+   "pull_a_1#2",
+   "pre_trip_gym_5#2"
+  ]
+ },
+ {
+  "id": "backpack_bulgarian_split_squat",
+  "name": "Bulgarian split squat with a backpack",
+  "matched_id": "Split_Squats",
+  "matched_name": "Split Squats",
+  "match": "curated",
+  "name_similarity": 0.45,
+  "used_in": [
+   "home_legs_1#0",
+   "away_bodyweight_3#0"
+  ]
+ },
+ {
+  "id": "backpack_curl",
+  "name": "Backpack curl",
+  "matched_id": null,
+  "matched_name": null,
+  "match": "custom",
+  "name_similarity": 0.0,
+  "used_in": [
+   "home_pull_2#0"
+  ]
+ },
+ {
+  "id": "barbell_back_squat",
+  "name": "Barbell back squat",
+  "matched_id": "Barbell_Squat",
+  "matched_name": "Barbell Squat",
+  "match": "curated",
+  "name_similarity": 0.84,
+  "used_in": [
+   "legs_a_1#0",
+   "pre_trip_gym_1#0"
+  ]
+ },
+ {
+  "id": "barbell_bench_press",
+  "name": "Barbell bench press",
+  "matched_id": "Barbell_Bench_Press_-_Medium_Grip",
+  "matched_name": "Barbell Bench Press - Medium Grip",
+  "match": "curated",
+  "name_similarity": 0.76,
+  "used_in": [
+   "push_a_1#0",
+   "pre_trip_gym_2#0"
+  ]
+ },
+ {
+  "id": "barbell_curl",
+  "name": "Barbell curl",
+  "matched_id": "Barbell_Curl",
+  "matched_name": "Barbell Curl",
+  "match": "exact",
+  "name_similarity": 1.0,
+  "used_in": [
+   "pull_a_5#1"
+  ]
+ },
+ {
+  "id": "barbell_hip_thrust",
+  "name": "Barbell hip thrust",
+  "matched_id": "Barbell_Hip_Thrust",
+  "matched_name": "Barbell Hip Thrust",
+  "match": "exact",
+  "name_similarity": 1.0,
+  "used_in": [
+   "legs_b_4#0",
+   "makeup:hams_glutes"
+  ]
+ },
+ {
+  "id": "barbell_overhead_press",
+  "name": "Barbell overhead press",
+  "matched_id": "Standing_Military_Press",
+  "matched_name": "Standing Military Press",
+  "match": "curated",
+  "name_similarity": 0.36,
+  "used_in": [
+   "push_b_1#0"
+  ]
+ },
+ {
+  "id": "barbell_romanian_deadlift",
+  "name": "Barbell Romanian deadlift",
+  "matched_id": "Romanian_Deadlift",
+  "matched_name": "Romanian Deadlift",
+  "match": "curated",
+  "name_similarity": 0.81,
+  "used_in": [
+   "legs_b_1#0",
+   "pre_trip_gym_4#0"
+  ]
+ },
+ {
+  "id": "barbell_row",
+  "name": "Barbell row",
+  "matched_id": "Bent_Over_Barbell_Row",
+  "matched_name": "Bent Over Barbell Row",
+  "match": "curated",
+  "name_similarity": 0.69,
+  "used_in": [
+   "pull_b_1#0"
+  ]
+ },
+ {
+  "id": "bench_dips",
+  "name": "Bench dips",
+  "matched_id": "Bench_Dips",
+  "matched_name": "Bench Dips",
+  "match": "exact",
+  "name_similarity": 1.0,
+  "used_in": [
+   "push_a_6#2"
+  ]
+ },
+ {
+  "id": "bent_over_rear_delt_raise",
+  "name": "Bent-over rear-delt raise",
+  "matched_id": "Seated_Bent-Over_Rear_Delt_Raise",
+  "matched_name": "Seated Bent-Over Rear Delt Raise",
+  "match": "curated",
+  "name_similarity": 0.88,
+  "used_in": [
+   "pull_a_4#2",
+   "push_b_6#2"
+  ]
+ },
+ {
+  "id": "bird_dog",
+  "name": "Bird dog",
+  "matched_id": null,
+  "matched_name": null,
+  "match": "custom",
+  "name_similarity": 0.0,
+  "used_in": [
+   "legs_b_6#1"
+  ]
+ },
+ {
+  "id": "box_squat",
+  "name": "Box squat",
+  "matched_id": "Box_Squat",
+  "matched_name": "Box Squat",
+  "match": "exact",
+  "name_similarity": 1.0,
+  "used_in": []
+ },
+ {
+  "id": "cable_crunch",
+  "name": "Cable crunch",
+  "matched_id": "Cable_Crunch",
+  "matched_name": "Cable Crunch",
+  "match": "exact",
+  "name_similarity": 1.0,
+  "used_in": [
+   "legs_a_6#0",
+   "makeup:core"
+  ]
+ },
+ {
+  "id": "cable_curl",
+  "name": "Cable curl",
+  "matched_id": "Standing_Biceps_Cable_Curl",
+  "matched_name": "Standing Biceps Cable Curl",
+  "match": "curated",
+  "name_similarity": 0.56,
+  "used_in": [
+   "pull_a_5#3",
+   "pull_b_5#2"
+  ]
+ },
+ {
+  "id": "cable_external_rotation",
+  "name": "Cable external rotation",
+  "matched_id": "External_Rotation_with_Cable",
+  "matched_name": "External Rotation with Cable",
+  "match": "curated",
+  "name_similarity": 0.67,
+  "used_in": []
+ },
+ {
+  "id": "cable_fly",
+  "name": "Cable fly",
+  "matched_id": "Cable_Crossover",
+  "matched_name": "Cable Crossover",
+  "match": "curated",
+  "name_similarity": 0.5,
+  "used_in": [
+   "push_a_4#0",
+   "makeup:chest"
+  ]
+ },
+ {
+  "id": "cable_lateral_raise",
+  "name": "Cable lateral raise",
+  "matched_id": "Standing_Low-Pulley_Deltoid_Raise",
+  "matched_name": "Standing Low-Pulley Deltoid Raise",
+  "match": "curated",
+  "name_similarity": 0.46,
+  "used_in": [
+   "push_a_5#1",
+   "push_b_3#0",
+   "pre_trip_gym_6#1"
+  ]
+ },
+ {
+  "id": "cable_overhead_triceps_extension",
+  "name": "Cable overhead triceps extension",
+  "matched_id": "Cable_Rope_Overhead_Triceps_Extension",
+  "matched_name": "Cable Rope Overhead Triceps Extension",
+  "match": "curated",
+  "name_similarity": 0.93,
+  "used_in": [
+   "push_b_5#0"
+  ]
+ },
+ {
+  "id": "cable_pull_through",
+  "name": "Cable pull-through",
+  "matched_id": "Pull_Through",
+  "matched_name": "Pull Through",
+  "match": "curated",
+  "name_similarity": 0.8,
+  "used_in": [
+   "legs_b_4#4"
+  ]
+ },
+ {
+  "id": "captains_chair_knee_raise",
+  "name": "Captain's chair knee raise",
+  "matched_id": "Knee_Hip_Raise_On_Parallel_Bars",
+  "matched_name": "Knee/Hip Raise On Parallel Bars",
+  "match": "curated",
+  "name_similarity": 0.35,
+  "used_in": [
+   "pull_b_6#1"
+  ]
+ },
+ {
+  "id": "chair_dips",
+  "name": "Chair dips",
+  "matched_id": "Bench_Dips",
+  "matched_name": "Bench Dips",
+  "match": "curated",
+  "name_similarity": 0.7,
+  "used_in": [
+   "home_push_3#0"
+  ]
+ },
+ {
+  "id": "chest_press_machine",
+  "name": "Chest press machine",
+  "matched_id": "Leverage_Chest_Press",
+  "matched_name": "Leverage Chest Press",
+  "match": "curated",
+  "name_similarity": 0.56,
+  "used_in": [
+   "push_a_1#3",
+   "push_b_4#4",
+   "pre_trip_gym_2#3",
+   "makeup:chest"
+  ]
+ },
+ {
+  "id": "chest_supported_dumbbell_row",
+  "name": "Chest-supported dumbbell row",
+  "matched_id": "Dumbbell_Incline_Row",
+  "matched_name": "Dumbbell Incline Row",
+  "match": "curated",
+  "name_similarity": 0.5,
+  "used_in": [
+   "pull_a_2#2",
+   "pull_b_3#1",
+   "pre_trip_gym_3#2"
+  ]
+ },
+ {
+  "id": "chest_supported_row_machine",
+  "name": "Chest-supported row machine",
+  "matched_id": "Leverage_Iso_Row",
+  "matched_name": "Leverage Iso Row",
+  "match": "curated",
+  "name_similarity": 0.33,
+  "used_in": [
+   "pull_a_2#1",
+   "pull_a_3#2",
+   "pull_b_1#2",
+   "pull_b_3#0",
+   "pre_trip_gym_3#1"
+  ]
+ },
+ {
+  "id": "chin_ups",
+  "name": "Chin-ups",
+  "matched_id": "Chin-Up",
+  "matched_name": "Chin-Up",
+  "match": "curated",
+  "name_similarity": 0.93,
+  "used_in": [
+   "pull_b_2#2"
+  ]
+ },
+ {
+  "id": "close_grip_bench_press",
+  "name": "Close-grip bench press",
+  "matched_id": "Close-Grip_Barbell_Bench_Press",
+  "matched_name": "Close-Grip Barbell Bench Press",
+  "match": "curated",
+  "name_similarity": 0.85,
+  "used_in": [
+   "push_b_4#2"
+  ]
+ },
+ {
+  "id": "close_grip_lat_pulldown",
+  "name": "Close-grip lat pulldown",
+  "matched_id": "Close-Grip_Front_Lat_Pulldown",
+  "matched_name": "Close-Grip Front Lat Pulldown",
+  "match": "curated",
+  "name_similarity": 0.88,
+  "used_in": [
+   "pull_b_2#0"
+  ]
+ },
+ {
+  "id": "close_grip_smith_press",
+  "name": "Close-grip Smith press",
+  "matched_id": "Smith_Machine_Close-Grip_Bench_Press",
+  "matched_name": "Smith Machine Close-Grip Bench Press",
+  "match": "curated",
+  "name_similarity": 0.62,
+  "used_in": [
+   "push_b_4#3"
+  ]
+ },
+ {
+  "id": "concentration_curl",
+  "name": "Concentration curl",
+  "matched_id": "Concentration_Curls",
+  "matched_name": "Concentration Curls",
+  "match": "curated",
+  "name_similarity": 0.97,
+  "used_in": []
+ },
+ {
+  "id": "curl_up",
+  "name": "Curl-up",
+  "matched_id": null,
+  "matched_name": null,
+  "match": "custom",
+  "name_similarity": 0.0,
+  "used_in": []
+ },
+ {
+  "id": "dead_bug",
+  "name": "Dead bug",
+  "matched_id": "Dead_Bug",
+  "matched_name": "Dead Bug",
+  "match": "exact",
+  "name_similarity": 1.0,
+  "used_in": [
+   "legs_a_7#1"
+  ]
+ },
+ {
+  "id": "decline_crunch",
+  "name": "Decline crunch",
+  "matched_id": "Decline_Crunch",
+  "matched_name": "Decline Crunch",
+  "match": "exact",
+  "name_similarity": 1.0,
+  "used_in": [
+   "legs_a_6#2"
+  ]
+ },
+ {
+  "id": "dips",
+  "name": "Dips",
+  "matched_id": "Dips_-_Chest_Version",
+  "matched_name": "Dips - Chest Version",
+  "match": "curated",
+  "name_similarity": 0.36,
+  "used_in": [
+   "push_b_4#0"
+  ]
+ },
+ {
+  "id": "dumbbell_bench_press",
+  "name": "Dumbbell bench press",
+  "matched_id": "Dumbbell_Bench_Press",
+  "matched_name": "Dumbbell Bench Press",
+  "match": "exact",
+  "name_similarity": 1.0,
+  "used_in": [
+   "push_a_1#2",
+   "pre_trip_gym_2#2"
+  ]
+ },
+ {
+  "id": "dumbbell_bulgarian_split_squat",
+  "name": "Dumbbell Bulgarian split squat",
+  "matched_id": "Split_Squat_with_Dumbbells",
+  "matched_name": "Split Squat with Dumbbells",
+  "match": "curated",
+  "name_similarity": 0.39,
+  "used_in": [
+   "legs_b_2#0"
+  ]
+ },
+ {
+  "id": "dumbbell_curl",
+  "name": "Dumbbell curl",
+  "matched_id": "Dumbbell_Bicep_Curl",
+  "matched_name": "Dumbbell Bicep Curl",
+  "match": "curated",
+  "name_similarity": 0.81,
+  "used_in": [
+   "pull_a_5#2",
+   "pull_b_4#1"
+  ]
+ },
+ {
+  "id": "dumbbell_floor_press",
+  "name": "Dumbbell bench or floor press",
+  "matched_id": "Dumbbell_Floor_Press",
+  "matched_name": "Dumbbell Floor Press",
+  "match": "curated",
+  "name_similarity": 0.82,
+  "used_in": [
+   "away_dumbbells_2#0"
+  ]
+ },
+ {
+  "id": "dumbbell_fly",
+  "name": "Dumbbell fly",
+  "matched_id": "Dumbbell_Flyes",
+  "matched_name": "Dumbbell Flyes",
+  "match": "curated",
+  "name_similarity": 0.92,
+  "used_in": [
+   "push_a_4#2"
+  ]
+ },
+ {
+  "id": "dumbbell_lateral_raise",
+  "name": "Dumbbell lateral raise",
+  "matched_id": "Side_Lateral_Raise",
+  "matched_name": "Side Lateral Raise",
+  "match": "curated",
+  "name_similarity": 0.8,
+  "used_in": [
+   "push_a_5#0",
+   "push_b_3#1",
+   "away_dumbbells_5#0",
+   "pre_trip_gym_6#0",
+   "makeup:delts"
+  ]
+ },
+ {
+  "id": "dumbbell_overhead_triceps_extension",
+  "name": "Dumbbell overhead triceps extension",
+  "matched_id": "Standing_Dumbbell_Triceps_Extension",
+  "matched_name": "Standing Dumbbell Triceps Extension",
+  "match": "curated",
+  "name_similarity": 0.74,
+  "used_in": [
+   "push_b_5#1",
+   "makeup:triceps"
+  ]
+ },
+ {
+  "id": "dumbbell_romanian_deadlift",
+  "name": "Dumbbell Romanian deadlift",
+  "matched_id": "Stiff-Legged_Dumbbell_Deadlift",
+  "matched_name": "Stiff-Legged Dumbbell Deadlift",
+  "match": "curated",
+  "name_similarity": 0.61,
+  "used_in": [
+   "legs_b_1#1",
+   "away_dumbbells_4#0",
+   "pre_trip_gym_4#1"
+  ]
+ },
+ {
+  "id": "ez_bar_curl",
+  "name": "EZ-bar curl",
+  "matched_id": "EZ-Bar_Curl",
+  "matched_name": "EZ-Bar Curl",
+  "match": "exact",
+  "name_similarity": 1.0,
+  "used_in": [
+   "pull_a_5#0",
+   "makeup:biceps"
+  ]
+ },
+ {
+  "id": "ez_bar_preacher_curl",
+  "name": "EZ-bar preacher curl",
+  "matched_id": "Preacher_Curl",
+  "matched_name": "Preacher Curl",
+  "match": "curated",
+  "name_similarity": 0.79,
+  "used_in": [
+   "pull_b_5#1"
+  ]
+ },
+ {
+  "id": "ez_bar_skull_crusher",
+  "name": "EZ-bar skull crusher",
+  "matched_id": "EZ-Bar_Skullcrusher",
+  "matched_name": "EZ-Bar Skullcrusher",
+  "match": "curated",
+  "name_similarity": 0.97,
+  "used_in": [
+   "push_b_5#2"
+  ]
+ },
+ {
+  "id": "face_pull",
+  "name": "Face pull with rope",
+  "matched_id": "Face_Pull",
+  "matched_name": "Face Pull",
+  "match": "curated",
+  "name_similarity": 0.64,
+  "used_in": [
+   "pull_a_4#0",
+   "push_b_6#1",
+   "makeup:delts"
+  ]
+ },
+ {
+  "id": "glute_bridge",
+  "name": "Glute bridge",
+  "matched_id": "Barbell_Glute_Bridge",
+  "matched_name": "Barbell Glute Bridge",
+  "match": "curated",
+  "name_similarity": 0.75,
+  "used_in": [
+   "legs_b_4#3"
+  ]
+ },
+ {
+  "id": "goblet_squat",
+  "name": "Goblet squat",
+  "matched_id": "Goblet_Squat",
+  "matched_name": "Goblet Squat",
+  "match": "exact",
+  "name_similarity": 1.0,
+  "used_in": [
+   "legs_a_1#2",
+   "away_dumbbells_1#0",
+   "pre_trip_gym_1#4"
+  ]
+ },
+ {
+  "id": "hack_squat",
+  "name": "Hack squat",
+  "matched_id": "Hack_Squat",
+  "matched_name": "Hack Squat",
+  "match": "exact",
+  "name_similarity": 1.0,
+  "used_in": [
+   "legs_a_2#1",
+   "pre_trip_gym_1#3"
+  ]
+ },
+ {
+  "id": "hammer_curl",
+  "name": "Hammer curl",
+  "matched_id": "Hammer_Curls",
+  "matched_name": "Hammer Curls",
+  "match": "curated",
+  "name_similarity": 0.96,
+  "used_in": [
+   "pull_a_6#0",
+   "makeup:biceps"
+  ]
+ },
+ {
+  "id": "hanging_knee_raise",
+  "name": "Hanging knee raise",
+  "matched_id": "Hanging_Leg_Raise",
+  "matched_name": "Hanging Leg Raise",
+  "match": "curated",
+  "name_similarity": 0.86,
+  "used_in": [
+   "pull_b_6#0"
+  ]
+ },
+ {
+  "id": "hip_thrust_machine",
+  "name": "Hip thrust machine",
+  "matched_id": null,
+  "matched_name": null,
+  "match": "custom",
+  "name_similarity": 0.0,
+  "used_in": [
+   "legs_b_4#2"
+  ]
+ },
+ {
+  "id": "incline_barbell_bench_press",
+  "name": "Incline barbell bench press",
+  "matched_id": "Barbell_Incline_Bench_Press_-_Medium_Grip",
+  "matched_name": "Barbell Incline Bench Press - Medium Grip",
+  "match": "curated",
+  "name_similarity": 0.58,
+  "used_in": [
+   "push_b_2#0"
+  ]
+ },
+ {
+  "id": "incline_dumbbell_curl",
+  "name": "Incline dumbbell curl",
+  "matched_id": "Incline_Dumbbell_Curl",
+  "matched_name": "Incline Dumbbell Curl",
+  "match": "exact",
+  "name_similarity": 1.0,
+  "used_in": [
+   "pull_b_4#0"
+  ]
+ },
+ {
+  "id": "incline_dumbbell_press",
+  "name": "Incline dumbbell press",
+  "matched_id": "Incline_Dumbbell_Press",
+  "matched_name": "Incline Dumbbell Press",
+  "match": "exact",
+  "name_similarity": 1.0,
+  "used_in": [
+   "push_a_2#0",
+   "push_b_2#2",
+   "makeup:chest"
+  ]
+ },
+ {
+  "id": "incline_press_machine",
+  "name": "Incline press machine",
+  "matched_id": "Leverage_Incline_Chest_Press",
+  "matched_name": "Leverage Incline Chest Press",
+  "match": "curated",
+  "name_similarity": 0.53,
+  "used_in": [
+   "push_a_2#2",
+   "push_b_2#3"
+  ]
+ },
+ {
+  "id": "incline_smith_press",
+  "name": "Incline Smith press",
+  "matched_id": "Smith_Machine_Incline_Bench_Press",
+  "matched_name": "Smith Machine Incline Bench Press",
+  "match": "curated",
+  "name_similarity": 0.58,
+  "used_in": [
+   "push_a_2#1",
+   "push_b_2#1"
+  ]
+ },
+ {
+  "id": "lat_pulldown",
+  "name": "Lat pulldown",
+  "matched_id": "Wide-Grip_Lat_Pulldown",
+  "matched_name": "Wide-Grip Lat Pulldown",
+  "match": "curated",
+  "name_similarity": 0.71,
+  "used_in": [
+   "pull_a_1#0",
+   "pre_trip_gym_5#0",
+   "makeup:back"
+  ]
+ },
+ {
+  "id": "lateral_raise_machine",
+  "name": "Lateral raise machine",
+  "matched_id": null,
+  "matched_name": null,
+  "match": "custom",
+  "name_similarity": 0.0,
+  "used_in": [
+   "push_a_5#2",
+   "push_b_3#2",
+   "pre_trip_gym_6#2"
+  ]
+ },
+ {
+  "id": "leg_extension",
+  "name": "Leg extension",
+  "matched_id": "Leg_Extensions",
+  "matched_name": "Leg Extensions",
+  "match": "curated",
+  "name_similarity": 0.96,
+  "used_in": [
+   "legs_a_3#0",
+   "makeup:quads"
+  ]
+ },
+ {
+  "id": "leg_press",
+  "name": "Leg press",
+  "matched_id": "Leg_Press",
+  "matched_name": "Leg Press",
+  "match": "exact",
+  "name_similarity": 1.0,
+  "used_in": [
+   "legs_a_2#0",
+   "pre_trip_gym_1#1",
+   "makeup:quads"
+  ]
+ },
+ {
+  "id": "leg_press_calf_raise",
+  "name": "Calf raise on the leg press",
+  "matched_id": "Calf_Press_On_The_Leg_Press_Machine",
+  "matched_name": "Calf Press On The Leg Press Machine",
+  "match": "curated",
+  "name_similarity": 0.77,
+  "used_in": [
+   "legs_a_5#1",
+   "legs_b_5#1"
+  ]
+ },
+ {
+  "id": "lying_leg_curl",
+  "name": "Lying leg curl",
+  "matched_id": "Lying_Leg_Curls",
+  "matched_name": "Lying Leg Curls",
+  "match": "curated",
+  "name_similarity": 0.97,
+  "used_in": [
+   "legs_a_4#0",
+   "legs_b_3#1",
+   "makeup:hams_glutes"
+  ]
+ },
+ {
+  "id": "lying_leg_raise",
+  "name": "Lying leg raise",
+  "matched_id": "Flat_Bench_Lying_Leg_Raise",
+  "matched_name": "Flat Bench Lying Leg Raise",
+  "match": "curated",
+  "name_similarity": 0.73,
+  "used_in": [
+   "pull_b_6#2"
+  ]
+ },
+ {
+  "id": "neutral_grip_dumbbell_press",
+  "name": "Neutral-grip dumbbell press",
+  "matched_id": "Dumbbell_Bench_Press_with_Neutral_Grip",
+  "matched_name": "Dumbbell Bench Press with Neutral Grip",
+  "match": "curated",
+  "name_similarity": 0.37,
+  "used_in": []
+ },
+ {
+  "id": "neutral_grip_lat_pulldown",
+  "name": "Neutral-grip lat pulldown",
+  "matched_id": "V-Bar_Pulldown",
+  "matched_name": "V-Bar Pulldown",
+  "match": "curated",
+  "name_similarity": 0.51,
+  "used_in": [
+   "pull_b_2#1"
+  ]
+ },
+ {
+  "id": "one_arm_backpack_row",
+  "name": "One-arm backpack row",
+  "matched_id": "One-Arm_Dumbbell_Row",
+  "matched_name": "One-Arm Dumbbell Row",
+  "match": "curated",
+  "name_similarity": 0.65,
+  "used_in": [
+   "home_pull_1#0",
+   "away_bodyweight_2#0"
+  ]
+ },
+ {
+  "id": "one_arm_cable_row",
+  "name": "One-arm cable row",
+  "matched_id": "Seated_One-arm_Cable_Pulley_Rows",
+  "matched_name": "Seated One-arm Cable Pulley Rows",
+  "match": "curated",
+  "name_similarity": 0.69,
+  "used_in": [
+   "pull_a_3#1"
+  ]
+ },
+ {
+  "id": "one_arm_dumbbell_bench_press",
+  "name": "One-arm dumbbell bench press",
+  "matched_id": "One_Arm_Dumbbell_Bench_Press",
+  "matched_name": "One Arm Dumbbell Bench Press",
+  "match": "exact",
+  "name_similarity": 1.0,
+  "used_in": []
+ },
+ {
+  "id": "one_arm_dumbbell_row",
+  "name": "One-arm dumbbell row",
+  "matched_id": "One-Arm_Dumbbell_Row",
+  "matched_name": "One-Arm Dumbbell Row",
+  "match": "exact",
+  "name_similarity": 1.0,
+  "used_in": [
+   "pull_a_3#0",
+   "away_dumbbells_3#0",
+   "makeup:back"
+  ]
+ },
+ {
+  "id": "one_arm_lat_pulldown",
+  "name": "One-arm lat pulldown",
+  "matched_id": "One_Arm_Lat_Pulldown",
+  "matched_name": "One Arm Lat Pulldown",
+  "match": "exact",
+  "name_similarity": 1.0,
+  "used_in": []
+ },
+ {
+  "id": "one_arm_pushdown",
+  "name": "One-arm cable pushdown",
+  "matched_id": null,
+  "matched_name": null,
+  "match": "custom",
+  "name_similarity": 0.0,
+  "used_in": []
+ },
+ {
+  "id": "one_leg_glute_bridge",
+  "name": "One-leg glute bridge",
+  "matched_id": "Single_Leg_Glute_Bridge",
+  "matched_name": "Single Leg Glute Bridge",
+  "match": "curated",
+  "name_similarity": 0.88,
+  "used_in": [
+   "home_legs_3#0"
+  ]
+ },
+ {
+  "id": "one_leg_romanian_deadlift",
+  "name": "One-leg Romanian deadlift",
+  "matched_id": null,
+  "matched_name": null,
+  "match": "custom",
+  "name_similarity": 0.0,
+  "used_in": [
+   "home_legs_2#0",
+   "away_bodyweight_4#0"
+  ]
+ },
+ {
+  "id": "pallof_press",
+  "name": "Pallof press",
+  "matched_id": "Pallof_Press",
+  "matched_name": "Pallof Press",
+  "match": "exact",
+  "name_similarity": 1.0,
+  "used_in": [
+   "legs_b_6#0",
+   "makeup:core"
+  ]
+ },
+ {
+  "id": "pec_deck",
+  "name": "Pec deck",
+  "matched_id": "Butterfly",
+  "matched_name": "Butterfly",
+  "match": "curated",
+  "name_similarity": 0.12,
+  "used_in": [
+   "push_a_4#1"
+  ]
+ },
+ {
+  "id": "pike_push_ups",
+  "name": "Pike push-ups",
+  "matched_id": null,
+  "matched_name": null,
+  "match": "custom",
+  "name_similarity": 0.0,
+  "used_in": [
+   "home_push_2#0"
+  ]
+ },
+ {
+  "id": "plank",
+  "name": "Plank",
+  "matched_id": "Plank",
+  "matched_name": "Plank",
+  "match": "exact",
+  "name_similarity": 1.0,
+  "used_in": [
+   "legs_a_7#0",
+   "home_push_4#0",
+   "away_bodyweight_5#0"
+  ]
+ },
+ {
+  "id": "preacher_curl_machine",
+  "name": "Preacher curl machine",
+  "matched_id": "Machine_Preacher_Curls",
+  "matched_name": "Machine Preacher Curls",
+  "match": "curated",
+  "name_similarity": 0.6,
+  "used_in": [
+   "pull_b_5#0"
+  ]
+ },
+ {
+  "id": "pull_ups",
+  "name": "Pull-ups",
+  "matched_id": "Pullups",
+  "matched_name": "Pullups",
+  "match": "curated",
+  "name_similarity": 0.93,
+  "used_in": [
+   "pull_a_1#1",
+   "pre_trip_gym_5#1"
+  ]
+ },
+ {
+  "id": "push_ups",
+  "name": "Push-ups",
+  "matched_id": "Pushups",
+  "matched_name": "Pushups",
+  "match": "curated",
+  "name_similarity": 0.93,
+  "used_in": [
+   "home_push_1#0",
+   "away_bodyweight_1#0"
+  ]
+ },
+ {
+  "id": "push_ups_on_handles",
+  "name": "Push-ups on fists or handles",
+  "matched_id": "Pushups",
+  "matched_name": "Pushups",
+  "match": "curated",
+  "name_similarity": 0.4,
+  "used_in": []
+ },
+ {
+  "id": "reverse_pec_deck",
+  "name": "Reverse pec deck",
+  "matched_id": "Reverse_Machine_Flyes",
+  "matched_name": "Reverse Machine Flyes",
+  "match": "curated",
+  "name_similarity": 0.59,
+  "used_in": [
+   "pull_a_4#1",
+   "push_b_6#0",
+   "makeup:delts"
+  ]
+ },
+ {
+  "id": "rope_cable_hammer_curl",
+  "name": "Rope cable hammer curl",
+  "matched_id": "Cable_Hammer_Curls_-_Rope_Attachment",
+  "matched_name": "Cable Hammer Curls - Rope Attachment",
+  "match": "curated",
+  "name_similarity": 0.61,
+  "used_in": [
+   "pull_a_6#1"
+  ]
+ },
+ {
+  "id": "seated_cable_row",
+  "name": "Seated cable row",
+  "matched_id": "Seated_Cable_Rows",
+  "matched_name": "Seated Cable Rows",
+  "match": "curated",
+  "name_similarity": 0.97,
+  "used_in": [
+   "pull_a_2#0",
+   "pre_trip_gym_3#0",
+   "makeup:back"
+  ]
+ },
+ {
+  "id": "seated_calf_raise",
+  "name": "Seated calf raise",
+  "matched_id": "Seated_Calf_Raise",
+  "matched_name": "Seated Calf Raise",
+  "match": "exact",
+  "name_similarity": 1.0,
+  "used_in": [
+   "legs_b_5#0",
+   "makeup:calves"
+  ]
+ },
+ {
+  "id": "seated_dumbbell_shoulder_press",
+  "name": "Seated dumbbell shoulder press",
+  "matched_id": "Seated_Dumbbell_Press",
+  "matched_name": "Seated Dumbbell Press",
+  "match": "curated",
+  "name_similarity": 0.82,
+  "used_in": [
+   "push_a_3#0",
+   "push_b_1#3"
+  ]
+ },
+ {
+  "id": "seated_leg_curl",
+  "name": "Seated leg curl",
+  "matched_id": "Seated_Leg_Curl",
+  "matched_name": "Seated Leg Curl",
+  "match": "exact",
+  "name_similarity": 1.0,
+  "used_in": [
+   "legs_a_4#1",
+   "legs_b_3#0",
+   "makeup:hams_glutes"
+  ]
+ },
+ {
+  "id": "shoulder_press_machine",
+  "name": "Shoulder press machine",
+  "matched_id": "Machine_Shoulder_Military_Press",
+  "matched_name": "Machine Shoulder (Military) Press",
+  "match": "curated",
+  "name_similarity": 0.53,
+  "used_in": [
+   "push_a_3#1",
+   "push_b_1#2"
+  ]
+ },
+ {
+  "id": "side_plank",
+  "name": "Side plank",
+  "matched_id": "Side_Bridge",
+  "matched_name": "Side Bridge",
+  "match": "curated",
+  "name_similarity": 0.48,
+  "used_in": [
+   "legs_b_7#0"
+  ]
+ },
+ {
+  "id": "single_leg_curl",
+  "name": "Single-leg lying leg curl",
+  "matched_id": "Lying_Leg_Curls",
+  "matched_name": "Lying Leg Curls",
+  "match": "curated",
+  "name_similarity": 0.7,
+  "used_in": []
+ },
+ {
+  "id": "single_leg_extension",
+  "name": "Single-leg extension",
+  "matched_id": "Single-Leg_Leg_Extension",
+  "matched_name": "Single-Leg Leg Extension",
+  "match": "curated",
+  "name_similarity": 0.91,
+  "used_in": []
+ },
+ {
+  "id": "single_leg_press",
+  "name": "Single-leg leg press",
+  "matched_id": "Leg_Press",
+  "matched_name": "Leg Press",
+  "match": "curated",
+  "name_similarity": 0.62,
+  "used_in": []
+ },
+ {
+  "id": "slow_goblet_squat",
+  "name": "Slow goblet squat",
+  "matched_id": "Goblet_Squat",
+  "matched_name": "Goblet Squat",
+  "match": "curated",
+  "name_similarity": 0.83,
+  "used_in": [
+   "legs_a_3#2"
+  ]
+ },
+ {
+  "id": "smith_bench_press",
+  "name": "Smith machine bench press",
+  "matched_id": "Smith_Machine_Bench_Press",
+  "matched_name": "Smith Machine Bench Press",
+  "match": "exact",
+  "name_similarity": 1.0,
+  "used_in": [
+   "push_a_1#1",
+   "pre_trip_gym_2#1"
+  ]
+ },
+ {
+  "id": "smith_calf_raise",
+  "name": "Smith calf raise",
+  "matched_id": "Smith_Machine_Calf_Raise",
+  "matched_name": "Smith Machine Calf Raise",
+  "match": "curated",
+  "name_similarity": 0.8,
+  "used_in": [
+   "legs_a_5#2"
+  ]
+ },
+ {
+  "id": "smith_hip_thrust",
+  "name": "Smith hip thrust",
+  "matched_id": "Barbell_Hip_Thrust",
+  "matched_name": "Barbell Hip Thrust",
+  "match": "curated",
+  "name_similarity": 0.65,
+  "used_in": [
+   "legs_b_4#1"
+  ]
+ },
+ {
+  "id": "smith_machine_squat",
+  "name": "Smith machine squat",
+  "matched_id": "Smith_Machine_Squat",
+  "matched_name": "Smith Machine Squat",
+  "match": "exact",
+  "name_similarity": 1.0,
+  "used_in": [
+   "legs_a_1#1",
+   "pre_trip_gym_1#2"
+  ]
+ },
+ {
+  "id": "smith_overhead_press",
+  "name": "Smith overhead press",
+  "matched_id": "Smith_Machine_Overhead_Shoulder_Press",
+  "matched_name": "Smith Machine Overhead Shoulder Press",
+  "match": "curated",
+  "name_similarity": 0.7,
+  "used_in": [
+   "push_b_1#1"
+  ]
+ },
+ {
+  "id": "smith_romanian_deadlift",
+  "name": "Smith Romanian deadlift",
+  "matched_id": "Smith_Machine_Stiff-Legged_Deadlift",
+  "matched_name": "Smith Machine Stiff-Legged Deadlift",
+  "match": "curated",
+  "name_similarity": 0.66,
+  "used_in": [
+   "legs_b_1#2",
+   "pre_trip_gym_4#2"
+  ]
+ },
+ {
+  "id": "smith_split_squat",
+  "name": "Smith split squat",
+  "matched_id": "Smith_Single-Leg_Split_Squat",
+  "matched_name": "Smith Single-Leg Split Squat",
+  "match": "curated",
+  "name_similarity": 0.76,
+  "used_in": [
+   "legs_b_2#2"
+  ]
+ },
+ {
+  "id": "standing_calf_raise",
+  "name": "Standing calf raise",
+  "matched_id": "Standing_Calf_Raises",
+  "matched_name": "Standing Calf Raises",
+  "match": "curated",
+  "name_similarity": 0.97,
+  "used_in": [
+   "legs_a_5#0",
+   "makeup:calves"
+  ]
+ },
+ {
+  "id": "step_calf_raise",
+  "name": "Calf raises on a step",
+  "matched_id": "Calf_Raise_On_A_Dumbbell",
+  "matched_name": "Calf Raise On A Dumbbell",
+  "match": "curated",
+  "name_similarity": 0.76,
+  "used_in": [
+   "home_legs_4#0"
+  ]
+ },
+ {
+  "id": "step_ups",
+  "name": "Step-ups",
+  "matched_id": "Dumbbell_Step_Ups",
+  "matched_name": "Dumbbell Step Ups",
+  "match": "curated",
+  "name_similarity": 0.64,
+  "used_in": [
+   "legs_a_3#1"
+  ]
+ },
+ {
+  "id": "straight_bar_pushdown",
+  "name": "Straight-bar pushdown",
+  "matched_id": "Triceps_Pushdown",
+  "matched_name": "Triceps Pushdown",
+  "match": "curated",
+  "name_similarity": 0.65,
+  "used_in": [
+   "push_a_6#1"
+  ]
+ },
+ {
+  "id": "suitcase_carry",
+  "name": "Suitcase carry",
+  "matched_id": "Farmers_Walk",
+  "matched_name": "Farmer's Walk",
+  "match": "curated",
+  "name_similarity": 0.22,
+  "used_in": [
+   "legs_b_7#1"
+  ]
+ },
+ {
+  "id": "superman_hold",
+  "name": "Superman hold",
+  "matched_id": "Superman",
+  "matched_name": "Superman",
+  "match": "curated",
+  "name_similarity": 0.76,
+  "used_in": [
+   "home_pull_4#0"
+  ]
+ },
+ {
+  "id": "swiss_ball_leg_curl",
+  "name": "Swiss-ball leg curl",
+  "matched_id": "Ball_Leg_Curl",
+  "matched_name": "Ball Leg Curl",
+  "match": "curated",
+  "name_similarity": 0.81,
+  "used_in": [
+   "legs_a_4#2",
+   "legs_b_3#2"
+  ]
+ },
+ {
+  "id": "t_bar_row",
+  "name": "T-bar row",
+  "matched_id": "T-Bar_Row_with_Handle",
+  "matched_name": "T-Bar Row with Handle",
+  "match": "curated",
+  "name_similarity": 0.6,
+  "used_in": [
+   "pull_b_1#1"
+  ]
+ },
+ {
+  "id": "triceps_rope_pushdown",
+  "name": "Triceps rope pushdown",
+  "matched_id": "Triceps_Pushdown_-_Rope_Attachment",
+  "matched_name": "Triceps Pushdown - Rope Attachment",
+  "match": "curated",
+  "name_similarity": 0.6,
+  "used_in": [
+   "push_a_6#0",
+   "makeup:triceps"
+  ]
+ },
+ {
+  "id": "walking_lunges",
+  "name": "Walking lunges",
+  "matched_id": "Bodyweight_Walking_Lunge",
+  "matched_name": "Bodyweight Walking Lunge",
+  "match": "curated",
+  "name_similarity": 0.68,
+  "used_in": [
+   "legs_a_2#2",
+   "legs_b_2#1"
+  ]
+ },
+ {
+  "id": "wall_sit",
+  "name": "Wall-sit hold",
+  "matched_id": null,
+  "matched_name": null,
+  "match": "custom",
+  "name_similarity": 0.0,
+  "used_in": []
+ },
+ {
+  "id": "wide_grip_seated_cable_row",
+  "name": "Wide-grip seated cable row",
+  "matched_id": "Seated_Cable_Rows",
+  "matched_name": "Seated Cable Rows",
+  "match": "curated",
+  "name_similarity": 0.74,
+  "used_in": [
+   "pull_b_3#2"
+  ]
+ },
+ {
+  "id": "y_t_raise",
+  "name": "Face-down Y and T raises",
+  "matched_id": null,
+  "matched_name": null,
+  "match": "custom",
+  "name_similarity": 0.0,
+  "used_in": [
+   "home_pull_3#0"
+  ]
+ }
+]

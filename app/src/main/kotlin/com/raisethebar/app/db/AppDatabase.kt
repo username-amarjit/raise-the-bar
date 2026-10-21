@@ -57,7 +57,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun meta(): MetaDao
 
     companion object {
-        const val VERSION = 2
+        const val VERSION = 3
         const val NAME = "raise-the-bar.db"
 
         fun build(context: Context): AppDatabase =
