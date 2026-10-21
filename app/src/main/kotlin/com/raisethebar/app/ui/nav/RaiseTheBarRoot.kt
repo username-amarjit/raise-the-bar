@@ -34,6 +34,8 @@ import com.raisethebar.app.data.planForToday
 import com.raisethebar.app.data.startSession
 import com.raisethebar.app.ui.LocalSnackbar
 import com.raisethebar.app.ui.exercise.ExerciseScreen
+import com.raisethebar.app.ui.gym.EquipmentScreen
+import com.raisethebar.app.ui.gym.GymScreen
 import com.raisethebar.app.ui.rememberActions
 import com.raisethebar.app.ui.rememberLoad
 import com.raisethebar.app.ui.settings.AboutScreen
@@ -142,7 +144,7 @@ private fun AppNav(start: Any, snackbar: SnackbarHostState, checkinRequest: Muta
             composable<TodayRoute> { TodayScreen(today) }
             composable<FoodRoute> { PendingScreen("Food", "Protein, quick portions and your usual meals arrive in milestone 12.") }
             composable<ProgressRoute> { PendingScreen("Progress", "Session history and the skip screen arrive in milestones 8 and 13.") }
-            composable<GymRoute> { PendingScreen("My Gym", "Your equipment arrives in milestone 5.") }
+            composable<GymRoute> { GymScreen(onItem = { id -> nav.navigate(EquipmentRoute(id)) }) }
             composable<ExerciseRoute> { e ->
                 val r = e.toRoute<ExerciseRoute>()
                 ExerciseScreen(r.exerciseId, r.slotId, onBack = { nav.popBackStack() }, onOpen = { id -> nav.navigate(ExerciseRoute(id, r.slotId)) })
@@ -161,6 +163,11 @@ private fun AppNav(start: Any, snackbar: SnackbarHostState, checkinRequest: Muta
             composable<InjuryRoute> { PendingScreen("Something hurts", "Injury mode arrives in milestone 11.") }
             composable<PlanChangesRoute> { PendingScreen("Plan changes", "Day off and away mode arrive in milestone 10.") }
             composable<CheckinRoute> { PendingScreen("Check-in", "Check-ins arrive in milestone 8.") }
+            composable<EquipmentRoute> { e ->
+                EquipmentScreen(e.toRoute<EquipmentRoute>().id, onBack = { nav.popBackStack() }, onExercise = { id ->
+                    nav.navigate(ExerciseRoute(id))
+                })
+            }
         }
     }
 }

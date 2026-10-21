@@ -32,6 +32,7 @@ import com.raisethebar.app.ui.components.RtbCard
 import com.raisethebar.app.ui.components.ScreenTitle
 import com.raisethebar.app.ui.components.SecondaryButton
 import com.raisethebar.app.ui.components.SectionLabel
+import com.raisethebar.app.ui.gym.FixedPrompt
 import com.raisethebar.app.ui.rememberLoad
 import com.raisethebar.app.ui.theme.Accent
 import com.raisethebar.app.ui.theme.Rtb
@@ -119,6 +120,7 @@ fun TodayScreen(a: TodayActions = TodayActions()) {
 
 @Composable
 private fun Banners(s: TodayState, a: TodayActions) {
+    s.fixedPrompts.forEach { FixedPrompt(it) }
     if (s.banner) {
         AlertBox("Four skips this week. Would a different training time work better?", kind = AlertKind.WARN)
         LinkButton("Change my training times", onClick = a.onEditWeek)

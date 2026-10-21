@@ -40,3 +40,7 @@ import kotlinx.serialization.Serializable
 @Serializable data class CheckinRoute(
     val date: String,
 )
+
+@Serializable data class EquipmentRoute(
+    val id: String,
+)
