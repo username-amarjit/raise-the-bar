@@ -37,6 +37,7 @@ import com.raisethebar.app.ui.checkin.CheckinScreen
 import com.raisethebar.app.ui.exercise.ExerciseScreen
 import com.raisethebar.app.ui.gym.EquipmentScreen
 import com.raisethebar.app.ui.gym.GymScreen
+import com.raisethebar.app.ui.plan.PlanChangesScreen
 import com.raisethebar.app.ui.progress.ProgressScreen
 import com.raisethebar.app.ui.rememberActions
 import com.raisethebar.app.ui.rememberLoad
@@ -175,7 +176,7 @@ private fun AppNav(start: Any, snackbar: SnackbarHostState, checkinRequest: Muta
                 )
             }
             composable<InjuryRoute> { PendingScreen("Something hurts", "Injury mode arrives in milestone 11.") }
-            composable<PlanChangesRoute> { PendingScreen("Plan changes", "Day off and away mode arrive in milestone 10.") }
+            composable<PlanChangesRoute> { PlanChangesScreen(onBack = { nav.popBackStack() }) }
             composable<CheckinRoute> { e ->
                 CheckinScreen(
                     e.toRoute<CheckinRoute>().date,

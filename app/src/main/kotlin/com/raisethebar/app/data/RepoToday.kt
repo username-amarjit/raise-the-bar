@@ -46,6 +46,8 @@ data class TodayState(
     val injuries: List<InjuryState>,
     val physio: Boolean,
     val absence: Absence?,
+    /** Unexcused skips in the 7 days ending today, oldest first. */
+    val recentSkips: List<LocalDate> = emptyList(),
 )
 
 suspend fun Repo.todayState(): TodayState {
@@ -112,6 +114,7 @@ suspend fun Repo.todayState(): TodayState {
         injuries = injuries,
         physio = injuries.any { Injuries.needsPhysio(it, today) },
         absence = absence,
+        recentSkips = skipDates.filter { !it.isBefore(today.minusDays(6)) }.sorted(),
     )
 }
 

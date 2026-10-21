@@ -208,6 +208,11 @@ private fun MakeupStatus(s: TodayState, lib: Map<String, Exercise>) {
         DayTag("Make-up mode", Accent.GOLD)
         Spacer(Modifier.height(6.dp))
         Text("Make-up mode: ${m.sessionsLeft} sessions left", style = MaterialTheme.typography.headlineSmall, color = Rtb.colors.ink)
+        if (s.recentSkips.isNotEmpty() && s.plan != null) {
+            val days = s.recentSkips.map(Dates::weekday)
+            val list = if (days.size == 1) days[0] else days.dropLast(1).joinToString(", ") + " and " + days.last()
+            Body("$list timed out at midnight. Today is still ${s.plan.dayName}, so no workout is lost.")
+        }
         val block = s.plan?.makeup.orEmpty()
         if (block.isNotEmpty()) {
             val names = block.mapNotNull { lib[it.exerciseId]?.name?.lowercase() }.distinct().joinToString(" and ")
