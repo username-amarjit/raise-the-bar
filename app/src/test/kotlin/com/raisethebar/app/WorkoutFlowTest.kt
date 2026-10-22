@@ -11,11 +11,13 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.raisethebar.app.data.AppClock
 import com.raisethebar.app.data.Repo
 import com.raisethebar.app.data.SetInput
+import com.raisethebar.app.data.doNextFirst
 import com.raisethebar.app.data.finishSession
 import com.raisethebar.app.data.logSet
 import com.raisethebar.app.data.planForToday
 import com.raisethebar.app.data.sessionView
 import com.raisethebar.app.data.startSession
+import com.raisethebar.app.data.swapForToday
 import com.raisethebar.app.data.todayState
 import com.raisethebar.app.db.EstimateEntity
 import com.raisethebar.app.ui.LocalRepo
@@ -24,6 +26,7 @@ import com.raisethebar.app.ui.workout.SessionScreen
 import com.raisethebar.engine.SessionKind
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
@@ -82,7 +85,9 @@ class WorkoutFlowTest {
         assertNull(runBlocking { reopened.db.session().open() })
         assertEquals(6, runBlocking { reopened.db.estimate().all() }.count { it.e1rmKg != null })
         assertEquals(1, runBlocking { reopened.db.plan().get() }!!.rotationIndex)
-        assertNotNull(runBlocking { reopened.todayState() }.doneToday)
+        val today = runBlocking { reopened.todayState() }
+        assertNotNull(today.doneToday)
+        assertEquals("Push A", today.plan!!.dayName) // what was done, not the next workout
     }
 
     @Test
@@ -121,6 +126,31 @@ class WorkoutFlowTest {
         runBlocking { repo.finishSession(id) }
         assertEquals(1, runBlocking { repo.db.plan().get() }!!.rotationIndex)
         assertTrue(runBlocking { repo.db.estimate().all() }.none { it.e1rmKg != null })
+    }
+
+    @Test
+    fun machineBusyDoesTheNextExerciseFirstOrSwapsToABackupForToday() {
+        val repo = TestRepo.createSetUp()
+        val plan = runBlocking { repo.planForToday(SessionKind.FULL) }!!
+        val bench = plan.exercises[0]
+        val second = plan.exercises[1]
+        assertEquals("barbell_bench_press", bench.exerciseId)
+        val id = runBlocking { repo.startSession(plan) }
+
+        runBlocking { repo.doNextFirst(id, bench.key) }
+        val reordered = runBlocking { repo.sessionView(id) }!!.state
+        assertEquals(second.key, reordered.current)
+        assertEquals(listOf(second.key, bench.key), reordered.order.take(2))
+
+        runBlocking { repo.swapForToday(id, bench.key) }
+        val swapped = runBlocking { repo.sessionView(id) }!!.state
+        val backup = swapped.exercise(bench.key)!!
+        assertNotEquals("barbell_bench_press", backup.exerciseId)
+        assertTrue(backup.exerciseId in runBlocking { repo.program() }.slot("push_a_1")!!.options)
+        assertEquals("Swapped for today", backup.note)
+        assertTrue("barbell_bench_press" in swapped.skipToday)
+        // Only for this workout: a fresh plan still starts with the barbell bench press.
+        assertEquals("barbell_bench_press", runBlocking { repo.planForToday(SessionKind.FULL) }!!.exercises[0].exerciseId)
     }
 
     @Test

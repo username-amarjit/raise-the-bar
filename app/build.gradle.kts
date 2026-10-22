@@ -70,6 +70,8 @@ room {
     schemaDirectory("$projectDir/schemas")
 }
 
+tasks.named("check") { dependsOn(":secretScan") }
+
 dependencies {
     implementation(project(":engine"))
 

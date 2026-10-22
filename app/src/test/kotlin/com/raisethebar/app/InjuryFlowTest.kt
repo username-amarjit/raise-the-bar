@@ -27,6 +27,7 @@ import com.raisethebar.app.db.EstimateEntity
 import com.raisethebar.app.ui.LocalRepo
 import com.raisethebar.app.ui.injury.InjuryScreen
 import com.raisethebar.app.ui.theme.RtbTheme
+import com.raisethebar.app.ui.today.TodayScreen
 import com.raisethebar.engine.Injuries
 import com.raisethebar.engine.InjuryStatus
 import com.raisethebar.engine.SessionKind
@@ -129,6 +130,18 @@ class InjuryFlowTest {
         assertEquals(InjuryStatus.RESOLVED, row.status)
         val est = runBlocking { repo.db.estimate().get("seated_dumbbell_shoulder_press") }!!
         assertEquals(30.0 to 20.0, est.e1rmKg to est.currentWeightKg) // normal estimates continue from the saved values
+    }
+
+    @Test
+    fun todayAsksForTheMorningRatingOnTheFirstOpenOfTheDay() {
+        val repo = TestRepo.createSetUp()
+        runBlocking { repo.startInjury(leftShoulder.copy(painNow = 2)) }
+        compose.setContent { RtbTheme { CompositionLocalProvider(LocalRepo provides repo.later(1)) { TodayScreen() } } }
+        compose.waitUntil(5_000) { compose.onAllNodesWithText("Morning check").fetchSemanticsNodes().isNotEmpty() }
+        compose.onNodeWithText("How does your left shoulder feel this morning, 0 to 10?").performScrollTo()
+        compose.onNodeWithContentDescription("Pain 1, green: carry on").performScrollTo().performClick()
+        compose.onNodeWithText("Save").performScrollTo().performClick()
+        compose.waitUntil(5_000) { runBlocking { repo.db.injury().unresolved() }.single().phase == 2 } // green after a day: phase 2
     }
 
     @Test

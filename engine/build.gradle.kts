@@ -42,3 +42,5 @@ tasks.test {
         exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
     }
 }
+
+tasks.named("check") { dependsOn(":secretScan") }

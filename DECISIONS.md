@@ -99,3 +99,19 @@ The plan left these open, so the checklist decided them:
 70. After an import the bundled exercise library and food list are applied again, as after an app update, and any days since the export go through the normal midnight timeout.
 71. Import is also offered on the first setup screen ("Moving phones? Restore from a backup"), so a reinstall doesn't need setting up first.
 72. "Hide in the app switcher" uses `FLAG_SECURE`, which also blocks screenshots. It's off by default.
+
+### Smaller choices made while building the screens (milestones 4 to 11)
+
+73. Notification permission is asked for when leaving "Your week" during setup, or when check-ins are switched on in Settings, and only if check-ins are on. Refusing it switches check-ins off.
+74. Old injuries entered at setup with "Does it hurt now?" set to No are saved as `watch`. Ones that hurt now aren't saved by setup itself: triage opens once straight after setup, and any others are reported through "Something hurts".
+75. When triage starts injury mode for an area that already has a `watch` injury on the same side (or where either is "both"), that injury becomes the active one instead of a second record.
+76. "Report it" copies the message to the clipboard, because the app has no network access; the user pastes it into an email or chat.
+77. Trips start today or later, can end at most 60 days after they start, and can't overlap another trip.
+78. After a workout, Today keeps showing the session that was done, marked "Done for today", rather than the next workout in the rotation. The next one appears on the next training day.
+
+### Security, QA and install (milestone 14)
+
+79. **Repo checks.** `gradlew secretScan`, which also runs with every module's `check`, fails on private keys, cloud, GitHub and Slack tokens, `sk-` keys, hard-coded passwords or tokens, and key files anywhere in the repo. In the app and engine code it also fails on logging or printing, SQL built from strings, dynamic code and network APIs. The report is `build/reports/secret-scan.txt`.
+80. **Manifest checks.** `ManifestTest` reads the merged manifest: no network permissions, no cleartext traffic, backup off, and nothing of ours exported except the launcher activity (an exported library receiver must require a system permission). Release builds aren't debuggable: on the emulator, `run-as` is refused for the release package.
+81. **Run-throughs on the emulator** (Pixel 9 image, Android 15, India time) used the release APK in airplane mode: setup, an exercise page with its photos, food, a skip, a day off, a trip (its preview turned today into the gym full-body session before the trip), an injury (left shoulder, phase 1) and a whole workout with every set logged, including pain ratings on the swapped bench press. Nothing crashed. At the largest text size (200%), Today, Food, My Gym, Plan changes and the set logger wrap without clipping; segmented choices shrink a long label to one line instead of breaking it. "Hide in the app switcher" blanks screenshots.
+82. **Install.** The release APK is `app/build/outputs/apk/release/app-release.apk` (`gradlew :app:assembleRelease`, signed with the local debug key, see decision 21). Copy it to the phone and open it, allowing installs from that app once, or run `adb install app-release.apk` with USB debugging on. Installing it on the owner's phone is the one checklist box left for the owner.

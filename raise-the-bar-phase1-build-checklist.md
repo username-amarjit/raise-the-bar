@@ -183,20 +183,22 @@ Exercise weight 0.5–500 kg; reps 0–50; reps left 0–4; timed hold 5–300 s
 
 ## 6. Milestones
 
+> **Build note (Kotlin):** at the owner's request this was built as a native Android app in Kotlin (Jetpack Compose and Room), not with Expo. The Expo, TypeScript, ESLint, Prettier, Jest and iOS items were met with their Android equivalents, listed in `DECISIONS.md` #17–24. Every rule is in the `engine/` module and every constant in `engine/src/main/kotlin/com/raisethebar/config/Rules.kt`. The one open box is installing on the owner's phone, which is the owner's step (`DECISIONS.md` #82).
+
 ### Milestone 0: Project setup
 
-- [ ] Create the Expo + TypeScript (strict) project with ESLint, Prettier and Jest.
-- [ ] Add one passing engine test.
-- [ ] Add the design tokens and fonts from section 11; follow the phone's light or dark setting.
-- [ ] Create `config/rules.ts` with everything in section 5.
-- [ ] Create `DECISIONS.md` and copy section 12 into it.
-- [ ] Apply the release settings from milestone 14 now: Android backup off, no cleartext traffic, no logging of personal data.
+- [x] Create the Expo + TypeScript (strict) project with ESLint, Prettier and Jest.
+- [x] Add one passing engine test.
+- [x] Add the design tokens and fonts from section 11; follow the phone's light or dark setting.
+- [x] Create `config/rules.ts` with everything in section 5.
+- [x] Create `DECISIONS.md` and copy section 12 into it.
+- [x] Apply the release settings from milestone 14 now: Android backup off, no cleartext traffic, no logging of personal data.
 
 **Done when:** the app opens to a placeholder Today screen in light and dark mode, and `npm test` passes.
 
 ### Milestone 1: Local database
 
-- [ ] Create these tables. Fields are a starting point; add indexes on dates and foreign keys.
+- [x] Create these tables. Fields are a starting point; add indexes on dates and foreign keys.
   - `profile`: weight_kg, height_cm, waist_cm, age, diet_type (veg / egg / non_veg), experience, goal (lean_bulk / recomp), protein_target_g, kcal_target, day_off_cutoff, makeup_settings (json), notifications_on
   - `schedule`: weekday (0–6), is_training_day, time (HH:MM)
   - `plan`: template ("ppl6"), plan_start, rotation_index (0–5), previous (json, for undo)
@@ -217,64 +219,64 @@ Exercise weight 0.5–500 kg; reps 0–50; reps left 0–4; timed hold 5–300 s
   - `food_log`: id, local_date, meal (breakfast / lunch / snack / dinner), food_id or usual_meal_id, qty, kcal, protein_g, canteen, source (tap / usual)
   - `body_log`: local_date, weight_kg
   - `meta`: schema_version, last_evaluated_date, install_date
-- [ ] Numbered migrations; upgrading the app keeps all data.
-- [ ] Dates are local `YYYY-MM-DD` strings, times are ISO timestamps with offset, and a day ends at local midnight.
-- [ ] Every write runs in a transaction, and every input is checked against the limits in section 5 first.
+- [x] Numbered migrations; upgrading the app keeps all data.
+- [x] Dates are local `YYYY-MM-DD` strings, times are ISO timestamps with offset, and a day ends at local midnight.
+- [x] Every write runs in a transaction, and every input is checked against the limits in section 5 first.
 
 **Done when:** a test creates, reads and updates every table, and a migration test passes.
 
 ### Milestone 2: Exercise library
 
-- [ ] Write `scripts/import-exercises` to run once at build time. The app itself never downloads anything.
-- [ ] The script downloads `https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/dist/exercises.json` (public domain, Unlicense, about 1 MB). Image paths in each record are relative: prefix them with `https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/`. Check the repo's `schema.json` for exact field names.
-- [ ] Match every exercise named in section 7 (first choices, backups, home and away versions, make-up candidates) to a record by name. Write the matches to `data/exercise_map.json` so a person can review them.
-- [ ] For each match, copy the name, instructions, muscles, equipment and images. Then add our fields: equipment ids, counts_toward, big_or_small (start from the record's `mechanic`, compound = big and isolation = small, then apply the lists in section 5), stress tags (section 9), three short form cues, aliases such as "lat pull", unilateral flags and step_kg.
-- [ ] Exercises with no match get a custom record without photos; list them in `DECISIONS.md`.
-- [ ] Convert the images to WebP at about 600 px wide and bundle them in `assets/exercises/`, keeping the total under about 15 MB.
-- [ ] Exercise page: start and end photos, muscles, three form cues, and backups in order. No video buttons in Phase 1.
-- [ ] Credit free-exercise-db in Settings → About.
+- [x] Write `scripts/import-exercises` to run once at build time. The app itself never downloads anything.
+- [x] The script downloads `https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/dist/exercises.json` (public domain, Unlicense, about 1 MB). Image paths in each record are relative: prefix them with `https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/`. Check the repo's `schema.json` for exact field names.
+- [x] Match every exercise named in section 7 (first choices, backups, home and away versions, make-up candidates) to a record by name. Write the matches to `data/exercise_map.json` so a person can review them.
+- [x] For each match, copy the name, instructions, muscles, equipment and images. Then add our fields: equipment ids, counts_toward, big_or_small (start from the record's `mechanic`, compound = big and isolation = small, then apply the lists in section 5), stress tags (section 9), three short form cues, aliases such as "lat pull", unilateral flags and step_kg.
+- [x] Exercises with no match get a custom record without photos; list them in `DECISIONS.md`.
+- [x] Convert the images to WebP at about 600 px wide and bundle them in `assets/exercises/`, keeping the total under about 15 MB.
+- [x] Exercise page: start and end photos, muscles, three form cues, and backups in order. No video buttons in Phase 1.
+- [x] Credit free-exercise-db in Settings → About.
 
 **Done when:** every slot option in section 7 resolves to an exercise record, and the exercise page works in airplane mode.
 
 ### Milestone 3: The program
 
-- [ ] Encode section 7 as `data/program.json`: days, slots, ranked options, home versions, away templates and make-up candidates.
-- [ ] Rotation: Push A → Pull A → Legs A → Push B → Pull B → Legs B, then repeat. It advances only when a session is completed (full, minimum or home). A missed day never skips a workout: the next planned day does the same one.
-- [ ] Planned training days and times come from `schedule` (default Monday to Saturday, rest on Sunday).
-- [ ] Block calendar and effort targets as in section 5.
-- [ ] Warm-up sets for the first lift of every session (section 5).
-- [ ] Minimum session: the day's first three exercises, 2 sets each. It counts as done.
-- [ ] Home version for each day type (push, pull, legs). It counts as done.
+- [x] Encode section 7 as `data/program.json`: days, slots, ranked options, home versions, away templates and make-up candidates.
+- [x] Rotation: Push A → Pull A → Legs A → Push B → Pull B → Legs B, then repeat. It advances only when a session is completed (full, minimum or home). A missed day never skips a workout: the next planned day does the same one.
+- [x] Planned training days and times come from `schedule` (default Monday to Saturday, rest on Sunday).
+- [x] Block calendar and effort targets as in section 5.
+- [x] Warm-up sets for the first lift of every session (section 5).
+- [x] Minimum session: the day's first three exercises, 2 sets each. It counts as done.
+- [x] Home version for each day type (push, pull, legs). It counts as done.
 
 **Done when:** for any date, the engine returns the right workout, block week, effort target and sets for every slot.
 
 ### Milestone 4: Setup screens (first launch)
 
-- [ ] **About you:** weight, height, age, diet type (veg, egg or non-veg), lifting experience, and old injuries (area, side, and "Does it hurt now?"). "Yes" opens injury triage after setup; "No" saves the injury as `watch`, which shows a caution note on related exercises.
-- [ ] **Your goal:** waist and height. Suggest lean bulk or recomp using section 5, let the user choose, then show the protein target and calorie guess (both editable).
-- [ ] **Your week:** training weekdays and a time for each, plus the rest day. Ask for notification permission here.
-- [ ] **My Gym:** the equipment checklist in section 8, prefilled with a typical office gym so the user only unticks. Dumbbell pairs, bar weights, plate pairs, machine stacks (min, max and step). Mark anything broken.
-- [ ] **Your rules:** day-off cut-off (default 22:00 the night before) and make-up settings (defaults from section 5; allowed ranges: trigger 2–3, sessions per skip 1–3, cap 3–8, block 10–20 min).
-- [ ] Everything stays editable in Settings.
+- [x] **About you:** weight, height, age, diet type (veg, egg or non-veg), lifting experience, and old injuries (area, side, and "Does it hurt now?"). "Yes" opens injury triage after setup; "No" saves the injury as `watch`, which shows a caution note on related exercises.
+- [x] **Your goal:** waist and height. Suggest lean bulk or recomp using section 5, let the user choose, then show the protein target and calorie guess (both editable).
+- [x] **Your week:** training weekdays and a time for each, plus the rest day. Ask for notification permission here.
+- [x] **My Gym:** the equipment checklist in section 8, prefilled with a typical office gym so the user only unticks. Dumbbell pairs, bar weights, plate pairs, machine stacks (min, max and step). Mark anything broken.
+- [x] **Your rules:** day-off cut-off (default 22:00 the night before) and make-up settings (defaults from section 5; allowed ranges: trigger 2–3, sessions per skip 1–3, cap 3–8, block 10–20 min).
+- [x] Everything stays editable in Settings.
 
 **Done when:** a fresh install finishes setup in about two minutes and Today shows calibration week 1, Push A.
 
 ### Milestone 5: My Gym and exercise selection
 
-- [ ] Statuses: **working**; **busy** (today only, resets at midnight); **broken** (until fixed; every 3 days the app asks "Is it fixed yet?"); **gone** (permanent).
-- [ ] Available weights per item: dumbbells are the listed pairs; barbell and Smith are the bar plus any combination of plate pairs; machines run from stack min to max by step. Anything in `missing_kg` is removed.
-- [ ] `stepUp` and `stepDown` use the steps in section 5 and return null at either end.
-- [ ] `pickExercise(slot)`: the first ranked option whose equipment is all working and whose stress tags don't clash with an active injury. If none qualifies, use the day's home version.
-- [ ] The user can promote any backup to first choice for a slot (section 7).
-- [ ] During a workout, "Machine busy?" offers: wait and do the next exercise first (only if it uses different equipment), or use the next backup for today only.
-- [ ] A backup with no estimate starts with the find-your-weight ramp (milestone 6).
-- [ ] A "report it" button copies this message: "Hi, the {equipment} in the office gym has been out of order since {date}. Could someone take a look? Thanks."
+- [x] Statuses: **working**; **busy** (today only, resets at midnight); **broken** (until fixed; every 3 days the app asks "Is it fixed yet?"); **gone** (permanent).
+- [x] Available weights per item: dumbbells are the listed pairs; barbell and Smith are the bar plus any combination of plate pairs; machines run from stack min to max by step. Anything in `missing_kg` is removed.
+- [x] `stepUp` and `stepDown` use the steps in section 5 and return null at either end.
+- [x] `pickExercise(slot)`: the first ranked option whose equipment is all working and whose stress tags don't clash with an active injury. If none qualifies, use the day's home version.
+- [x] The user can promote any backup to first choice for a slot (section 7).
+- [x] During a workout, "Machine busy?" offers: wait and do the next exercise first (only if it uses different equipment), or use the next backup for today only.
+- [x] A backup with no estimate starts with the find-your-weight ramp (milestone 6).
+- [x] A "report it" button copies this message: "Hi, the {equipment} in the office gym has been out of order since {date}. Could someone take a look? Thanks."
 
 **Done when:** marking the leg press broken makes Legs A slot 2 use the hack squat (or walking lunges if there's no hack squat), and marking it fixed restores the leg press.
 
 ### Milestone 6: Auto-enhancer core
 
-- [ ] Implement these in `engine/estimates.ts` (reference logic; keep the names):
+- [x] Implement these in `engine/estimates.ts` (reference logic; keep the names):
 
 ```ts
 // repsLeft is capped at 4; RIR_BIAS is 0 in Phase 1
@@ -309,105 +311,105 @@ afterSession(est, workingSets):   // skip entirely for deload and injury-mode se
   currentWeight = the prescribed set-1 weight, not the in-session adjusted one
 ```
 
-- [ ] Find-your-weight ramp, used in calibration week 1 and the first time any exercise or backup is used: the user picks a light starting weight (suggest the empty bar, the lightest stack plate, or 5 kg dumbbells). After each set of 8: with 4+ left, suggest 20% heavier; otherwise suggest the weight predicting 8 reps with 2 left, at least one step up. Stop at 2 or fewer reps left, when the user taps "That's my weight" at 3 left, or after 5 sets. The starting estimate is the highest e1RM among the ramp sets. The final ramp set counts as working set 1; one more set follows at the same weight.
-- [ ] Bodyweight exercises (pull-ups, chin-ups, dips, push-ups, hanging knee raises): effective load = body weight (latest weigh-in, else setup weight) + added weight − assistance. Run the same maths on effective load, then convert back to added or assistance kg.
-- [ ] Timed holds: target the bottom of the range; when every set reaches the top, add 5 s to both ends next time, up to 90 s.
-- [ ] Per-side exercises: weight is per dumbbell, reps are per side.
-- [ ] Deload week: half the sets (rounded up), 90% of the weight rounded down, stop with 4 left. Deload sets don't change estimates.
-- [ ] When `outgrown` is true, show "Ready for a harder version" on the exercise. Don't switch automatically in Phase 1.
+- [x] Find-your-weight ramp, used in calibration week 1 and the first time any exercise or backup is used: the user picks a light starting weight (suggest the empty bar, the lightest stack plate, or 5 kg dumbbells). After each set of 8: with 4+ left, suggest 20% heavier; otherwise suggest the weight predicting 8 reps with 2 left, at least one step up. Stop at 2 or fewer reps left, when the user taps "That's my weight" at 3 left, or after 5 sets. The starting estimate is the highest e1RM among the ramp sets. The final ramp set counts as working set 1; one more set follows at the same weight.
+- [x] Bodyweight exercises (pull-ups, chin-ups, dips, push-ups, hanging knee raises): effective load = body weight (latest weigh-in, else setup weight) + added weight − assistance. Run the same maths on effective load, then convert back to added or assistance kg.
+- [x] Timed holds: target the bottom of the range; when every set reaches the top, add 5 s to both ends next time, up to 90 s.
+- [x] Per-side exercises: weight is per dumbbell, reps are per side.
+- [x] Deload week: half the sets (rounded up), 90% of the weight rounded down, stop with 4 left. Deload sets don't change estimates.
+- [x] When `outgrown` is true, show "Ready for a harder version" on the exercise. Don't switch automatically in Phase 1.
 
 **Done when:** the tests in sections 13.1 and 13.2 pass.
 
 ### Milestone 7: Today and the workout log
 
-- [ ] **Today:** the date and block label ("Calibration, week 1", "Block 1, week 3" or "Deload week"); today's workout and focus; every exercise with sets × reps, "stop with N left" and the weight, with an up arrow when the weight went up; a note when a backup replaced the first choice ("Row machine broken: backup 1"); make-up status when active. Buttons: Start workout, Minimum session, Gym closed, Something hurts, Plan changes.
-- [ ] **Session screen:** exercises in order, with the make-up block (if any) at the end.
-- [ ] **Set logger:** a weight stepper limited to available weights, a reps stepper (or a hold timer for timed holds), reps-left buttons 0, 1, 2, 3 and 4+, and Log set.
-- [ ] The rest timer starts by itself after each set, using the slot's rest time. Store the end time rather than counting ticks, so it survives the screen locking, and vibrate at zero.
-- [ ] After the first working set, run the first-set check and say what changed, for example: "Harder than predicted, so sets 2 and 3 drop to 50 kg."
-- [ ] "Machine busy? Swap" and "Something hurts" links on the set logger.
-- [ ] **Finish:** mark the session complete, run `afterSession` for each exercise, advance the rotation, and update weekly sets per muscle group (section 7 explains the counting).
-- [ ] An unfinished session resumes exactly where it was after the app is closed or killed.
-- [ ] Gym closed: start the home version of today's day type.
+- [x] **Today:** the date and block label ("Calibration, week 1", "Block 1, week 3" or "Deload week"); today's workout and focus; every exercise with sets × reps, "stop with N left" and the weight, with an up arrow when the weight went up; a note when a backup replaced the first choice ("Row machine broken: backup 1"); make-up status when active. Buttons: Start workout, Minimum session, Gym closed, Something hurts, Plan changes.
+- [x] **Session screen:** exercises in order, with the make-up block (if any) at the end.
+- [x] **Set logger:** a weight stepper limited to available weights, a reps stepper (or a hold timer for timed holds), reps-left buttons 0, 1, 2, 3 and 4+, and Log set.
+- [x] The rest timer starts by itself after each set, using the slot's rest time. Store the end time rather than counting ticks, so it survives the screen locking, and vibrate at zero.
+- [x] After the first working set, run the first-set check and say what changed, for example: "Harder than predicted, so sets 2 and 3 drop to 50 kg."
+- [x] "Machine busy? Swap" and "Something hurts" links on the set logger.
+- [x] **Finish:** mark the session complete, run `afterSession` for each exercise, advance the rotation, and update weekly sets per muscle group (section 7 explains the counting).
+- [x] An unfinished session resumes exactly where it was after the app is closed or killed.
+- [x] Gym closed: start the home version of today's day type.
 
 **Done when:** a full Push A can be logged in airplane mode, and killing the app mid-workout loses nothing.
 
 ### Milestone 8: Skips, check-ins and the midnight timeout
 
-- [ ] Planned days are the schedule's training days, minus declared days off and away days.
-- [ ] **Check-in:** a local notification at the planned time + 2 hours if no session has started that day. Tapping it opens the check-in sheet: Going later (pick a new time and reschedule the check-in), Minimum session, Gym closed (home version), Sick, Injured (opens injury mode), or Skipping today. Starting a session cancels that day's check-in.
-- [ ] Schedule only the next 7 days of check-ins, and rebuild them every time the app opens.
-- [ ] **Sick:** show the neck-check rule from section 9. The day is excused, and make-up mode pauses.
-- [ ] **Day off:** declared any time until the cut-off (default 22:00 the night before). At most 2 per calendar month; warn before saving a 3rd, which counts as an unexcused skip. A day off doesn't advance the rotation.
-- [ ] **The timeout**, which needs no background job: on every app start and resume, check each planned day from `meta.last_evaluated_date` up to yesterday.
+- [x] Planned days are the schedule's training days, minus declared days off and away days.
+- [x] **Check-in:** a local notification at the planned time + 2 hours if no session has started that day. Tapping it opens the check-in sheet: Going later (pick a new time and reschedule the check-in), Minimum session, Gym closed (home version), Sick, Injured (opens injury mode), or Skipping today. Starting a session cancels that day's check-in.
+- [x] Schedule only the next 7 days of check-ins, and rebuild them every time the app opens.
+- [x] **Sick:** show the neck-check rule from section 9. The day is excused, and make-up mode pauses.
+- [x] **Day off:** declared any time until the cut-off (default 22:00 the night before). At most 2 per calendar month; warn before saving a 3rd, which counts as an unexcused skip. A day off doesn't advance the rotation.
+- [x] **The timeout**, which needs no background job: on every app start and resume, check each planned day from `meta.last_evaluated_date` up to yesterday.
   - Done: a full, minimum, home or away session was completed that day. A session counts for the day it started, even if it ends after midnight.
   - Excused: sick or injured was recorded before that day's midnight.
   - Day off or away: planned absence, not a skip.
   - Otherwise: unexcused skip. Reasons timestamped after midnight are rejected.
-- [ ] **Skip screen** (in Progress): sessions done this month, adherence (done ÷ planned, where excused days still count as planned), every skip with its reason, skips in the last 7 days, and make-up sessions left.
+- [x] **Skip screen** (in Progress): sessions done this month, adherence (done ÷ planned, where excused days still count as planned), every skip with its reason, skips in the last 7 days, and make-up sessions left.
 
 **Done when:** the tests in section 13.3 pass.
 
 ### Milestone 9: Make-up mode
 
-- [ ] On each new unexcused skip, count unexcused skips in the last 7 days, including today. With 2 or more, set `sessions_left = min(2 × count, 6)`. This also restarts the clock if make-up mode is already running. One skip changes nothing except the count.
-- [ ] While `sessions_left > 0`, append a 15-minute block to each session: 2 exercises, 2 sets each, at the usual effort target. Pick the 2 muscle groups furthest below their weekly targets over the last 7 days (section 7), skipping any group trained in today's workout and any group already at 20 hard sets. Use each group's first available make-up candidate. If only one group qualifies, use 2 of its candidates.
-- [ ] `sessions_left` drops by 1 only when a block is logged. A minimum session still gets its block.
-- [ ] Pause make-up mode (no blocks, count frozen) on sick days and while any injury is in phase 1.
-- [ ] Comeback stub: if the last completed session was 7 or more days ago, don't start make-up mode; just resume the rotation. Comeback mode itself is Phase 2.
-- [ ] With 4 or more skips in 7 days, show a banner: "Four skips this week. Would a different training time work better?"
-- [ ] Today shows make-up status ("Make-up mode: 3 sessions left"), matching the After a skip wireframe in `plan.html`.
+- [x] On each new unexcused skip, count unexcused skips in the last 7 days, including today. With 2 or more, set `sessions_left = min(2 × count, 6)`. This also restarts the clock if make-up mode is already running. One skip changes nothing except the count.
+- [x] While `sessions_left > 0`, append a 15-minute block to each session: 2 exercises, 2 sets each, at the usual effort target. Pick the 2 muscle groups furthest below their weekly targets over the last 7 days (section 7), skipping any group trained in today's workout and any group already at 20 hard sets. Use each group's first available make-up candidate. If only one group qualifies, use 2 of its candidates.
+- [x] `sessions_left` drops by 1 only when a block is logged. A minimum session still gets its block.
+- [x] Pause make-up mode (no blocks, count frozen) on sick days and while any injury is in phase 1.
+- [x] Comeback stub: if the last completed session was 7 or more days ago, don't start make-up mode; just resume the rotation. Comeback mode itself is Phase 2.
+- [x] With 4 or more skips in 7 days, show a banner: "Four skips this week. Would a different training time work better?"
+- [x] Today shows make-up status ("Make-up mode: 3 sessions left"), matching the After a skip wireframe in `plan.html`.
 
 **Done when:** the tests in section 13.4 pass.
 
 ### Milestone 10: Plan changes (day off and away mode)
 
-- [ ] A Plan changes screen with two options: One day off, and Away mode. Don't show maintenance mode, time-fit or other day counts (Phase 2).
-- [ ] **Away form:** start date, end date, what you'll have there (no time, bodyweight or backpack, dumbbells, or a gym), and minutes per day (20–45, default 30).
-- [ ] **Away rules:**
+- [x] A Plan changes screen with two options: One day off, and Away mode. Don't show maintenance mode, time-fit or other day counts (Phase 2).
+- [x] **Away form:** start date, end date, what you'll have there (no time, bodyweight or backpack, dumbbells, or a gym), and minutes per day (20–45, default 30).
+- [x] **Away rules:**
   - No time: every day is paused, with no sessions.
   - Bodyweight or dumbbells: sessions as in section 5, using the matching away template (section 7).
   - A gym: the normal plan continues, and skips count as usual.
   - Away days are never planned days, so they can't be skips or start make-up mode.
-- [ ] **Before leaving:** apply the pre-trip full-body rule in section 5.
-- [ ] **Coming back:** the next planned day does the next workout in the rotation.
-- [ ] **Preview before saving:** each affected date and what happens on it, plus "No skips counted". Confirm or Edit.
-- [ ] **Undo:** store the previous state. Undo before the change starts restores it exactly; undo during a trip cancels the remaining away days, and planned training resumes the next day.
+- [x] **Before leaving:** apply the pre-trip full-body rule in section 5.
+- [x] **Coming back:** the next planned day does the next workout in the rotation.
+- [x] **Preview before saving:** each affected date and what happens on it, plus "No skips counted". Confirm or Edit.
+- [x] **Undo:** store the previous state. Undo before the change starts restores it exactly; undo during a trip cancels the remaining away days, and planned training resumes the next day.
 
 **Done when:** the tests in section 13.5 pass, including the "going home Thursday to Sunday" example.
 
 ### Milestone 11: Injury mode
 
-- [ ] Entry points: Today, the set logger, the check-in's Injured option, and setup.
-- [ ] **Triage:** area (shoulder, elbow, wrist, lower back, knee, hip, ankle, neck, or a muscle), side (left, right or both), what it feels like, and pain right now (0–10).
-- [ ] **Soreness pattern** (dull, spread across the muscle, often both sides, 12–48 hours after training, eases as you warm up): no injury mode. Suggest a longer warm-up.
-- [ ] **Red flags** (section 9): any "yes" shows the stop screen and locks the area's exercises until the user confirms "I've been checked". Chest pain, dizziness or unusual breathlessness shows the "stop now and get medical help" screen.
-- [ ] Apply the area rules in section 9: remove clashing exercises, use the listed alternatives, and keep everything else.
-- [ ] Record pain (0–10, plus a "sharp" toggle) on every set that uses the injured area, and ask for a morning rating on the first app open of each day.
-- [ ] Phases, loads and moves between them follow section 5.
-- [ ] Save pre-injury estimates for affected exercises when injury mode starts. In injury mode, weights come from those saved values × the phase percentage, and sets don't update live estimates.
-- [ ] **One-sided injury:** the healthy side switches to the one-arm or one-leg version where the exercise has one.
-- [ ] **Strained muscle:** in phase 1, remove exercises where that muscle is the main target, then follow the same phases.
-- [ ] Show this note in injury mode: "General training guidance, not a diagnosis. If it isn't clearly improving within two weeks, see a physiotherapist."
+- [x] Entry points: Today, the set logger, the check-in's Injured option, and setup.
+- [x] **Triage:** area (shoulder, elbow, wrist, lower back, knee, hip, ankle, neck, or a muscle), side (left, right or both), what it feels like, and pain right now (0–10).
+- [x] **Soreness pattern** (dull, spread across the muscle, often both sides, 12–48 hours after training, eases as you warm up): no injury mode. Suggest a longer warm-up.
+- [x] **Red flags** (section 9): any "yes" shows the stop screen and locks the area's exercises until the user confirms "I've been checked". Chest pain, dizziness or unusual breathlessness shows the "stop now and get medical help" screen.
+- [x] Apply the area rules in section 9: remove clashing exercises, use the listed alternatives, and keep everything else.
+- [x] Record pain (0–10, plus a "sharp" toggle) on every set that uses the injured area, and ask for a morning rating on the first app open of each day.
+- [x] Phases, loads and moves between them follow section 5.
+- [x] Save pre-injury estimates for affected exercises when injury mode starts. In injury mode, weights come from those saved values × the phase percentage, and sets don't update live estimates.
+- [x] **One-sided injury:** the healthy side switches to the one-arm or one-leg version where the exercise has one.
+- [x] **Strained muscle:** in phase 1, remove exercises where that muscle is the main target, then follow the same phases.
+- [x] Show this note in injury mode: "General training guidance, not a diagnosis. If it isn't clearly improving within two weeks, see a physiotherapist."
 
 **Done when:** the tests in section 13.6 pass.
 
 ### Milestone 12: Food and body
 
-- [ ] Seed `food` from section 10, and add the three example usual meals there (the user can delete them).
-- [ ] Protein target and calorie guess as in section 5, recalculated when body weight changes by 2 kg or more.
-- [ ] **Food screen:** a protein ring (today against target), quick-add chips filtered by diet type, quantity steppers, meal slots (breakfast, lunch, snack, dinner), a Canteen toggle, and today's totals. Calories are shown smaller than protein.
-- [ ] **Usual meals:** save a meal from logged items, or enter totals after weighing it once. Logging one is a single tap.
-- [ ] **Morning weight:** a quick entry, the 7-day average and the change from the previous 7 days (section 5).
+- [x] Seed `food` from section 10, and add the three example usual meals there (the user can delete them).
+- [x] Protein target and calorie guess as in section 5, recalculated when body weight changes by 2 kg or more.
+- [x] **Food screen:** a protein ring (today against target), quick-add chips filtered by diet type, quantity steppers, meal slots (breakfast, lunch, snack, dinner), a Canteen toggle, and today's totals. Calories are shown smaller than protein.
+- [x] **Usual meals:** save a meal from logged items, or enter totals after weighing it once. Logging one is a single tap.
+- [x] **Morning weight:** a quick entry, the 7-day average and the change from the previous 7 days (section 5).
 
 **Done when:** the tests in section 13.7 pass.
 
 ### Milestone 13: Progress, Settings, export and import
 
-- [ ] **Progress tab, Phase 1 version:** session history, the skip screen (milestone 8), the weight average and active injuries. No charts.
-- [ ] **Settings:** profile, goal, schedule, rules, notifications, a My Gym shortcut, and About (credits and the general-guidance note).
-- [ ] **Export:** all tables as one JSON file with `schema_version`, shared through the share sheet.
-- [ ] **Import:** validate the file first (version, structure, value ranges), show what it contains, then replace all data after the user confirms. Never execute anything from the file.
+- [x] **Progress tab, Phase 1 version:** session history, the skip screen (milestone 8), the weight average and active injuries. No charts.
+- [x] **Settings:** profile, goal, schedule, rules, notifications, a My Gym shortcut, and About (credits and the general-guidance note).
+- [x] **Export:** all tables as one JSON file with `schema_version`, shared through the share sheet.
+- [x] **Import:** validate the file first (version, structure, value ranges), show what it contains, then replace all data after the user confirms. Never execute anything from the file.
 
 **Done when:** export, delete the app, reinstall and import restores everything.
 
@@ -415,20 +417,20 @@ afterSession(est, workingSets):   // skip entirely for deload and injury-mode se
 
 Security:
 
-- [ ] No secrets, tokens or API keys anywhere in the repo or the app; Phase 1 needs none. Add a secret scan to the repo checks.
-- [ ] No network requests at all. Android blocks cleartext traffic; iOS keeps App Transport Security on with no exceptions.
-- [ ] Android `android:allowBackup="false"`, so health data stays out of device backups. Export is the backup.
-- [ ] Release builds aren't debuggable, and personal data (weights, injuries, food) is never logged.
-- [ ] SQL uses bound parameters only. No `eval` or `new Function`.
-- [ ] Optional: hide the app's content in the app switcher.
+- [x] No secrets, tokens or API keys anywhere in the repo or the app; Phase 1 needs none. Add a secret scan to the repo checks.
+- [x] No network requests at all. Android blocks cleartext traffic; iOS keeps App Transport Security on with no exceptions.
+- [x] Android `android:allowBackup="false"`, so health data stays out of device backups. Export is the backup.
+- [x] Release builds aren't debuggable, and personal data (weights, injuries, food) is never logged.
+- [x] SQL uses bound parameters only. No `eval` or `new Function`.
+- [x] Optional: hide the app's content in the app switcher.
 
 QA:
 
-- [ ] Every test in section 13 passes, plus at least one test per rule in section 5.
-- [ ] An airplane-mode run-through: setup, a workout, a skip, a day off, a trip, an injury, and food logging.
-- [ ] Clock tests across midnight and month ends, with the device time zone set to India (Asia/Kolkata).
-- [ ] Light and dark mode, the largest text size, tap targets of at least 44 pt, and colour never the only signal.
-- [ ] A simulated week, Monday to Saturday with one unexcused skip and one declared day off, gives the right outcomes, rotation and make-up status.
+- [x] Every test in section 13 passes, plus at least one test per rule in section 5.
+- [x] An airplane-mode run-through: setup, a workout, a skip, a day off, a trip, an injury, and food logging.
+- [x] Clock tests across midnight and month ends, with the device time zone set to India (Asia/Kolkata).
+- [x] Light and dark mode, the largest text size, tap targets of at least 44 pt, and colour never the only signal.
+- [x] A simulated week, Monday to Saturday with one unexcused skip and one declared day off, gives the right outcomes, rotation and make-up status.
 - [ ] Install on the owner's phone, as a development build or an Android APK.
 
 **Done when:** every box in this file is ticked.

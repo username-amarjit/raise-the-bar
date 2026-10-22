@@ -25,6 +25,7 @@ import com.raisethebar.app.data.updateProfile
 import com.raisethebar.app.ui.LocalRepo
 import com.raisethebar.app.ui.checkin.CheckinScreen
 import com.raisethebar.app.ui.theme.RtbTheme
+import com.raisethebar.app.ui.today.TodayScreen
 import com.raisethebar.engine.Checkin
 import com.raisethebar.engine.Outcome
 import com.raisethebar.engine.Reason
@@ -148,6 +149,16 @@ class SkipsMakeupFlowTest {
         assertTrue(today.makeupPaused)
         assertTrue(today.plan!!.makeup.isEmpty())
         assertEquals(4, today.makeup.sessionsLeft)
+    }
+
+    @Test
+    fun todayShowsMakeupModeAndTheDaysThatTimedOut() {
+        val wednesday = TestRepo.createSetUp(monday).at(monday.plusDays(2), 8)
+        runBlocking { wednesday.evaluateDays() }
+        compose.setContent { RtbTheme { CompositionLocalProvider(LocalRepo provides wednesday) { TodayScreen() } } }
+        compose.waitUntil(5_000) { compose.onAllNodesWithText("Make-up mode: 4 sessions left").fetchSemanticsNodes().isNotEmpty() }
+        compose.onNodeWithText("Monday and Tuesday timed out at midnight. Today is still Push A, so no workout is lost.").performScrollTo()
+        compose.onNodeWithText("Make-up block, 15 minutes").performScrollTo()
     }
 
     @Test

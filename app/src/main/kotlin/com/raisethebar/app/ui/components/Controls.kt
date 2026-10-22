@@ -24,7 +24,9 @@ import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
@@ -48,6 +50,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.raisethebar.app.ui.theme.Accent
 import com.raisethebar.app.ui.theme.Rtb
 import com.raisethebar.app.ui.theme.accent
@@ -245,11 +248,20 @@ fun Segmented(options: List<String>, selected: Int?, onSelect: (Int) -> Unit, mo
                     .semantics { contentDescription = "$description $label" },
                 contentAlignment = Alignment.Center,
             ) {
-                Text(
+                val style = MaterialTheme.typography.titleLarge
+                // At the largest text sizes a long label ("Breakfast") shrinks to fit instead of breaking mid-word.
+                BasicText(
                     label,
-                    style = MaterialTheme.typography.titleLarge,
-                    fontWeight = if (on) FontWeight.ExtraBold else FontWeight.Bold,
-                    color = if (on) c.onAccent else c.ink,
+                    modifier = Modifier.padding(horizontal = 4.dp),
+                    style =
+                        style.copy(
+                            fontWeight = if (on) FontWeight.ExtraBold else FontWeight.Bold,
+                            color = if (on) c.onAccent else c.ink,
+                            textAlign = TextAlign.Center,
+                        ),
+                    softWrap = false,
+                    maxLines = 1,
+                    autoSize = TextAutoSize.StepBased(minFontSize = 8.sp, maxFontSize = style.fontSize),
                 )
             }
         }

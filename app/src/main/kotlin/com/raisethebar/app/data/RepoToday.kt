@@ -94,6 +94,8 @@ suspend fun Repo.todayState(): TodayState {
                 if (preTrip) TodayKind.PRE_TRIP else TodayKind.TRAIN
             }
         }
+    // After today's workout, show the session that was done, not the next one in the rotation.
+    if (done != null && open == null) decodeState(done.state)?.plan?.let { plan = it }
     val morningAsked = db.meta().get(Meta.MORNING_CHECK_DATE) == today.toString()
     return TodayState(
         date = today,

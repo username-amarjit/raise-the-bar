@@ -28,6 +28,7 @@ import com.raisethebar.app.ui.theme.RtbTheme
 import com.raisethebar.engine.AbsenceKind
 import com.raisethebar.engine.AwayEquipment
 import com.raisethebar.engine.DayStatus
+import com.raisethebar.engine.InputRejected
 import com.raisethebar.engine.Outcome
 import com.raisethebar.engine.SessionKind
 import kotlinx.coroutines.runBlocking
@@ -40,6 +41,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import java.time.Clock
 import java.time.LocalDate
+import kotlin.test.assertFailsWith
 
 /** Milestone 10 (section 13.5) on the real data layer. */
 @RunWith(AndroidJUnit4::class)
@@ -126,14 +128,34 @@ class PlanFlowTest {
         val today = runBlocking { friday.todayState() }
         assertEquals(TodayKind.PRE_TRIP, today.kind)
         assertEquals("pre_trip_gym", today.plan!!.dayId)
+        runBlocking { friday.finishSession(friday.startSession(today.plan)) }
+        val after = runBlocking { friday.todayState() }
+        assertEquals("pre_trip_gym", after.plan!!.dayId) // Today still shows the session that was done
+        assertTrue(after.doneToday != null)
+    }
+
+    @Test
+    fun theAwayFormChecksMinutesDatesAndOverlaps() {
+        val wednesday = TestRepo.createSetUp(monday).at(monday.plusDays(2), 9)
+
+        fun rejected(d: AwayDraft): String = assertFailsWith<InputRejected> { runBlocking { wednesday.previewAway(d) } }.field
+
+        assertEquals("minutes", rejected(AwayDraft(thursday, sunday, AwayEquipment.DUMBBELLS, 19)))
+        assertEquals("minutes", rejected(AwayDraft(thursday, sunday, AwayEquipment.DUMBBELLS, 46)))
+        listOf(20, 45).forEach { m -> runBlocking { wednesday.previewAway(AwayDraft(thursday, sunday, AwayEquipment.DUMBBELLS, m)) } }
+        assertEquals("start", rejected(AwayDraft(monday.plusDays(1), sunday, AwayEquipment.NONE)))
+        assertEquals("end", rejected(AwayDraft(thursday, thursday.plusDays(61), AwayEquipment.NONE)))
+        runBlocking { wednesday.saveAway(AwayDraft(thursday, sunday, AwayEquipment.NONE)) }
+        assertEquals("dates", rejected(AwayDraft(sunday, sunday.plusDays(3), AwayEquipment.GYM)))
     }
 
     @Test
     fun theScreenDeclaresADayOff() {
         val repo = TestRepo.createSetUp()
         compose.setContent { RtbTheme { CompositionLocalProvider(LocalRepo provides repo) { PlanChangesScreen(onBack = {}) } } }
-        compose.waitUntil(5_000) { compose.onAllNodesWithText("Thu 22 Oct").fetchSemanticsNodes().isNotEmpty() }
-        compose.onAllNodesWithText("Thu 22 Oct")[0].performClick() // the day-off chip (the away form also starts on Thursday)
+        // Both the day-off chip and the away form's start date read "Thu 22 Oct"; the chip comes first once both have loaded.
+        compose.waitUntil(5_000) { compose.onAllNodesWithText("Thu 22 Oct").fetchSemanticsNodes().size >= 2 }
+        compose.onAllNodesWithText("Thu 22 Oct")[0].performClick()
         compose.waitUntil(5_000) { compose.onAllNodesWithText("Take Thursday off").fetchSemanticsNodes().isNotEmpty() }
         compose.onNodeWithText("Take Thursday off").performScrollTo().performClick()
         compose.waitUntil(5_000) { runBlocking { repo.absences() }.isNotEmpty() }

@@ -126,6 +126,7 @@ class MakeupGoldenTest {
         val five = (0..4).map { day.minusDays(it.toLong()) }.sorted()
         assertEquals(6, skip(MakeupState(), five).sessionsLeft)
         assertTrue(Skips.bannerShows(five, day))
+        assertTrue(Skips.bannerShows(five.take(4), day)) // the banner starts at 4
         assertFalse(Skips.bannerShows(five.take(3), day))
     }
 
