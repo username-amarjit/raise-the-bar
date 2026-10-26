@@ -40,6 +40,8 @@ Run `ktlintFormat` on its own first; running it alongside `ktlintCheck` can make
 
 **To install on a phone:** copy `app-release.apk` to the phone and open it, allowing installs from that app once. Or connect the phone with USB debugging on and run `adb install -r app/build/outputs/apk/release/app-release.apk`. The release app is `com.raisethebar.app`. Debug builds install alongside it as `com.raisethebar.app.debug`, under the same name, and keep their own data. Before giving the app to anyone else, replace the debug signing key with a real keystore ([DECISIONS.md](DECISIONS.md) #21).
 
+The repository also holds a ready-made debug build, `app-debug.apk` at the root, stored with Git LFS (run `git lfs pull` after cloning to get the real file). It's a snapshot from when it was committed, and it installs as the debug app, whose data is separate from the release app's. To move from one to the other, export from the app you've been using (Settings → Export your data) and import the file into the other.
+
 ## Project layout
 
 ```
@@ -64,6 +66,7 @@ data/                   seed data: program, exercises, exercise map, equipment, 
 scripts/                import_exercises.py, the build-time exercise library import
 build.gradle.kts        root build, including the secretScan task
 gradle/libs.versions.toml  dependency versions
+app-debug.apk           a committed debug build (Git LFS), see "Build, test and install"
 ```
 
 ## Architecture
