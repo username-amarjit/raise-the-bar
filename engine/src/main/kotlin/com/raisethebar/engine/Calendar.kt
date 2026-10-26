@@ -58,10 +58,10 @@ object Calendar {
             is Phase.Deload -> if (big) Rules.DELOAD_EFFORT.big else Rules.DELOAD_EFFORT.small
         }
 
-    /** Working sets: 2 in calibration (week 1 is the final ramp set + 1 more), half rounded up in a deload. */
+    /** Working sets: calibration week 1 is the final ramp set + 1 more, week 2 has 2; a deload has half, rounded up. */
     fun workingSets(phase: Phase, programmed: Int): Int =
         when (phase) {
-            is Phase.Calibration -> minOf(programmed, Rules.CALIBRATION_2_SETS)
+            is Phase.Calibration -> minOf(programmed, if (phase.week == 1) 1 + Rules.CALIBRATION_1_EXTRA_SETS else Rules.CALIBRATION_2_SETS)
             is Phase.Block -> programmed
             is Phase.Deload -> deloadSets(programmed)
         }

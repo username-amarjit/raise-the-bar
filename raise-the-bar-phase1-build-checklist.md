@@ -183,7 +183,7 @@ Exercise weight 0.5–500 kg; reps 0–50; reps left 0–4; timed hold 5–300 s
 
 ## 6. Milestones
 
-> **Build note (Kotlin):** at the owner's request this was built as a native Android app in Kotlin (Jetpack Compose and Room), not with Expo. The Expo, TypeScript, ESLint, Prettier, Jest and iOS items were met with their Android equivalents, listed in `DECISIONS.md` #17–24. Every rule is in the `engine/` module and every constant in `engine/src/main/kotlin/com/raisethebar/config/Rules.kt`. The one open box is installing on the owner's phone, which is the owner's step (`DECISIONS.md` #82).
+> **Build note (Kotlin):** at the owner's request this was built as a native Android app in Kotlin (Jetpack Compose and Room), not with Expo. The Expo, TypeScript, ESLint, Prettier and Jest items were met with their Android equivalents, and the iOS-only items don't apply (`DECISIONS.md` #17–24). Every training rule is in the `engine/` module, and every number from section 5 is in `engine/src/main/kotlin/com/raisethebar/config/Rules.kt` (`DECISIONS.md` #89). `README.md` describes the architecture and how to build, test and install the app. The one open box is installing on the owner's phone, which is the owner's step (`DECISIONS.md` #82).
 
 ### Milestone 0: Project setup
 

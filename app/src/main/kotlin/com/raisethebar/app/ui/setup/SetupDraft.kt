@@ -17,9 +17,9 @@ import com.raisethebar.engine.MakeupSettings
 import com.raisethebar.engine.Nutrition
 import com.raisethebar.engine.ScheduleDay
 import com.raisethebar.engine.SeedData
+import com.raisethebar.engine.Skips
 import com.raisethebar.engine.Validate
 import com.raisethebar.engine.Weekdays
-import java.time.LocalTime
 
 /** Everything the five setup screens collect, as editable text and choices. Also used by Settings to edit a section. */
 class SetupDraft : ViewModel() {
@@ -39,7 +39,7 @@ class SetupDraft : ViewModel() {
     val schedule = mutableStateListOf<ScheduleDay>().apply { addAll(Weekdays.defaults()) }
     var notifications by mutableStateOf(true)
     val equipment = mutableStateListOf<Equipment>().apply { addAll(SeedData.equipment) }
-    var cutoff by mutableStateOf(LocalTime.of(22, 0))
+    var cutoff by mutableStateOf(Skips.DEFAULT_CUTOFF)
     var makeup by mutableStateOf(MakeupSettings())
 
     val weightKg: Double? get() = weight.toDoubleOrNull()?.takeIf(Validate::isBodyWeightKg)

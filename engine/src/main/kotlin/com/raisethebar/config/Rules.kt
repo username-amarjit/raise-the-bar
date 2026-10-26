@@ -1,7 +1,11 @@
 package com.raisethebar.config
 
 /**
- * Every number from section 5 of the Phase 1 checklist. No other file may hard-code these values.
+ * Every number from section 5 of the Phase 1 checklist. Code reads them from here and never hard-codes them.
+ * Two kinds of value are also written into the bundled data: slot rest times in data/program.json (decision 1) and
+ * barbell step sizes in data/exercises.json (set by scripts/import_exercises.py). ExerciseLibraryTest checks that the
+ * data matches these constants. Screen text that quotes a value in words, such as "7-day average", needs changing
+ * by hand if the value changes.
  * All rounding is round-half-up (see [com.raisethebar.engine.roundHalfUp]).
  */
 object Rules {

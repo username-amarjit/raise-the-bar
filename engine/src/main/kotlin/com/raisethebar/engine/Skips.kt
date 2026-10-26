@@ -65,6 +65,9 @@ data class DayRecord(
 
 /** Skips, check-ins and the midnight timeout (milestone 8). */
 object Skips {
+    /** The default day-off cut-off from section 5: 22:00 the night before. Users can change it in their rules. */
+    val DEFAULT_CUTOFF: LocalTime = LocalTime.MIDNIGHT.plusMinutes(Rules.DAY_OFF_CUTOFF_DEFAULT_MIN.toLong())
+
     /**
      * The timeout for one past day. Done: a session was completed that day (it counts for the day it started).
      * Excused: sick or injured recorded before that day's midnight. Day off or away: not a skip.

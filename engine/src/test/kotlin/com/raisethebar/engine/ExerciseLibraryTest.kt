@@ -1,5 +1,6 @@
 package com.raisethebar.engine
 
+import com.raisethebar.config.Rules
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
@@ -75,13 +76,29 @@ class ExerciseLibraryTest {
 
     @Test
     fun `barbell steps are 2_5 kg for upper body and 5 kg for lower body`() {
-        assertEquals(2.5, lib.getValue("barbell_bench_press").stepKg)
-        assertEquals(5.0, lib.getValue("barbell_back_squat").stepKg)
-        assertEquals(5.0, lib.getValue("barbell_romanian_deadlift").stepKg)
+        assertEquals(Rules.STEP_BARBELL_UPPER_KG, lib.getValue("barbell_bench_press").stepKg)
+        assertEquals(Rules.STEP_BARBELL_LOWER_KG, lib.getValue("barbell_back_squat").stepKg)
+        assertEquals(Rules.STEP_BARBELL_LOWER_KG, lib.getValue("barbell_romanian_deadlift").stepKg)
+        lib.values.filter { it.loadKind == LoadKind.BARBELL }.forEach { ex ->
+            val step = if (ex.bodyRegion == Exercise.LOWER) Rules.STEP_BARBELL_LOWER_KG else Rules.STEP_BARBELL_UPPER_KG
+            assertEquals(step, ex.stepKg, ex.id)
+        }
+        assertTrue(lib.values.none { it.loadKind != LoadKind.BARBELL && it.stepKg != null })
         assertEquals(LoadKind.DUMBBELL, lib.getValue("dumbbell_lateral_raise").loadKind)
         assertEquals(LoadKind.STACK, lib.getValue("leg_press").loadKind)
         assertEquals(LoadKind.BODYWEIGHT, lib.getValue("pull_ups").loadKind)
         assertEquals(LoadKind.ASSISTED, lib.getValue("assisted_pull_up").loadKind)
         assertEquals(LoadKind.NONE, lib.getValue("plank").loadKind)
+    }
+
+    @Test
+    fun `gym slots rest for one of the stored rest values, and home and away use the big and small defaults`() {
+        val stored = setOf(Rules.REST_2_TO_3_MIN_S, Rules.REST_2_MIN_S, Rules.REST_90_S, Rules.REST_60_TO_90_S, Rules.REST_60_S)
+        program.days.filter { it.kind == DayKind.ROTATION || it.kind == DayKind.PRE_TRIP }.flatMap { it.slots }.forEach { slot ->
+            assertTrue(slot.restS in stored, "${slot.id} rests ${slot.restS} s")
+        }
+        program.days.filter { it.kind == DayKind.HOME || it.kind == DayKind.AWAY }.flatMap { it.slots }.forEach { slot ->
+            assertEquals(null, slot.restS, "${slot.id} should use the default rest")
+        }
     }
 }

@@ -5,7 +5,8 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 
 /**
  * Numbered migrations. Every schema change gets the next number and a test in MigrationTest, so upgrading the app keeps all data.
- * Version 1 is the checklist's table list; version 2 adds the columns and date indexes the app needs.
+ * Version 1 is the checklist's table list; version 2 adds the columns and date indexes the app needs; version 3 adds
+ * exercise load kinds and source ids, and equipment sections and notes.
  */
 val MIGRATION_1_2 =
     object : Migration(1, 2) {

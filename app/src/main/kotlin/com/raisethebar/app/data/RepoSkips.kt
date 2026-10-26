@@ -102,7 +102,7 @@ suspend fun Repo.recordReason(date: LocalDate, reason: String, laterTime: LocalT
     return ok
 }
 
-suspend fun Repo.dayOffCutoff(): LocalTime = profile()?.dayOffCutoff?.let { runCatching { Time.parseHhmm(it) }.getOrNull() } ?: LocalTime.of(22, 0)
+suspend fun Repo.dayOffCutoff(): LocalTime = profile()?.dayOffCutoff?.let { runCatching { Time.parseHhmm(it) }.getOrNull() } ?: Skips.DEFAULT_CUTOFF
 
 suspend fun Repo.checkDayOff(date: LocalDate): Skips.DayOffCheck =
     Skips.checkDayOff(date, nowZoned(), dayOffCutoff(), dayStatus(date), Skips.daysOffInMonth(absences(), YearMonth.from(date)))
