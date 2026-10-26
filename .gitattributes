@@ -6,3 +6,4 @@
 *.webp binary
 *.ttf binary
 *.jar binary
+app-debug.apk filter=lfs diff=lfs merge=lfs -text
